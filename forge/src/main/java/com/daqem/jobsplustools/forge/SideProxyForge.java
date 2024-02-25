@@ -1,4 +1,4 @@
-package com.daqem.template.forge;
+package com.daqem.jobsplustools.forge;
 
 public class SideProxyForge {
 

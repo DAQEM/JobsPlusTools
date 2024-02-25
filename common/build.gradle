@@ -3,7 +3,7 @@ architectury {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/template.accesswidener")
+    accessWidenerPath = file("src/main/resources/jobsplustools.accesswidener")
 }
 
 dependencies {

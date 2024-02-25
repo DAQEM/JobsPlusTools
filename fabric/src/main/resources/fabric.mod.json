@@ -12,19 +12,19 @@
     "sources": "${mod_repository}"
   },
   "license": "${mod_license}",
-  "icon": "assets/template/icon.png",
+  "icon": "assets/jobsplustools/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.daqem.template.fabric.TemplateCommonFabric"
+      "com.daqem.jobsplustools.fabric.JobsPlusToolsCommonFabric"
     ],
     "client": [
-      "com.daqem.template.fabric.TemplateClientFabric"
+      "com.daqem.jobsplustools.fabric.JobsPlusToolsClientFabric"
     ]
   },
   "mixins": [
-    "template.mixins.json",
-    "template-common.mixins.json"
+    "jobsplustools.mixins.json",
+    "jobsplustools-common.mixins.json"
   ],
   "depends": {
     "fabric": "*",
