@@ -1,5 +1,13 @@
 package com.daqem.jobsplustools.forge;
 
+import com.daqem.client.JobsPlusToolsClient;
+import com.daqem.client.item.JobsPlusToolsItemProperties;
+import com.daqem.jobsplustools.JobsPlusTools;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
 public class SideProxyForge {
 
     public SideProxyForge() {
@@ -10,6 +18,16 @@ public class SideProxyForge {
 
         public Client() {
             //Run client code
+            JobsPlusToolsClient.initClient();
+
+            IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+            eventBus.addListener(this::clientSetupHandler);
+
+        }
+
+        @SubscribeEvent
+        public void clientSetupHandler(final FMLClientSetupEvent event) {
+            JobsPlusToolsItemProperties.init();
         }
 
     }
