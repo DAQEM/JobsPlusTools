@@ -13,7 +13,7 @@ public enum Tiers implements Tier {
     WOOD(0, 131, 3.0f, 0.0f, 15, () -> Ingredient.of(ItemTags.PLANKS)),
     STONE(1, 511, 4.0f, 1.0f, 5, () -> Ingredient.of(ItemTags.STONE_TOOL_MATERIALS)),
     IRON(2, 891, 6.0f, 2.0f, 14, () -> Ingredient.of(Items.IRON_INGOT)),
-    GOLD(0, 1271, 7.0f, 2.5f, 16, () -> Ingredient.of(Items.GOLD_INGOT)),
+    GOLD(2, 1271, 7.0f, 2.5f, 16, () -> Ingredient.of(Items.GOLD_INGOT)),
     DIAMOND(3, 1651, 8.0f, 3.0f, 10, () -> Ingredient.of(Items.DIAMOND)),
     NETHERITE(4, 2031, 9.0f, 4.0f, 15, () -> Ingredient.of(Items.NETHERITE_INGOT));
 

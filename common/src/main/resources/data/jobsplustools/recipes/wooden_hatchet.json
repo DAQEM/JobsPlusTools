@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "AAA",
+    " CA",
+    " BA"
+  ],
+  "key": {
+    "A": {
+      "tag": "minecraft:planks"
+    },
+    "B": {
+      "item": "jobsplustools:wooden_grip"
+    },
+    "C": {
+      "item": "jobsplustools:wooden_core"
+    }
+  },
+  "result": {
+    "item": "jobsplustools:wooden_hatchet",
+    "count": 1
+  }
+}

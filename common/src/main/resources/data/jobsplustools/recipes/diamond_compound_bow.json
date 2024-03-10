@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " AD",
+    "BCD",
+    " AD"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:stick"
+    },
+    "B": {
+      "item": "jobsplustools:diamond_grip"
+    },
+    "C": {
+      "item": "jobsplustools:diamond_core"
+    },
+    "D": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "jobsplustools:diamond_compound_bow",
+    "count": 1
+  }
+}

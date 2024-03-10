@@ -1,0 +1,25 @@
+{
+  "icon": {
+    "item": "jobsplustools:netherite_harvester"
+  },
+  "types": [
+    "craft",
+    "smelt",
+    "enchant",
+    "repair",
+    "item_break_block",
+    "hurt_entity"
+  ],
+  "conditions": [
+    {
+      "type": "arc:item",
+      "item": "jobsplustools:netherite_harvester"
+    },
+    {
+      "type": "jobsplus:job_level",
+      "inverted": true,
+      "job": "jobsplus:farmer",
+      "level": 75
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "jobsplustools:netherite_core"
+  },
+  "base": {
+    "item": "jobsplustools:diamond_longsword"
+  },
+  "result": {
+    "item": "jobsplustools:netherite_longsword"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

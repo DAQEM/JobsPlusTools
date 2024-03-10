@@ -32,5 +32,6 @@
   "jobsplustools.item.mode.breaker.connected.off": "Off",
   "jobsplustools.item.mode.replacer.multi.1x1": "Single Block",
   "jobsplustools.item.mode.replacer.multi.3x3": "3x3",
-  "jobsplustools.item.mode.replacer.multi.5x5": "5x5"
+  "jobsplustools.item.mode.replacer.multi.5x5": "5x5",
+  "jobsplustools.tooltip.bonus_damage": "Bonus Damage: %s"
 }

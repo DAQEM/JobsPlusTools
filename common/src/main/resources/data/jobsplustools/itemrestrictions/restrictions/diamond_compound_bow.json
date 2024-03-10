@@ -1,0 +1,25 @@
+{
+  "icon": {
+    "item": "jobsplustools:diamond_compound_bow"
+  },
+  "types": [
+    "craft",
+    "smelt",
+    "enchant",
+    "repair",
+    "item_break_block",
+    "hurt_entity"
+  ],
+  "conditions": [
+    {
+      "type": "arc:item",
+      "item": "jobsplustools:diamond_compound_bow"
+    },
+    {
+      "type": "jobsplus:job_level",
+      "inverted": true,
+      "job": "jobsplus:hunter",
+      "level": 60
+    }
+  ]
+}

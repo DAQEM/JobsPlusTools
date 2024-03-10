@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "A",
+    "C",
+    "B"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "jobsplustools:iron_grip"
+    },
+    "C": {
+      "item": "jobsplustools:iron_core"
+    }
+  },
+  "result": {
+    "item": "jobsplustools:iron_longsword",
+    "count": 1
+  }
+}
