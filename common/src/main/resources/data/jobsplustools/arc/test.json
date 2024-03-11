@@ -1,7 +1,0 @@
-{
-  "holder": {
-    "type": "arc:player",
-    "id": "arc:player"
-  },
-  "type": "arc:on_break_block"
-}
