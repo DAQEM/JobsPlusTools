@@ -1,0 +1,25 @@
+{
+  "icon": {
+    "item": "jobsplustools:diamond_hatchet"
+  },
+  "types": [
+    "craft",
+    "smelt",
+    "enchant",
+    "repair",
+    "item_break_block",
+    "hurt_entity"
+  ],
+  "conditions": [
+    {
+      "type": "arc:item",
+      "item": "jobsplustools:diamond_hatchet"
+    },
+    {
+      "type": "jobsplus:job_level",
+      "inverted": true,
+      "job": "jobsplus:lumberjack",
+      "level": 60
+    }
+  ]
+}

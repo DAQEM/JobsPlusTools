@@ -1,0 +1,25 @@
+{
+  "icon": {
+    "item": "jobsplustools:stone_longsword"
+  },
+  "types": [
+    "craft",
+    "smelt",
+    "enchant",
+    "repair",
+    "item_break_block",
+    "hurt_entity"
+  ],
+  "conditions": [
+    {
+      "type": "arc:item",
+      "item": "jobsplustools:stone_longsword"
+    },
+    {
+      "type": "jobsplus:job_level",
+      "inverted": true,
+      "job": "jobsplus:hunter",
+      "level": 15
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "AAA",
+    " CA",
+    " B "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:diamond"
+    },
+    "B": {
+      "item": "jobsplustools:diamond_grip"
+    },
+    "C": {
+      "item": "jobsplustools:diamond_core"
+    }
+  },
+  "result": {
+    "item": "jobsplustools:diamond_harvester",
+    "count": 1
+  }
+}

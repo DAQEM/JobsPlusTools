@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " AD",
+    "BCD",
+    " AD"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:stick"
+    },
+    "B": {
+      "item": "jobsplustools:wooden_grip"
+    },
+    "C": {
+      "item": "jobsplustools:wooden_core"
+    },
+    "D": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "jobsplustools:wooden_compound_bow",
+    "count": 1
+  }
+}

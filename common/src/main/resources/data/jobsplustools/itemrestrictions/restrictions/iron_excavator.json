@@ -1,0 +1,25 @@
+{
+  "icon": {
+    "item": "jobsplustools:iron_excavator"
+  },
+  "types": [
+    "craft",
+    "smelt",
+    "enchant",
+    "repair",
+    "item_break_block",
+    "hurt_entity"
+  ],
+  "conditions": [
+    {
+      "type": "arc:item",
+      "item": "jobsplustools:iron_excavator"
+    },
+    {
+      "type": "jobsplus:job_level",
+      "inverted": true,
+      "job": "jobsplus:digger",
+      "level": 30
+    }
+  ]
+}

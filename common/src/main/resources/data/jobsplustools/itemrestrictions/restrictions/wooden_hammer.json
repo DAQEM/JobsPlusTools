@@ -1,0 +1,25 @@
+{
+  "icon": {
+    "item": "jobsplustools:wooden_hammer"
+  },
+  "types": [
+    "craft",
+    "smelt",
+    "enchant",
+    "repair",
+    "item_break_block",
+    "hurt_entity"
+  ],
+  "conditions": [
+    {
+      "type": "arc:item",
+      "item": "jobsplustools:wooden_hammer"
+    },
+    {
+      "type": "jobsplus:job_level",
+      "inverted": true,
+      "job": "jobsplus:miner",
+      "level": 1
+    }
+  ]
+}

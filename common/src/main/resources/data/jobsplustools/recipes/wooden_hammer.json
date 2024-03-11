@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "AAA",
+    "ACA",
+    " B "
+  ],
+  "key": {
+    "A": {
+      "tag": "minecraft:planks"
+    },
+    "B": {
+      "item": "jobsplustools:wooden_grip"
+    },
+    "C": {
+      "item": "jobsplustools:wooden_core"
+    }
+  },
+  "result": {
+    "item": "jobsplustools:wooden_hammer",
+    "count": 1
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "item/bow",
+    "textures": {
+        "layer0": "jobsplustools:item/golden_compound_bow_pulling_2"
+    }
+}
