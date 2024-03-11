@@ -4,6 +4,7 @@
   },
   "types": [
     "craft",
+    "use_item",
     "smelt",
     "enchant",
     "repair",

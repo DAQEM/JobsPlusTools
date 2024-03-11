@@ -1,5 +1,6 @@
 package com.daqem.jobsplustools.event;
 
+import com.daqem.jobsplustools.JobsPlusTools;
 import com.daqem.jobsplustools.item.breaker.BlockBreaker;
 import com.daqem.jobsplustools.item.replacer.BlockReplacer;
 import dev.architectury.event.EventResult;
@@ -15,17 +16,16 @@ public class BreakBlockEvent {
             ItemStack itemStack = player.getMainHandItem();
             Item item = itemStack.getItem();
 
-            if (item instanceof BlockReplacer) return EventResult.pass();
-            if (item instanceof BlockBreaker blockBreaker) {
+            if (!(item instanceof BlockReplacer) && item instanceof BlockBreaker blockBreaker) {
 
-                // Check if block is broken by the breaker and if so, pass the event
-                if (player.getEntityData().hasItem(BlockBreaker.BREAKER) && player.getEntityData().get(BlockBreaker.BREAKER)) {
-                    return EventResult.pass();
+                // Check if block is not broken by the breaker and if so, break the block
+                if (!(player.getEntityData().hasItem(BlockBreaker.BREAKER) && player.getEntityData().get(BlockBreaker.BREAKER))) {
+                    blockBreaker.breakBlocks(player, level, pos, state);
                 }
-
-                // Otherwise, break the blocks
-                blockBreaker.breakBlocks(player, level, pos, state);
             }
+
+            JobsPlusTools.LOGGER.info("Block broken by: " + player.getName().getString());
+
             return EventResult.pass();
         });
     }

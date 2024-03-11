@@ -7,7 +7,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.HashSet;
+import java.util.Queue;
+import java.util.Set;
 
 public interface ConnectedBlockBreaker extends ModeItem, BlockBreaker {
 
@@ -20,7 +23,15 @@ public interface ConnectedBlockBreaker extends ModeItem, BlockBreaker {
     }
 
     default void breakConnectedBlocks(ServerPlayer player, Level level, BlockPos pos, BlockState state) {
+        getBlocksToMine(level, pos, state)
+                .forEach(blockPos -> breakBlock(player, blockPos, level, level.getBlockState(blockPos)));
+    }
+
+    default Set<BlockPos> getBlocksToMine(Level level, BlockPos pos, BlockState state) {
         Set<BlockPos> connectedBlocks = new HashSet<>();
+
+        if (!isValidBlock(state)) return connectedBlocks;
+
         Queue<BlockPos> queue = new ArrayDeque<>();
         queue.add(pos);
         connectedBlocks.add(pos);
@@ -32,7 +43,10 @@ public interface ConnectedBlockBreaker extends ModeItem, BlockBreaker {
                     for (int z = -1; z <= 1; z++) {
                         if (x == 0 && y == 0 && z == 0) continue;
                         BlockPos adjacentPos = currentPos.offset(x, y, z);
-                        if (!connectedBlocks.contains(adjacentPos) && level.getBlockState(adjacentPos).getBlock() == state.getBlock()) {
+                        BlockState blockState = level.getBlockState(adjacentPos);
+                        if (!connectedBlocks.contains(adjacentPos) &&
+                                blockState.getBlock() == state.getBlock()
+                        ) {
                             connectedBlocks.add(adjacentPos);
                             queue.add(adjacentPos);
                         }
@@ -40,6 +54,8 @@ public interface ConnectedBlockBreaker extends ModeItem, BlockBreaker {
                 }
             }
         }
-        connectedBlocks.forEach(blockPos -> breakBlock(player, blockPos, level, level.getBlockState(blockPos)));
+        return connectedBlocks;
     }
+
+    boolean isValidBlock(BlockState blockState);
 }

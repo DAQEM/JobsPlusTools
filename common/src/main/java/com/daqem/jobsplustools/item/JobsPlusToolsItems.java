@@ -66,13 +66,13 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> DIAMOND_CORE = ITEMS.register(JobsPlusTools.getId("diamond_core"), () -> new Item(new Item.Properties().arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB)));
     RegistrySupplier<Item> DIAMOND_GRIP = ITEMS.register(JobsPlusTools.getId("diamond_grip"), () -> new Item(new Item.Properties().arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB)));
 
-    RegistrySupplier<Item> NETHERITE_LONGSWORD = ITEMS.register(JobsPlusTools.getId("netherite_longsword"), () -> new LongswordItem(Tiers.NETHERITE, 6, -2.4F, new Item.Properties()));
-    RegistrySupplier<Item> NETHERITE_COMPOUND_BOW = ITEMS.register(JobsPlusTools.getId("netherite_compound_bow"), () -> new CompoundBowItem(Tiers.NETHERITE, new Item.Properties()));
-    RegistrySupplier<Item> NETHERITE_EXCAVATOR = ITEMS.register(JobsPlusTools.getId("netherite_excavator"), () -> new ExcavatorItem(Tiers.NETHERITE, 1.5f, -3.0F, new Item.Properties()));
-    RegistrySupplier<Item> NETHERITE_HAMMER = ITEMS.register(JobsPlusTools.getId("netherite_hammer"), () -> new HammerItem(Tiers.NETHERITE, 1, -2.8F, new Item.Properties()));
-    RegistrySupplier<Item> NETHERITE_HATCHET = ITEMS.register(JobsPlusTools.getId("netherite_hatchet"), () -> new HatchetItem(Tiers.NETHERITE, 5.0f, -3.0F, new Item.Properties()));
-    RegistrySupplier<Item> NETHERITE_HARVESTER = ITEMS.register(JobsPlusTools.getId("netherite_harvester"), () -> new HarvesterItem(Tiers.NETHERITE, -4, 0.0F, new Item.Properties()));
-    RegistrySupplier<Item> NETHERITE_CORE = ITEMS.register(JobsPlusTools.getId("netherite_core"), () -> new Item(new Item.Properties().arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB)));
+    RegistrySupplier<Item> NETHERITE_LONGSWORD = ITEMS.register(JobsPlusTools.getId("netherite_longsword"), () -> new LongswordItem(Tiers.NETHERITE, 6, -2.4F, new Item.Properties().fireResistant()));
+    RegistrySupplier<Item> NETHERITE_COMPOUND_BOW = ITEMS.register(JobsPlusTools.getId("netherite_compound_bow"), () -> new CompoundBowItem(Tiers.NETHERITE, new Item.Properties().fireResistant()));
+    RegistrySupplier<Item> NETHERITE_EXCAVATOR = ITEMS.register(JobsPlusTools.getId("netherite_excavator"), () -> new ExcavatorItem(Tiers.NETHERITE, 1.5f, -3.0F, new Item.Properties().fireResistant()));
+    RegistrySupplier<Item> NETHERITE_HAMMER = ITEMS.register(JobsPlusTools.getId("netherite_hammer"), () -> new HammerItem(Tiers.NETHERITE, 1, -2.8F, new Item.Properties().fireResistant()));
+    RegistrySupplier<Item> NETHERITE_HATCHET = ITEMS.register(JobsPlusTools.getId("netherite_hatchet"), () -> new HatchetItem(Tiers.NETHERITE, 5.0f, -3.0F, new Item.Properties().fireResistant()));
+    RegistrySupplier<Item> NETHERITE_HARVESTER = ITEMS.register(JobsPlusTools.getId("netherite_harvester"), () -> new HarvesterItem(Tiers.NETHERITE, -4, 0.0F, new Item.Properties().fireResistant()));
+    RegistrySupplier<Item> NETHERITE_CORE = ITEMS.register(JobsPlusTools.getId("netherite_core"), () -> new Item(new Item.Properties().arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB).fireResistant()));
 
     static void init() {
     }

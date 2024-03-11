@@ -1,8 +1,7 @@
 package com.daqem.jobsplustools.forge;
 
-import com.daqem.client.JobsPlusToolsClient;
-import com.daqem.client.item.JobsPlusToolsItemProperties;
-import com.daqem.jobsplustools.JobsPlusTools;
+import com.daqem.jobsplustools.client.JobsPlusToolsClient;
+import com.daqem.jobsplustools.client.item.JobsPlusToolsItemProperties;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;

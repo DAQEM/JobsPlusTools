@@ -73,31 +73,27 @@ public interface MultiBlockBreaker extends ModeItem, BlockBreaker {
         }
     }
 
-    private BlockHitResult getBlockHitResult(Player player, Level level) {
-        Vec3 eyePos = player.getEyePosition(1.0F);
-        Vec3 viewVec = player.getViewVector(1.0F);
-        Vec3 target = eyePos.add(viewVec.x * 5, viewVec.y * 5, viewVec.z * 5);
-        return level.clip(new ClipContext(eyePos, target, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player));
-    }
-
     static List<IMode> generateAvailableModes(Tier tier) {
         return switch ((Tiers) tier) {
             case IRON -> Arrays.asList(
+                    MultiBlockBreakerModes.ONE_BY_ONE,
                     MultiBlockBreakerModes.THREE_BY_THREE,
                     MultiBlockBreakerModes.THREE_BY_THREE_BY_THREE
             );
-            case GOLD -> Arrays.asList(
+            case GOLD, DIAMOND -> Arrays.asList(
+                    MultiBlockBreakerModes.ONE_BY_ONE,
                     MultiBlockBreakerModes.THREE_BY_THREE,
                     MultiBlockBreakerModes.THREE_BY_THREE_BY_THREE,
                     MultiBlockBreakerModes.FIVE_BY_FIVE
             );
-            case DIAMOND, NETHERITE -> Arrays.asList(
+            case NETHERITE -> Arrays.asList(
+                    MultiBlockBreakerModes.ONE_BY_ONE,
                     MultiBlockBreakerModes.THREE_BY_THREE,
                     MultiBlockBreakerModes.THREE_BY_THREE_BY_THREE,
                     MultiBlockBreakerModes.FIVE_BY_FIVE,
                     MultiBlockBreakerModes.FIVE_BY_FIVE_BY_FIVE
             );
-            default -> List.of(MultiBlockBreakerModes.THREE_BY_THREE);
+            default -> List.of(MultiBlockBreakerModes.ONE_BY_ONE, MultiBlockBreakerModes.THREE_BY_THREE);
         };
     }
 }

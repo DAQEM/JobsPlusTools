@@ -3,6 +3,7 @@ package com.daqem.jobsplustools.item;
 import com.daqem.jobsplustools.JobsPlusTools;
 import com.daqem.jobsplustools.item.breaker.MultiBlockBreaker;
 import com.daqem.jobsplustools.item.mode.IMode;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -10,8 +11,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -31,5 +34,11 @@ public class ExcavatorItem extends ShovelItem implements MultiBlockBreaker {
     @Override
     public List<IMode> getAvailableModes() {
         return MultiBlockBreaker.generateAvailableModes(getTier());
+    }
+
+    @Override
+    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack, level, list, tooltipFlag);
+        list.addAll(getModesTooltip(itemStack));
     }
 }

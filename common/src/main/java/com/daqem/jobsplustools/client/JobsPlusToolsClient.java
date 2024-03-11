@@ -1,4 +1,4 @@
-package com.daqem.client;
+package com.daqem.jobsplustools.client;
 
 public class JobsPlusToolsClient {
 

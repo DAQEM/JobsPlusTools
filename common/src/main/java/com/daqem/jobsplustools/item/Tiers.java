@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 public enum Tiers implements Tier {
 
-    WOOD(0, 131, 3.0f, 0.0f, 15, () -> Ingredient.of(ItemTags.PLANKS)),
+    WOOD(0, 131, 3.0f, 0.5f, 15, () -> Ingredient.of(ItemTags.PLANKS)),
     STONE(1, 511, 4.0f, 1.0f, 5, () -> Ingredient.of(ItemTags.STONE_TOOL_MATERIALS)),
     IRON(2, 891, 6.0f, 2.0f, 14, () -> Ingredient.of(Items.IRON_INGOT)),
     GOLD(2, 1271, 7.0f, 2.5f, 16, () -> Ingredient.of(Items.GOLD_INGOT)),

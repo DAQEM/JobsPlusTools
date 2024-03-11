@@ -1,7 +1,7 @@
 package com.daqem.jobsplustools.fabric;
 
-import com.daqem.client.JobsPlusToolsClient;
-import com.daqem.client.item.JobsPlusToolsItemProperties;
+import com.daqem.jobsplustools.client.JobsPlusToolsClient;
+import com.daqem.jobsplustools.client.item.JobsPlusToolsItemProperties;
 import net.fabricmc.api.ClientModInitializer;
 
 public class JobsPlusToolsClientFabric implements ClientModInitializer {

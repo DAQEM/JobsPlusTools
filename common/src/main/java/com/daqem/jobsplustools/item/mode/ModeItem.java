@@ -1,7 +1,10 @@
 package com.daqem.jobsplustools.item.mode;
 
+import com.daqem.jobsplustools.JobsPlusTools;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -38,6 +41,28 @@ public interface ModeItem extends ItemLike {
         IMode nextMode = getNextMode(stack);
         setActiveMode(stack, nextMode);
         player.sendSystemMessage(nextMode.getName().copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GREEN)), true);
+    }
+
+    default List<Component> getModesTooltip(ItemStack stack) {
+        List<IMode> availableModes = getAvailableModes();
+        if (availableModes.isEmpty()) return List.of(JobsPlusTools.translatable("tooltip.no_modes").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
+        MutableComponent modes = JobsPlusTools.literal("").copy();
+        for (IMode mode : availableModes) {
+            MutableComponent component = mode.getName().copy();
+
+            if (mode.equals(getActiveMode(stack))) {
+                component.setStyle(Style.EMPTY.withColor(ChatFormatting.GREEN));
+            } else {
+                component.setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY));
+            }
+
+            if (availableModes.indexOf(mode) != availableModes.size() - 1) {
+                component.append(JobsPlusTools.literal(", ").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
+            }
+            modes.append(component);
+        }
+        return List.of(JobsPlusTools.translatable("tooltip.modes", modes).copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)),
+                JobsPlusTools.translatable("tooltip.switch_mode").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
     }
 
     class ModeItemSerializer {

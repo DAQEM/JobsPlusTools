@@ -1,7 +1,6 @@
 package com.daqem.jobsplustools;
 
 import com.daqem.jobsplustools.event.BreakBlockEvent;
-import com.daqem.jobsplustools.event.RightClickBlockEvent;
 import com.daqem.jobsplustools.item.JobsPlusToolsItems;
 import com.google.common.base.Suppliers;
 import com.mojang.logging.LogUtils;
@@ -39,7 +38,6 @@ public class JobsPlusTools {
 
     private static void registerEvents() {
         BreakBlockEvent.registerEvent();
-        RightClickBlockEvent.registerEvent();
     }
 
     public static Component translatable(String s) {
@@ -52,5 +50,9 @@ public class JobsPlusTools {
 
     public static ResourceLocation getId(String str) {
         return new ResourceLocation(MOD_ID, str);
+    }
+
+    public static Component literal(String str) {
+        return Component.literal(str);
     }
 }

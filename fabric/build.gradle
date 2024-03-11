@@ -32,6 +32,10 @@ dependencies {
 
     modImplementation "curse.maven:supermartijn642s-config-lib-438332:${project.config_library_file_fabric}"
     modImplementation "curse.maven:ui-933200:${project.ui_library_file_fabric}"
+
+    modRuntimeOnly "curse.maven:arc-883593:${project.arc_file_fabric}"
+    modRuntimeOnly "curse.maven:item-restrictions-887774:${project.item_restrictions_file_fabric}"
+    modRuntimeOnly "curse.maven:jobs-remastered-916985:${project.jobs_plus_file_fabric}"
 }
 
 processResources {

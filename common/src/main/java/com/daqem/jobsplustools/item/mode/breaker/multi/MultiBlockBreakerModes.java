@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 
 public enum MultiBlockBreakerModes implements MultiBlockBreakerMode {
 
+    ONE_BY_ONE("1x1", 1, 1, 1),
     THREE_BY_THREE("3x3", 3, 3, 1),
     THREE_BY_THREE_BY_THREE("3x3x3", 3, 3, 3),
     FIVE_BY_FIVE("5x5", 5, 5, 1),

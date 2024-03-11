@@ -1,4 +1,4 @@
-package com.daqem.client.item;
+package com.daqem.jobsplustools.client.item;
 
 import com.daqem.jobsplustools.item.JobsPlusToolsItems;
 import net.minecraft.client.renderer.item.ItemProperties;
