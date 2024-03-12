@@ -24,8 +24,6 @@ public class BreakBlockEvent {
                 }
             }
 
-            JobsPlusTools.LOGGER.info("Block broken by: " + player.getName().getString());
-
             return EventResult.pass();
         });
     }
