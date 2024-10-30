@@ -24,7 +24,7 @@ public class HammerItem extends PickaxeItem implements MultiBlockBreaker {
 
     public HammerItem(Tier tier, int i, float f, Properties properties) {
         //noinspection UnstableApiUsage
-        super(tier, i, f, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB.get()));
+        super(tier, i, f, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
     }
 
     @Override

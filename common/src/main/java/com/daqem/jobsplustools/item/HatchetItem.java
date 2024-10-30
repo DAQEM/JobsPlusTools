@@ -25,7 +25,7 @@ import java.util.List;
 public class HatchetItem extends AxeItem implements ConnectedBlockBreaker {
 
     public HatchetItem(Tier tier, float f, float g, Properties properties) {
-        super(tier, f, g, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB.get()));
+        super(tier, f, g, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
     }
 
     @Override
