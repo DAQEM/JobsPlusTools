@@ -22,7 +22,7 @@ public class ExcavatorItem extends ShovelItem implements MultiBlockBreaker {
 
     public ExcavatorItem(Tier tier, float i, float f, Properties properties) {
         //noinspection UnstableApiUsage
-        super(tier, i, f, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB.get()));
+        super(tier, i, f, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
     }
 
     @Override

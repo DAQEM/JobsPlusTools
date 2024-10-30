@@ -28,7 +28,7 @@ import java.util.List;
 public class HarvesterItem extends HoeItem implements MultiBlockReplacer {
 
     public HarvesterItem(Tier tier, int i, float f, Properties properties) {
-        super(tier, i, f, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB.get()));
+        super(tier, i, f, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
     }
 
     @Override

@@ -16,7 +16,7 @@ public class CompoundBowItem extends BowItem {
     private final Tier tier;
 
     public CompoundBowItem(Tier tier, Properties properties) {
-        super(properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB.get()).durability(tier.getUses()));
+        super(properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB).durability(tier.getUses()));
         this.tier = tier;
     }
 
