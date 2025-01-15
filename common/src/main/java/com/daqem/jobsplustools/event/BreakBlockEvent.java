@@ -5,8 +5,11 @@ import com.daqem.jobsplustools.item.breaker.BlockBreaker;
 import com.daqem.jobsplustools.item.replacer.BlockReplacer;
 import dev.architectury.event.EventResult;
 import dev.architectury.event.events.common.BlockEvent;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
 
 public class BreakBlockEvent {
 
