@@ -24,7 +24,7 @@ public interface ConnectedBlockBreaker extends ModeItem, BlockBreaker {
 
     default void breakConnectedBlocks(ServerPlayer player, Level level, BlockPos pos, BlockState state) {
         getBlocksToMine(level, pos, state)
-                .forEach(blockPos -> breakBlock(player, blockPos, level, level.getBlockState(blockPos)));
+                .forEach(blockPos -> breakBlock(player, blockPos, level));
     }
 
     default Set<BlockPos> getBlocksToMine(Level level, BlockPos pos, BlockState state) {

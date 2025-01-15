@@ -1,8 +1,10 @@
 package com.daqem.jobsplustools.mixin;
 
 import com.daqem.jobsplustools.JobsPlusTools;
+import com.daqem.jobsplustools.item.breaker.BlockBreaker;
 import com.daqem.jobsplustools.item.breaker.ConnectedBlockBreaker;
 import com.daqem.jobsplustools.item.breaker.MultiBlockBreaker;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
@@ -10,6 +12,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Player.class)
@@ -34,5 +37,11 @@ public class MixinPlayer {
             returnValue *= speedMultiplier;
             cir.setReturnValue(returnValue);
         }
+    }
+
+    @Inject(at = @At("TAIL"), method = "defineSynchedData")
+    public void defineSyncedData(CallbackInfo ci) {
+        Player player = (Player) (Object) this;
+        player.getEntityData().define(BlockBreaker.BREAKER, false);
     }
 }

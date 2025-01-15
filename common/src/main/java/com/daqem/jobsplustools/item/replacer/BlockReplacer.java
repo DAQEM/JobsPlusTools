@@ -17,7 +17,7 @@ public interface BlockReplacer extends BlockBreaker {
         Block block = blockState.getBlock();
 
         if (result.shouldBreak()) {
-            breakBlock(player, pos, level, blockState);
+            breakBlock(player, pos, level);
         }
 
         if (result.shouldPlace()) {

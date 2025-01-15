@@ -24,41 +24,15 @@ import java.util.List;
 
 public interface BlockBreaker {
 
-    EntityDataAccessor<Boolean> BREAKER = SynchedEntityData.defineId(ServerPlayer.class, EntityDataSerializers.BOOLEAN);
+    EntityDataAccessor<Boolean> BREAKER = SynchedEntityData.defineId(Player.class, EntityDataSerializers.BOOLEAN);
 
     default void breakBlocks(ServerPlayer player, Level level, BlockPos pos, BlockState state) {
     }
 
-    default void breakBlock(ServerPlayer player, BlockPos pos, Level level, BlockState blockState) {
-        if (player.getEntityData().hasItem(BREAKER)) {
-            player.getEntityData().set(BREAKER, true);
-        } else {
-            player.getEntityData().define(BREAKER, true);
-        }
-
-        player.gameMode.destroyBlock(pos);
-        level.levelEvent(2001, pos, Block.getId(blockState));
-
-        if (!player.isCreative()) {
-            Vec3 offsetPos = new Vec3(pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5);
-            BlockEntity blockEntity = level.getBlockState(pos).hasBlockEntity() ? level.getBlockEntity(pos) : null;
-
-            List<ItemStack> droppedStacks = Block.getDrops(blockState, (ServerLevel) level, pos, blockEntity, player, player.getMainHandItem());
-
-            dropItems(player, level, droppedStacks, offsetPos);
-            blockState.spawnAfterBreak((ServerLevel) level, pos, player.getMainHandItem(), true);
-
-            ItemStack itemStack = player.getMainHandItem();
-            boolean usingEffectiveTool = player.hasCorrectToolForDrops(blockState);
-            itemStack.mineBlock(level, blockState, pos, player);
-            if (usingEffectiveTool) {
-                player.awardStat(Stats.BLOCK_MINED.get(blockState.getBlock()));
-                player.causeFoodExhaustion(0.005F);
-            }
-
-        }
-
-        player.getEntityData().set(MultiBlockBreaker.BREAKER, false);
+    default void breakBlock(ServerPlayer player, BlockPos pos, Level level) {
+        player.getEntityData().set(BREAKER, true);
+        level.destroyBlock(pos, !player.isCreative(), player);
+        player.getEntityData().set(BREAKER, false);
 
     }
 
