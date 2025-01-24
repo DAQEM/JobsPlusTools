@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:netherite_excavator"
+    "id": "jobsplustools:netherite_excavator"
   },
   "types": [
     "craft",

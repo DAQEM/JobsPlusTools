@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:iron_harvester"
+    "id": "jobsplustools:iron_harvester"
   },
   "types": [
     "craft",

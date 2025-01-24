@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:wooden_excavator"
+    "id": "jobsplustools:wooden_excavator"
   },
   "types": [
     "craft",

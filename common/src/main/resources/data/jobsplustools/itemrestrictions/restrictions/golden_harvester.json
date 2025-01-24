@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:golden_harvester"
+    "id": "jobsplustools:golden_harvester"
   },
   "types": [
     "craft",

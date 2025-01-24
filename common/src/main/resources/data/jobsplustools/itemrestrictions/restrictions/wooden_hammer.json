@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:wooden_hammer"
+    "id": "jobsplustools:wooden_hammer"
   },
   "types": [
     "craft",

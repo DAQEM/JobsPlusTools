@@ -24,8 +24,8 @@ import java.util.List;
 
 public class HatchetItem extends AxeItem implements ConnectedBlockBreaker {
 
-    public HatchetItem(Tier tier, float f, float g, Properties properties) {
-        super(tier, f, g, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
+    public HatchetItem(Tier tier, Properties properties) {
+        super(tier, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
     }
 
     @Override
@@ -40,13 +40,13 @@ public class HatchetItem extends AxeItem implements ConnectedBlockBreaker {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack, level, list, tooltipFlag);
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack, tooltipContext, list, tooltipFlag);
         list.addAll(getModesTooltip(itemStack));
     }
 
     @Override
-    public boolean isValidBlock(BlockState blockState) {
-        return this.isCorrectToolForDrops(blockState) && blockState.getBlock() instanceof RotatedPillarBlock;
+    public boolean isValidBlock(ItemStack stack, BlockState blockState) {
+        return this.isCorrectToolForDrops(stack, blockState) && blockState.getBlock() instanceof RotatedPillarBlock;
     }
 }

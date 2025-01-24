@@ -1,5 +1,6 @@
 package com.daqem.jobsplustools;
 
+import com.daqem.jobsplustools.component.ModDataComponentTypes;
 import com.daqem.jobsplustools.event.BreakBlockEvent;
 import com.daqem.jobsplustools.item.JobsPlusToolsItems;
 import com.google.common.base.Suppliers;
@@ -31,6 +32,7 @@ public class JobsPlusTools {
                     () -> new ItemStack(JobsPlusToolsItems.DIAMOND_HAMMER.get())));
 
     public static void init() {
+        ModDataComponentTypes.init();
         JobsPlusToolsItems.init();
 
         registerEvents();
@@ -49,7 +51,7 @@ public class JobsPlusTools {
     }
 
     public static ResourceLocation getId(String str) {
-        return new ResourceLocation(MOD_ID, str);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, str);
     }
 
     public static Component literal(String str) {

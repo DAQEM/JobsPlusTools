@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:netherite_longsword"
+    "id": "jobsplustools:netherite_longsword"
   },
   "types": [
     "craft",

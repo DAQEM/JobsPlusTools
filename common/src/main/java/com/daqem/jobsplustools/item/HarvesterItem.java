@@ -17,18 +17,17 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.NetherWartBlock;
-import net.minecraft.world.level.block.StemGrownBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class HarvesterItem extends HoeItem implements MultiBlockReplacer {
 
-    public HarvesterItem(Tier tier, int i, float f, Properties properties) {
-        super(tier, i, f, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
+    public HarvesterItem(Tier tier, Properties properties) {
+        //noinspection UnstableApiUsage
+        super(tier, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
     }
 
     @Override
@@ -62,17 +61,14 @@ public class HarvesterItem extends HoeItem implements MultiBlockReplacer {
         else if (state.getBlock() instanceof NetherWartBlock && state.getValue(NetherWartBlock.AGE) == NetherWartBlock.MAX_AGE) {
             return ReplaceableResult.breakAndPlace();
         }
-        else if (state.getBlock() instanceof StemGrownBlock) {
-            return ReplaceableResult.onlyBreak();
-        }
         else {
             return ReplaceableResult.none();
         }
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack, level, list, tooltipFlag);
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack, tooltipContext, list, tooltipFlag);
         list.addAll(getModesTooltip(itemStack));
     }
 }

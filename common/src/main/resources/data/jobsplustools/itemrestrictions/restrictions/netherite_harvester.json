@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:netherite_harvester"
+    "id": "jobsplustools:netherite_harvester"
   },
   "types": [
     "craft",

@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:netherite_hammer"
+    "id": "jobsplustools:netherite_hammer"
   },
   "types": [
     "craft",

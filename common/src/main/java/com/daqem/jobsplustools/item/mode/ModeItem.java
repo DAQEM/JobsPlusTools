@@ -1,8 +1,9 @@
 package com.daqem.jobsplustools.item.mode;
 
 import com.daqem.jobsplustools.JobsPlusTools;
+import com.daqem.jobsplustools.component.ModDataComponentTypes;
+import com.daqem.jobsplustools.component.ModeItemComponent;
 import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
@@ -16,11 +17,11 @@ import java.util.List;
 public interface ModeItem extends ItemLike {
 
     default @NotNull IMode getActiveMode(ItemStack stack) {
-        return ModeItem.ModeItemSerializer.deserialize(stack.getOrCreateTag(), this);
+        return ModeItem.ModeItemSerializer.deserialize(stack, this);
     }
 
     default void setActiveMode(@NotNull ItemStack stack, @NotNull IMode mode) {
-        ModeItem.ModeItemSerializer.serialize(stack.getOrCreateTag(), mode, this);
+        ModeItem.ModeItemSerializer.serialize(stack, mode, this);
     }
     List<IMode> getAvailableModes();
 
@@ -69,12 +70,15 @@ public interface ModeItem extends ItemLike {
 
         public static final String MODE_TAG = "Mode";
 
-        public static void serialize(CompoundTag tag, IMode mode, ModeItem item) {
-            tag.putInt(MODE_TAG, item.getAvailableModes().indexOf(mode));
+        public static void serialize(@NotNull ItemStack stack, IMode mode, ModeItem item) {
+            stack.set(ModDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(item.getAvailableModes().indexOf(mode)));
         }
 
-        public static IMode deserialize(CompoundTag tag, ModeItem item) {
-            return item.getAvailableModes().get(tag.getInt(MODE_TAG));
+        public static IMode deserialize(ItemStack stack, ModeItem item) {
+            if (!stack.has(ModDataComponentTypes.MODE_ITEM_COMPONENT.get())) {
+                return item.getDefaultMode();
+            }
+            return item.getAvailableModes().get(stack.get(ModDataComponentTypes.MODE_ITEM_COMPONENT.get()).mode());
         }
     }
 }

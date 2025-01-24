@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:golden_longsword"
+    "id": "jobsplustools:golden_longsword"
   },
   "types": [
     "craft",

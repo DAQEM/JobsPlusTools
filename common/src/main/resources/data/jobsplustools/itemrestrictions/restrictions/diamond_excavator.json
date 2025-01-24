@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:diamond_excavator"
+    "id": "jobsplustools:diamond_excavator"
   },
   "types": [
     "craft",

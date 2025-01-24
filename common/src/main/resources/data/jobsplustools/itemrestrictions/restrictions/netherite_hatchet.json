@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:netherite_hatchet"
+    "id": "jobsplustools:netherite_hatchet"
   },
   "types": [
     "craft",

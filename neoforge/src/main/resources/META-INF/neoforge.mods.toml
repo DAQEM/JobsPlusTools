@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[${forge_loader_version},)"
+loaderVersion = "[${neoforge_loader_version},)"
 issueTrackerURL = "${mod_repository}/issues"
 license = "${mod_license}"
 
@@ -12,9 +12,9 @@ description = "${mod_description}"
 #logoFile = ""
 
 [[dependencies."${mod_id}"]]
-modId = "forge"
+modId = "neoforge"
 mandatory = true
-versionRange = "[${forge_loader_version},)"
+versionRange = "[${neoforge_loader_version},)"
 ordering = "NONE"
 side = "BOTH"
 
@@ -32,17 +32,5 @@ versionRange = "[${architectury_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
-[[dependencies."${mod_id}"]]
-modId = "supermartijn642configlib"
-mandatory = true
-versionRange = "[${config_library_version},)"
-ordering = "AFTER"
-side = "BOTH"
-
-[[dependencies."${mod_id}"]]
-modId = "uilib"
-mandatory = true
-versionRange = "[${ui_library_version},)"
-ordering = "AFTER"
-side = "CLIENT"
-
+[[mixins]]
+config = "jobsplustools-common.mixins.json"

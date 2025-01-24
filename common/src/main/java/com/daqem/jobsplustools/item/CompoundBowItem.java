@@ -16,13 +16,14 @@ public class CompoundBowItem extends BowItem {
     private final Tier tier;
 
     public CompoundBowItem(Tier tier, Properties properties) {
+        //noinspection UnstableApiUsage
         super(properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB).durability(tier.getUses()));
         this.tier = tier;
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack, level, list, tooltipFlag);
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack, tooltipContext, list, tooltipFlag);
         list.add(JobsPlusTools.translatable("tooltip.bonus_damage", getBonusDamage()).copy().withStyle(JobsPlusTools.ITEM_TOOLTIP_STYLE));
     }
 

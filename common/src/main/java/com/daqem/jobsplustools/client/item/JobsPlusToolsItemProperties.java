@@ -17,14 +17,14 @@ public class JobsPlusToolsItemProperties {
     }
 
     private static void initBow(Item item) {
-        ItemProperties.register(item, new ResourceLocation("pull"), (itemStack, clientLevel, livingEntity, i) -> {
+        ItemProperties.register(item, ResourceLocation.parse("pull"), (itemStack, clientLevel, livingEntity, i) -> {
             if (livingEntity == null) {
                 return 0.0F;
             } else {
-                return (float) (itemStack.getUseDuration() - livingEntity.getUseItemRemainingTicks()) / 20.0F;
+                return (float) (itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks()) / 20.0F;
             }
         });
-        ItemProperties.register(item, new ResourceLocation("pulling"), (itemStack, clientLevel, livingEntity, i) ->
+        ItemProperties.register(item, ResourceLocation.parse("pulling"), (itemStack, clientLevel, livingEntity, i) ->
                 livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1.0F : 0.0F);
     }
 }

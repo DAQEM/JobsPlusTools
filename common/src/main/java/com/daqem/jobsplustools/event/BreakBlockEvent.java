@@ -22,7 +22,7 @@ public class BreakBlockEvent {
             if (!(item instanceof BlockReplacer) && item instanceof BlockBreaker blockBreaker) {
 
                 // Check if block is not broken by the breaker and if so, break the block
-                if (!(player.getEntityData().hasItem(BlockBreaker.BREAKER) && player.getEntityData().get(BlockBreaker.BREAKER))) {
+                if (!player.getEntityData().get(BlockBreaker.BREAKER)) {
                     blockBreaker.breakBlocks(player, level, pos, state);
                 }
             }

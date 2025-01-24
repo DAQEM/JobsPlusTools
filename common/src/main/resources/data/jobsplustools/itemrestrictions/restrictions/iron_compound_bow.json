@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:iron_compound_bow"
+    "id": "jobsplustools:iron_compound_bow"
   },
   "types": [
     "craft",

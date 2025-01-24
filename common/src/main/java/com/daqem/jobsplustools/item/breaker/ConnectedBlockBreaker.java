@@ -4,6 +4,7 @@ import com.daqem.jobsplustools.item.mode.ModeItem;
 import com.daqem.jobsplustools.item.mode.breaker.connected.ConnectBlockBreakerModes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -23,14 +24,14 @@ public interface ConnectedBlockBreaker extends ModeItem, BlockBreaker {
     }
 
     default void breakConnectedBlocks(ServerPlayer player, Level level, BlockPos pos, BlockState state) {
-        getBlocksToMine(level, pos, state)
+        getBlocksToMine(level, pos, player.getMainHandItem(), state)
                 .forEach(blockPos -> breakBlock(player, blockPos, level));
     }
 
-    default Set<BlockPos> getBlocksToMine(Level level, BlockPos pos, BlockState state) {
+    default Set<BlockPos> getBlocksToMine(Level level, BlockPos pos, ItemStack stack, BlockState state) {
         Set<BlockPos> connectedBlocks = new HashSet<>();
 
-        if (!isValidBlock(state)) return connectedBlocks;
+        if (!isValidBlock(stack, state)) return connectedBlocks;
 
         Queue<BlockPos> queue = new ArrayDeque<>();
         queue.add(pos);
@@ -57,5 +58,5 @@ public interface ConnectedBlockBreaker extends ModeItem, BlockBreaker {
         return connectedBlocks;
     }
 
-    boolean isValidBlock(BlockState blockState);
+    boolean isValidBlock(ItemStack stack, BlockState blockState);
 }

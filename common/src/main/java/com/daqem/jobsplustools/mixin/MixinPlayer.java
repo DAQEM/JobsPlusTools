@@ -4,6 +4,7 @@ import com.daqem.jobsplustools.JobsPlusTools;
 import com.daqem.jobsplustools.item.breaker.BlockBreaker;
 import com.daqem.jobsplustools.item.breaker.ConnectedBlockBreaker;
 import com.daqem.jobsplustools.item.breaker.MultiBlockBreaker;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -32,7 +33,7 @@ public class MixinPlayer {
         if (itemStack.getItem() instanceof ConnectedBlockBreaker connectedBlockBreaker) {
             float returnValue = cir.getReturnValue();
             BlockHitResult blockHitResult = connectedBlockBreaker.getBlockHitResult(player, player.level());
-            int blocksToMine = connectedBlockBreaker.getBlocksToMine(player.level(), blockHitResult.getBlockPos(), blockState).size();
+            int blocksToMine = connectedBlockBreaker.getBlocksToMine(player.level(), blockHitResult.getBlockPos(), itemStack, blockState).size();
             float speedMultiplier = connectedBlockBreaker.getActiveMode(itemStack).getSpeedMultiplier(blocksToMine);
             returnValue *= speedMultiplier;
             cir.setReturnValue(returnValue);
@@ -40,8 +41,7 @@ public class MixinPlayer {
     }
 
     @Inject(at = @At("TAIL"), method = "defineSynchedData")
-    public void defineSyncedData(CallbackInfo ci) {
-        Player player = (Player) (Object) this;
-        player.getEntityData().define(BlockBreaker.BREAKER, false);
+    public void defineSyncedData(SynchedEntityData.Builder builder, CallbackInfo ci) {
+        builder.define(BlockBreaker.BREAKER, false);
     }
 }

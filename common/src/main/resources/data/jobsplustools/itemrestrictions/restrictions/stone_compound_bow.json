@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:stone_compound_bow"
+    "id": "jobsplustools:stone_compound_bow"
   },
   "types": [
     "craft",

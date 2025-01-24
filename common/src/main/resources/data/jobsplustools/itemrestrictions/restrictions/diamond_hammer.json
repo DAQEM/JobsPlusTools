@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:diamond_hammer"
+    "id": "jobsplustools:diamond_hammer"
   },
   "types": [
     "craft",

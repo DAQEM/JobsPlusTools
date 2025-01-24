@@ -22,9 +22,9 @@ import java.util.Optional;
 
 public class HammerItem extends PickaxeItem implements MultiBlockBreaker {
 
-    public HammerItem(Tier tier, int i, float f, Properties properties) {
+    public HammerItem(Tier tier, Properties properties) {
         //noinspection UnstableApiUsage
-        super(tier, i, f, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
+        super(tier, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
     }
 
     @Override
@@ -39,8 +39,8 @@ public class HammerItem extends PickaxeItem implements MultiBlockBreaker {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack, level, list, tooltipFlag);
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack, tooltipContext, list, tooltipFlag);
         list.addAll(getModesTooltip(itemStack));
     }
 }

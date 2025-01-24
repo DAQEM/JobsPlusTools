@@ -20,9 +20,9 @@ import java.util.List;
 
 public class ExcavatorItem extends ShovelItem implements MultiBlockBreaker {
 
-    public ExcavatorItem(Tier tier, float i, float f, Properties properties) {
+    public ExcavatorItem(Tier tier, Properties properties) {
         //noinspection UnstableApiUsage
-        super(tier, i, f, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
+        super(tier, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
     }
 
     @Override
@@ -37,8 +37,8 @@ public class ExcavatorItem extends ShovelItem implements MultiBlockBreaker {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack, level, list, tooltipFlag);
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack, tooltipContext, list, tooltipFlag);
         list.addAll(getModesTooltip(itemStack));
     }
 }

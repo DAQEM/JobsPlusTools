@@ -1,6 +1,6 @@
 {
   "icon": {
-    "item": "jobsplustools:iron_hatchet"
+    "id": "jobsplustools:iron_hatchet"
   },
   "types": [
     "craft",
