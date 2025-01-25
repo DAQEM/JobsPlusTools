@@ -7,7 +7,7 @@
     "item": "jobsplustools:diamond_hammer"
   },
   "result": {
-    "item": "jobsplustools:netherite_hammer"
+    "id": "jobsplustools:netherite_hammer"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

@@ -7,7 +7,7 @@
     "item": "jobsplustools:diamond_compound_bow"
   },
   "result": {
-    "item": "jobsplustools:netherite_compound_bow"
+    "id": "jobsplustools:netherite_compound_bow"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

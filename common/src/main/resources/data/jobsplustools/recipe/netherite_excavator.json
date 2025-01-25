@@ -7,7 +7,7 @@
     "item": "jobsplustools:diamond_excavator"
   },
   "result": {
-    "item": "jobsplustools:netherite_excavator"
+    "id": "jobsplustools:netherite_excavator"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"
