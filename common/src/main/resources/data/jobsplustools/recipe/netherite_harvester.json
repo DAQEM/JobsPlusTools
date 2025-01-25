@@ -7,7 +7,7 @@
     "item": "jobsplustools:diamond_harvester"
   },
   "result": {
-    "item": "jobsplustools:netherite_harvester"
+    "id": "jobsplustools:netherite_harvester"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"
