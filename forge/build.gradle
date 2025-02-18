@@ -36,9 +36,6 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
-
-    modImplementation "curse.maven:supermartijn642s-config-lib-438332:${project.config_library_file_forge}"
-    modImplementation "curse.maven:ui-933200:${project.ui_library_file_forge}"
 }
 
 processResources {
@@ -53,8 +50,6 @@ processResources {
     inputs.property "forge_loader_version", project.forge_loader_version
     inputs.property "minecraft_version", project.minecraft_version
     inputs.property "architectury_version", project.architectury_version
-    inputs.property "config_library_version", project.config_library_version
-    inputs.property "ui_library_version", project.ui_library_version
 
     filesMatching("META-INF/mods.toml") {
         expand([
@@ -68,9 +63,7 @@ processResources {
 
                 "forge_loader_version": project.forge_loader_version,
                 "minecraft_version": project.minecraft_version,
-                "architectury_version": project.architectury_version,
-                "config_library_version": project.config_library_version,
-                "ui_library_version": project.ui_library_version
+                "architectury_version": project.architectury_version
         ])
     }
 

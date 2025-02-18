@@ -30,9 +30,8 @@ dependencies {
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 
-    modImplementation "curse.maven:supermartijn642s-config-lib-438332:${project.config_library_file_fabric}"
-    modImplementation "curse.maven:ui-933200:${project.ui_library_file_fabric}"
-
+    modRuntimeOnly "curse.maven:supermartijn642s-config-lib-438332:${project.config_library_file_fabric}"
+    modRuntimeOnly "curse.maven:ui-933200:${project.ui_library_file_fabric}"
     modRuntimeOnly "curse.maven:arc-883593:${project.arc_file_fabric}"
     modRuntimeOnly "curse.maven:item-restrictions-887774:${project.item_restrictions_file_fabric}"
     modRuntimeOnly "curse.maven:jobs-remastered-916985:${project.jobs_plus_file_fabric}"
@@ -50,8 +49,6 @@ processResources {
 
     inputs.property "minecraft_version", project.minecraft_version
     inputs.property "architectury_version", project.architectury_version
-    inputs.property "config_library_version", project.config_library_version
-    inputs.property "ui_library_version", project.ui_library_version
 
     filesMatching("fabric.mod.json") {
         expand([
@@ -65,9 +62,7 @@ processResources {
                 "mod_repository": project.mod_repository,
 
                 "minecraft_version": project.minecraft_version,
-                "architectury_version": project.architectury_version,
-                "config_library_version": project.config_library_version,
-                "ui_library_version": project.ui_library_version
+                "architectury_version": project.architectury_version
         ])
     }
 }

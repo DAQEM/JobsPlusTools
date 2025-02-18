@@ -29,8 +29,6 @@
   "depends": {
     "fabric": "*",
     "minecraft": ">=${minecraft_version}",
-    "architectury": ">=${architectury_version}",
-    "supermartijn642configlib": "${config_library_version}",
-    "uilib": "${ui_library_version}"
+    "architectury": ">=${architectury_version}"
   }
 }
