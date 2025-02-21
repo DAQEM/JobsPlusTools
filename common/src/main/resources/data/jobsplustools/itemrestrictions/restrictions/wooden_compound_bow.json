@@ -13,7 +13,9 @@
   "conditions": [
     {
       "type": "arc:item",
-      "item": "jobsplustools:wooden_compound_bow"
+      "item": {
+        "id": "jobsplustools:wooden_compound_bow"
+      }
     },
     {
       "type": "jobsplus:job_level",

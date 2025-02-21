@@ -14,7 +14,9 @@
   "conditions": [
     {
       "type": "arc:item",
-      "item": "jobsplustools:iron_harvester"
+      "item": {
+        "id": "jobsplustools:iron_harvester"
+      }
     },
     {
       "type": "jobsplus:job_level",

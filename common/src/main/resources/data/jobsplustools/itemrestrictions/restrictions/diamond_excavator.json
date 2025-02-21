@@ -13,7 +13,9 @@
   "conditions": [
     {
       "type": "arc:item",
-      "item": "jobsplustools:diamond_excavator"
+      "item": {
+        "id": "jobsplustools:diamond_excavator"
+      }
     },
     {
       "type": "jobsplus:job_level",
