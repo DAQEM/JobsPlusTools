@@ -13,7 +13,9 @@
   "conditions": [
     {
       "type": "arc:item",
-      "item": "jobsplustools:diamond_hatchet"
+      "item": {
+        "id": "jobsplustools:diamond_hatchet"
+      }
     },
     {
       "type": "jobsplus:job_level",

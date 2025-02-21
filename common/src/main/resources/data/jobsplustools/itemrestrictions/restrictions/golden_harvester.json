@@ -14,7 +14,9 @@
   "conditions": [
     {
       "type": "arc:item",
-      "item": "jobsplustools:golden_harvester"
+      "item": {
+        "id": "jobsplustools:golden_harvester"
+      }
     },
     {
       "type": "jobsplus:job_level",

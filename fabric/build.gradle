@@ -30,7 +30,7 @@ dependencies {
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 
-    modRuntimeOnly "curse.maven:supermartijn642s-config-lib-438332:${project.config_library_file_fabric}"
+    modRuntimeOnly "curse.maven:yaml-config-1128669:${project.config_library_file_fabric}"
     modRuntimeOnly "curse.maven:ui-933200:${project.ui_library_file_fabric}"
     modRuntimeOnly "curse.maven:arc-883593:${project.arc_file_fabric}"
     modRuntimeOnly "curse.maven:item-restrictions-887774:${project.item_restrictions_file_fabric}"

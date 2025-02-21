@@ -13,7 +13,9 @@
   "conditions": [
     {
       "type": "arc:item",
-      "item": "jobsplustools:netherite_longsword"
+      "item": {
+        "id": "jobsplustools:netherite_longsword"
+      }
     },
     {
       "type": "jobsplus:job_level",

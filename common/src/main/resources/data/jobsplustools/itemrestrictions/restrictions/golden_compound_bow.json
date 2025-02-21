@@ -13,7 +13,9 @@
   "conditions": [
     {
       "type": "arc:item",
-      "item": "jobsplustools:golden_compound_bow"
+      "item": {
+        "id": "jobsplustools:golden_compound_bow"
+      }
     },
     {
       "type": "jobsplus:job_level",
