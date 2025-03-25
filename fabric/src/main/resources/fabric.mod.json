@@ -23,7 +23,6 @@
     ]
   },
   "mixins": [
-    "jobsplustools.mixins.json",
     "jobsplustools-common.mixins.json"
   ],
   "depends": {

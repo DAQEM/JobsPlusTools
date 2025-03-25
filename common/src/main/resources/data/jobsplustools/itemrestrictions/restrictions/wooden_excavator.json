@@ -13,6 +13,7 @@
   "conditions": [
     {
       "type": "arc:item",
+      "check_components": false,
       "item": {
         "id": "jobsplustools:wooden_excavator"
       }
