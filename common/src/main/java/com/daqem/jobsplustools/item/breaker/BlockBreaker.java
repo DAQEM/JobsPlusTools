@@ -30,8 +30,10 @@ public interface BlockBreaker {
     }
 
     default void breakBlock(ServerPlayer player, BlockPos pos, Level level) {
+        BlockState state = level.getBlockState(pos);
         player.getEntityData().set(BREAKER, true);
-        level.destroyBlock(pos, !player.isCreative(), player);
+        player.gameMode.destroyBlock(pos);
+        level.levelEvent(2001, pos, Block.getId(state));
         player.getEntityData().set(BREAKER, false);
 
     }
