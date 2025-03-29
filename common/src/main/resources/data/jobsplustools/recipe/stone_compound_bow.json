@@ -7,18 +7,10 @@
     " AD"
   ],
   "key": {
-    "A": {
-      "item": "minecraft:stick"
-    },
-    "B": {
-      "item": "jobsplustools:stone_grip"
-    },
-    "C": {
-      "item": "jobsplustools:stone_core"
-    },
-    "D": {
-      "item": "minecraft:string"
-    }
+    "A": "minecraft:stick",
+    "B": "jobsplustools:stone_grip",
+    "C": "jobsplustools:stone_core",
+    "D": "minecraft:string"
   },
   "result": {
     "id": "jobsplustools:stone_compound_bow",

@@ -7,12 +7,8 @@
     "A"
   ],
   "key": {
-    "A": {
-      "tag": "minecraft:stone_tool_materials"
-    },
-    "B": {
-      "item": "minecraft:leather"
-    }
+    "A": "#minecraft:stone_tool_materials",
+    "B": "minecraft:leather"
   },
   "result": {
     "id": "jobsplustools:stone_grip",

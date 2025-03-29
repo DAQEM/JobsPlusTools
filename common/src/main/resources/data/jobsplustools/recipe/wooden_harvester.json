@@ -7,15 +7,9 @@
     " B "
   ],
   "key": {
-    "A": {
-      "tag": "minecraft:planks"
-    },
-    "B": {
-      "item": "jobsplustools:wooden_grip"
-    },
-    "C": {
-      "item": "jobsplustools:wooden_core"
-    }
+    "A": "#minecraft:planks",
+    "B": "jobsplustools:wooden_grip",
+    "C": "jobsplustools:wooden_core"
   },
   "result": {
     "id": "jobsplustools:wooden_harvester",

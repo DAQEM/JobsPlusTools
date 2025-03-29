@@ -7,12 +7,8 @@
     "A"
   ],
   "key": {
-    "A": {
-      "item": "minecraft:stick"
-    },
-    "B": {
-      "item": "minecraft:leather"
-    }
+    "A": "minecraft:stick",
+    "B": "minecraft:leather"
   },
   "result": {
     "id": "jobsplustools:wooden_grip",

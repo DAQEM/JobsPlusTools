@@ -7,18 +7,10 @@
     " AD"
   ],
   "key": {
-    "A": {
-      "item": "minecraft:stick"
-    },
-    "B": {
-      "item": "jobsplustools:golden_grip"
-    },
-    "C": {
-      "item": "jobsplustools:golden_core"
-    },
-    "D": {
-      "item": "minecraft:string"
-    }
+    "A": "minecraft:stick",
+    "B": "jobsplustools:golden_grip",
+    "C": "jobsplustools:golden_core",
+    "D": "minecraft:string"
   },
   "result": {
     "id": "jobsplustools:golden_compound_bow",

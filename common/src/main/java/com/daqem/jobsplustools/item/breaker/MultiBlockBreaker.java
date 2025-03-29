@@ -1,6 +1,5 @@
 package com.daqem.jobsplustools.item.breaker;
 
-import com.daqem.jobsplustools.item.Tiers;
 import com.daqem.jobsplustools.item.mode.IMode;
 import com.daqem.jobsplustools.item.mode.ModeItem;
 import com.daqem.jobsplustools.item.mode.breaker.multi.MultiBlockBreakerMode;
@@ -9,12 +8,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,27 +70,30 @@ public interface MultiBlockBreaker extends ModeItem, BlockBreaker {
         }
     }
 
-    static List<IMode> generateAvailableModes(Tier tier) {
-        return switch ((Tiers) tier) {
-            case IRON -> Arrays.asList(
-                    MultiBlockBreakerModes.ONE_BY_ONE,
-                    MultiBlockBreakerModes.THREE_BY_THREE,
-                    MultiBlockBreakerModes.THREE_BY_THREE_BY_THREE
-            );
-            case GOLD, DIAMOND -> Arrays.asList(
-                    MultiBlockBreakerModes.ONE_BY_ONE,
-                    MultiBlockBreakerModes.THREE_BY_THREE,
-                    MultiBlockBreakerModes.THREE_BY_THREE_BY_THREE,
-                    MultiBlockBreakerModes.FIVE_BY_FIVE
-            );
-            case NETHERITE -> Arrays.asList(
+    static List<IMode> generateAvailableModes(ToolMaterial toolMaterial) {
+        if (toolMaterial == ToolMaterial.NETHERITE) {
+            return Arrays.asList(
                     MultiBlockBreakerModes.ONE_BY_ONE,
                     MultiBlockBreakerModes.THREE_BY_THREE,
                     MultiBlockBreakerModes.THREE_BY_THREE_BY_THREE,
                     MultiBlockBreakerModes.FIVE_BY_FIVE,
                     MultiBlockBreakerModes.FIVE_BY_FIVE_BY_FIVE
             );
-            default -> List.of(MultiBlockBreakerModes.ONE_BY_ONE, MultiBlockBreakerModes.THREE_BY_THREE);
-        };
+        } else if (toolMaterial == ToolMaterial.DIAMOND || toolMaterial == ToolMaterial.GOLD) {
+            return Arrays.asList(
+                    MultiBlockBreakerModes.ONE_BY_ONE,
+                    MultiBlockBreakerModes.THREE_BY_THREE,
+                    MultiBlockBreakerModes.THREE_BY_THREE_BY_THREE,
+                    MultiBlockBreakerModes.FIVE_BY_FIVE
+            );
+        } else if (toolMaterial == ToolMaterial.IRON) {
+            return Arrays.asList(
+                    MultiBlockBreakerModes.ONE_BY_ONE,
+                    MultiBlockBreakerModes.THREE_BY_THREE,
+                    MultiBlockBreakerModes.THREE_BY_THREE_BY_THREE
+            );
+        } else {
+            return Arrays.asList(MultiBlockBreakerModes.ONE_BY_ONE, MultiBlockBreakerModes.THREE_BY_THREE);
+        }
     }
 }

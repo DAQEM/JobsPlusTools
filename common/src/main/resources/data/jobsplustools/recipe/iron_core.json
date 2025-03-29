@@ -7,12 +7,8 @@
     " A "
   ],
   "key": {
-    "A": {
-      "item": "minecraft:iron_ingot"
-    },
-    "B": {
-      "item": "minecraft:iron_block"
-    }
+    "A": "minecraft:iron_ingot",
+    "B": "minecraft:iron_block"
   },
   "result": {
     "id": "jobsplustools:iron_core",

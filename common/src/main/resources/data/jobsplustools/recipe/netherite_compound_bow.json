@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "jobsplustools:netherite_core"
-  },
-  "base": {
-    "item": "jobsplustools:diamond_compound_bow"
-  },
+  "addition": "jobsplustools:netherite_core",
+  "base": "jobsplustools:diamond_compound_bow",
   "result": {
     "id": "jobsplustools:netherite_compound_bow"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }

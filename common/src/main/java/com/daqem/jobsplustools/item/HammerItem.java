@@ -6,41 +6,43 @@ import com.daqem.jobsplustools.item.mode.IMode;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.tooltip.TooltipComponent;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Consumer;
 
-public class HammerItem extends PickaxeItem implements MultiBlockBreaker {
+public class HammerItem extends Item implements MultiBlockBreaker {
 
-    public HammerItem(Tier tier, Properties properties) {
+    private final ToolMaterial toolMaterial;
+
+    public HammerItem(ToolMaterial toolMaterial, Properties properties) {
         //noinspection UnstableApiUsage
-        super(tier, properties.arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB));
+        super(properties);
+        this.toolMaterial = toolMaterial;
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
+    public @NotNull InteractionResult use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
         if (player.isShiftKeyDown() && player instanceof ServerPlayer serverPlayer) switchMode(serverPlayer, player.getItemInHand(hand));
         return super.use(level, player, hand);
     }
 
     @Override
     public List<IMode> getAvailableModes() {
-        return MultiBlockBreaker.generateAvailableModes(getTier());
+        return MultiBlockBreaker.generateAvailableModes(this.toolMaterial);
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, List<Component> list, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack, tooltipContext, list, tooltipFlag);
-        list.addAll(getModesTooltip(itemStack));
+    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, TooltipDisplay tooltipDisplay, Consumer<Component> consumer, TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack, tooltipContext, tooltipDisplay, consumer, tooltipFlag);
+        getModesTooltip(itemStack).forEach(consumer);
     }
 }

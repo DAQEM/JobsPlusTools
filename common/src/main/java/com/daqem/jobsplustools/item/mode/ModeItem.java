@@ -26,7 +26,7 @@ public interface ModeItem extends ItemLike {
     List<IMode> getAvailableModes();
 
     default IMode getDefaultMode() {
-        return getAvailableModes().get(0);
+        return getAvailableModes().getFirst();
     }
 
     default IMode getNextMode(ItemStack stack) {
@@ -67,8 +67,6 @@ public interface ModeItem extends ItemLike {
     }
 
     class ModeItemSerializer {
-
-        public static final String MODE_TAG = "Mode";
 
         public static void serialize(@NotNull ItemStack stack, IMode mode, ModeItem item) {
             stack.set(ModDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(item.getAvailableModes().indexOf(mode)));

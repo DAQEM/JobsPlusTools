@@ -1,15 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "jobsplustools:netherite_core"
-  },
-  "base": {
-    "item": "jobsplustools:diamond_hammer"
-  },
+  "addition": "jobsplustools:netherite_core",
+  "base": "jobsplustools:diamond_hammer",
   "result": {
     "id": "jobsplustools:netherite_hammer"
   },
-  "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
-  }
+  "template": "minecraft:netherite_upgrade_smithing_template"
 }
