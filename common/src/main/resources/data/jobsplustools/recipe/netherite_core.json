@@ -7,12 +7,8 @@
     " A "
   ],
   "key": {
-    "A": {
-      "item": "minecraft:netherite_ingot"
-    },
-    "B": {
-      "item": "minecraft:netherite_block"
-    }
+    "A": "minecraft:netherite_ingot",
+    "B": "minecraft:netherite_block"
   },
   "result": {
     "id": "jobsplustools:netherite_core",

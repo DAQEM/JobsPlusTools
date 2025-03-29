@@ -7,15 +7,9 @@
     " BA"
   ],
   "key": {
-    "A": {
-      "item": "minecraft:diamond"
-    },
-    "B": {
-      "item": "jobsplustools:diamond_grip"
-    },
-    "C": {
-      "item": "jobsplustools:diamond_core"
-    }
+    "A": "minecraft:diamond",
+    "B": "jobsplustools:diamond_grip",
+    "C": "jobsplustools:diamond_core"
   },
   "result": {
     "id": "jobsplustools:diamond_hatchet",

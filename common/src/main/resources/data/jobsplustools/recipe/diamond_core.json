@@ -7,12 +7,8 @@
     " A "
   ],
   "key": {
-    "A": {
-      "item": "minecraft:diamond"
-    },
-    "B": {
-      "item": "minecraft:diamond_block"
-    }
+    "A": "minecraft:diamond",
+    "B": "minecraft:diamond_block"
   },
   "result": {
     "id": "jobsplustools:diamond_core",

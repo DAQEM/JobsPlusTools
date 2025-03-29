@@ -7,15 +7,9 @@
     " BA"
   ],
   "key": {
-    "A": {
-      "item": "minecraft:gold_ingot"
-    },
-    "B": {
-      "item": "jobsplustools:golden_grip"
-    },
-    "C": {
-      "item": "jobsplustools:golden_core"
-    }
+    "A": "minecraft:gold_ingot",
+    "B": "jobsplustools:golden_grip",
+    "C": "jobsplustools:golden_core"
   },
   "result": {
     "id": "jobsplustools:golden_hatchet",

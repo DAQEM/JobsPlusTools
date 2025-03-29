@@ -7,15 +7,9 @@
     " B "
   ],
   "key": {
-    "A": {
-      "item": "minecraft:iron_ingot"
-    },
-    "B": {
-      "item": "jobsplustools:iron_grip"
-    },
-    "C": {
-      "item": "jobsplustools:iron_core"
-    }
+    "A": "minecraft:iron_ingot",
+    "B": "jobsplustools:iron_grip",
+    "C": "jobsplustools:iron_core"
   },
   "result": {
     "id": "jobsplustools:iron_harvester",
