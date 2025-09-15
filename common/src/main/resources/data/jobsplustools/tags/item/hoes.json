@@ -1,0 +1,10 @@
+{
+  "values": [
+    "jobsplustools:diamond_harvester",
+    "jobsplustools:stone_harvester",
+    "jobsplustools:golden_harvester",
+    "jobsplustools:netherite_harvester",
+    "jobsplustools:wooden_harvester",
+    "jobsplustools:iron_harvester"
+  ]
+}

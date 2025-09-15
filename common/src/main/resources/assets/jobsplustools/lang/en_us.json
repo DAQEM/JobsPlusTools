@@ -60,5 +60,11 @@
   "jobsplustools.tooltip.bonus_damage": "Bonus Damage: %s",
   "jobsplustools.tooltip.no_modes": "No Modes Available",
   "jobsplustools.tooltip.modes": "Modes: %s",
-  "jobsplustools.tooltip.switch_mode": "Shift + Right Click to switch mode"
+  "jobsplustools.tooltip.switch_mode": "Crouch + Right Click to switch mode",
+  "tag.item.jobsplustools.axes": "Jobs+ Hatchets",
+  "tag.item.jobsplustools.bows": "Jobs+ Compound Bows",
+  "tag.item.jobsplustools.hoes": "Jobs+ Harvesters",
+  "tag.item.jobsplustools.pickaxes": "Jobs+ Hammers",
+  "tag.item.jobsplustools.shovels": "Jobs+ Excavators",
+  "tag.item.jobsplustools.swords": "Jobs+ Longswords"
 }

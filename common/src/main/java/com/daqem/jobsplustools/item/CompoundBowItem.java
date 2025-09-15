@@ -16,7 +16,7 @@ public class CompoundBowItem extends BowItem {
 
     public CompoundBowItem(ToolMaterial toolMaterial, Properties properties) {
         //noinspection UnstableApiUsage
-        super(properties.durability(toolMaterial.durability()));
+        super(properties.durability(toolMaterial.durability()).enchantable(1));
         this.toolMaterial = toolMaterial;
     }
 
