@@ -1,11 +1,7 @@
 plugins {
-    id "com.github.johnrengelman.shadow" version "7.1.2"
-    id "com.matthewprenger.cursegradle" version "1.4.0"
+    id "com.github.johnrengelman.shadow"
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
     id "com.modrinth.minotaur" version "2.+"
-}
-
-loom {
-    accessWidenerPath = project(":common").loom.accessWidenerPath
 }
 
 architectury {
@@ -43,42 +39,27 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
-
-//    modImplementation "curse.maven:supermartijn642s-config-lib-438332:${project.config_library_file_neoforge}"
-//    modImplementation "curse.maven:ui-933200:${project.ui_library_file_neoforge}"
 }
 
 processResources {
-    inputs.property "version", project.version
-    inputs.property "mod_id", project.mod_id
-    inputs.property "mod_name", project.mod_name
-    inputs.property "mod_description", project.mod_description
-    inputs.property "mod_author", project.mod_author
-    inputs.property "mod_license", project.mod_license
-    inputs.property "mod_repository", project.mod_repository
+    var replaceProperties = [
+            "version": project.version,
+            "mod_id": project.mod_id,
+            "mod_name": project.mod_name,
+            "mod_description": project.mod_description,
+            "mod_author": project.mod_author,
+            "mod_license": project.mod_license,
+            "mod_repository": project.mod_repository,
 
-    inputs.property "neoforge_loader_version", project.neoforge_loader_version
-    inputs.property "minecraft_version", project.minecraft_version
-    inputs.property "architectury_version", project.architectury_version
+            "neoforge_loader_version": project.neoforge_loader_version,
+            "neoforge_version": project.neoforge_version,
+            "minecraft_version": project.minecraft_version,
+            "architectury_version": project.architectury_version
+    ]
+    inputs.properties replaceProperties
 
-    filesMatching("META-INF/neoforge.mods.toml") {
-        expand([
-                "version": project.version,
-                "mod_id": project.mod_id,
-                "mod_name": project.mod_name,
-                "mod_description": project.mod_description,
-                "mod_author": project.mod_author,
-                "mod_license": project.mod_license,
-                "mod_repository": project.mod_repository,
-
-                "neoforge_loader_version": project.neoforge_loader_version,
-                "minecraft_version": project.minecraft_version,
-                "architectury_version": project.architectury_version
-        ])
-    }
-
-    filesMatching("pack.mcmeta") {
-        expand "mod_name": project.mod_name
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
     }
 }
 
@@ -91,11 +72,53 @@ shadowJar {
 
 remapJar {
     inputFile.set shadowJar.archiveFile
-    archiveClassifier = "neoforge"
+    archiveClassifier = null
+}
+
+task renameJarForPublication(type: Zip, dependsOn: remapJar) {
+    from remapJar.archiveFile.map { zipTree(it) }
+    archiveExtension = "jar"
+    metadataCharset "UTF-8"
+    destinationDirectory = base.libsDirectory
+    archiveClassifier = project.name
+}
+
+assemble.dependsOn renameJarForPublication
+
+sourcesJar {
+    def commonSources = project(":common").sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
 }
 
 remapSourcesJar {
     archiveClassifier = "neoforge-sources"
+}
+
+components.java {
+    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+        skip()
+    }
+}
+
+publishing {
+    publications {
+        mavenNeoForge(MavenPublication) {
+            groupId = rootProject.maven_group
+            artifactId = rootProject.archives_base_name + "-neoforge"
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url = project.version.contains('-PR') ? 'https://maven.daqem.com/snapshots' : 'https://maven.daqem.com/releases'
+            credentials {
+                username = System.getenv("MAVEN_USER")
+                password = System.getenv("MAVEN_PASS")
+            }
+        }
+    }
 }
 
 curseforge {
@@ -120,7 +143,7 @@ curseforge {
         }
 
         mainArtifact(remapJar) {
-            displayName = "$project.mod_name NeoForge $project.mod_version"
+            displayName = "$project.mod_name NeoForge - $project.mod_version"
         }
 
         addArtifact(remapSourcesJar) {
@@ -131,7 +154,7 @@ curseforge {
 modrinth {
     token = System.getenv("MODRINTH_API_KEY")
     projectId = project.modrinth_project_id
-    versionName = "$project.mod_name NeoForge $project.mod_version"
+    versionName = "$project.mod_name NeoForge - $project.mod_version"
     versionNumber = "$project.mod_version"
     versionType = "$project.release_type"
     uploadFile = remapJar
