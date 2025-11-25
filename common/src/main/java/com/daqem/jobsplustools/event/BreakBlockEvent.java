@@ -1,15 +1,12 @@
 package com.daqem.jobsplustools.event;
 
-import com.daqem.jobsplustools.JobsPlusTools;
 import com.daqem.jobsplustools.item.breaker.BlockBreaker;
 import com.daqem.jobsplustools.item.replacer.BlockReplacer;
+import com.daqem.jobsplustools.player.JobsPlusToolsPlayer;
 import dev.architectury.event.EventResult;
 import dev.architectury.event.events.common.BlockEvent;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-
-import java.util.List;
 
 public class BreakBlockEvent {
 
@@ -22,8 +19,10 @@ public class BreakBlockEvent {
             if (!(item instanceof BlockReplacer) && item instanceof BlockBreaker blockBreaker) {
 
                 // Check if block is not broken by the breaker and if so, break the block
-                if (!player.getEntityData().get(BlockBreaker.BREAKER) && item.isCorrectToolForDrops(itemStack, state)) {
-                    blockBreaker.breakBlocks(player, level, pos, state);
+                if (player instanceof JobsPlusToolsPlayer extension) {
+                    if (!extension.jobsplustools$isBreakingBlock() && item.isCorrectToolForDrops(itemStack, state)) {
+                        blockBreaker.breakBlocks(player, level, pos, state);
+                    }
                 }
             }
 

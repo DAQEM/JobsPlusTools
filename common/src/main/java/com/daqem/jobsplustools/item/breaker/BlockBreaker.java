@@ -1,5 +1,6 @@
 package com.daqem.jobsplustools.item.breaker;
 
+import com.daqem.jobsplustools.player.JobsPlusToolsPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -24,18 +25,17 @@ import java.util.List;
 
 public interface BlockBreaker {
 
-    EntityDataAccessor<Boolean> BREAKER = SynchedEntityData.defineId(Player.class, EntityDataSerializers.BOOLEAN);
-
     default void breakBlocks(ServerPlayer player, Level level, BlockPos pos, BlockState state) {
     }
 
     default void breakBlock(ServerPlayer player, BlockPos pos, Level level) {
-        BlockState state = level.getBlockState(pos);
-        player.getEntityData().set(BREAKER, true);
-        player.gameMode.destroyBlock(pos);
-        level.levelEvent(2001, pos, Block.getId(state));
-        player.getEntityData().set(BREAKER, false);
-
+        if (player instanceof JobsPlusToolsPlayer extension) {
+            BlockState state = level.getBlockState(pos);
+            extension.jobsplustools$setBreakingBlock(true);
+            player.gameMode.destroyBlock(pos);
+            level.levelEvent(2001, pos, Block.getId(state));
+            extension.jobsplustools$setBreakingBlock(false);
+        }
     }
 
     private static void dropItems(Player player, Level level, List<ItemStack> stacks, Vec3 pos) {
