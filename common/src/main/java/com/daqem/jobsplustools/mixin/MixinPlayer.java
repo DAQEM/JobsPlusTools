@@ -1,6 +1,5 @@
 package com.daqem.jobsplustools.mixin;
 
-import com.daqem.jobsplustools.JobsPlusTools;
 import com.daqem.jobsplustools.item.breaker.ConnectedBlockBreaker;
 import com.daqem.jobsplustools.item.breaker.MultiBlockBreaker;
 import com.daqem.jobsplustools.player.JobsPlusToolsPlayer;
@@ -38,11 +37,8 @@ public class MixinPlayer implements JobsPlusToolsPlayer {
             if (itemStack.getItem() instanceof MultiBlockBreaker multiBlockBreaker) {
                 float returnValue = cir.getReturnValue();
                 int blocksToMine = multiBlockBreaker.getBlocksToMine(player, player.level()).size();
-                JobsPlusTools.LOGGER.info("Blocks to mine: {}", blocksToMine);
                 float speedMultiplier = multiBlockBreaker.getActiveMode(itemStack).getSpeedMultiplier(blocksToMine);
-                JobsPlusTools.LOGGER.info("Speed multiplier: {}", speedMultiplier);
                 returnValue *= speedMultiplier;
-                JobsPlusTools.LOGGER.info("New destroy speed: {}", returnValue);
                 cir.setReturnValue(returnValue);
             }
             if (itemStack.getItem() instanceof ConnectedBlockBreaker connectedBlockBreaker) {

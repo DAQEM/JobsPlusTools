@@ -23,8 +23,11 @@ public interface MultiBlockBreaker extends ModeItem, BlockBreaker {
     default void breakBlocks(ServerPlayer player, Level level, BlockPos pos, BlockState state) {
         if (player.isShiftKeyDown()) return;
 
-        getBlocksToMine(player, level).forEach(blockPos ->
-                breakBlock(player, blockPos, level));
+        getBlocksToMine(player, level).forEach(blockPos -> {
+            if (!blockPos.equals(pos)) {
+                breakBlock(player, blockPos, level);
+            }
+        });
     }
 
     default List<BlockPos> getBlocksToMine(Player player, Level level) {
