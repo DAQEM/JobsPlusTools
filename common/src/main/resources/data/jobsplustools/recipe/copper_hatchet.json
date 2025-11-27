@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "AAA",
+    " CA",
+    " BA"
+  ],
+  "key": {
+    "A": "minecraft:copper_ingot",
+    "B": "jobsplustools:copper_grip",
+    "C": "jobsplustools:copper_core"
+  },
+  "result": {
+    "id": "jobsplustools:copper_hatchet",
+    "count": 1
+  }
+}

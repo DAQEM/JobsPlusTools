@@ -15,7 +15,6 @@ public class CompoundBowItem extends BowItem {
     private final ToolMaterial toolMaterial;
 
     public CompoundBowItem(ToolMaterial toolMaterial, Properties properties) {
-        //noinspection UnstableApiUsage
         super(properties.durability(toolMaterial.durability()).enchantable(1));
         this.toolMaterial = toolMaterial;
     }
@@ -27,6 +26,6 @@ public class CompoundBowItem extends BowItem {
     }
 
     public double getBonusDamage() {
-        return toolMaterial.attackDamageBonus();
+        return toolMaterial.attackDamageBonus() * 0.5 + 1.0;
     }
 }

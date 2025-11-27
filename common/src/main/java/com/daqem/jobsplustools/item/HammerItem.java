@@ -23,9 +23,8 @@ public class HammerItem extends Item implements MultiBlockBreaker {
 
     private final ToolMaterial toolMaterial;
 
-    public HammerItem(ToolMaterial toolMaterial, Properties properties) {
-        //noinspection UnstableApiUsage
-        super(properties);
+    public HammerItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Properties properties) {
+        super(properties.pickaxe(toolMaterial, attackDamage, attackSpeed));
         this.toolMaterial = toolMaterial;
     }
 

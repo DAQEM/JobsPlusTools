@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
+  ],
+  "key": {
+    "A": "minecraft:copper_ingot",
+    "B": "minecraft:copper_block"
+  },
+  "result": {
+    "id": "jobsplustools:copper_core",
+    "count": 1
+  }
+}

@@ -5,6 +5,7 @@
     "jobsplustools:golden_hammer",
     "jobsplustools:netherite_hammer",
     "jobsplustools:wooden_hammer",
-    "jobsplustools:iron_hammer"
+    "jobsplustools:iron_hammer",
+    "jobsplustools:copper_hammer"
   ]
 }

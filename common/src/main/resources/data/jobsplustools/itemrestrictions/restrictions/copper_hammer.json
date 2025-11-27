@@ -1,10 +1,9 @@
 {
   "icon": {
-    "id": "jobsplustools:stone_harvester"
+    "id": "jobsplustools:copper_hammer"
   },
   "types": [
     "craft",
-    "use_item",
     "smelt",
     "enchant",
     "repair",
@@ -16,14 +15,14 @@
       "type": "arc:item",
       "check_components": false,
       "item": {
-        "id": "jobsplustools:stone_harvester"
+        "id": "jobsplustools:copper_hammer"
       }
     },
     {
       "type": "jobsplus:job_level",
       "inverted": true,
-      "job": "jobsplus:farmer",
-      "level": 10
+      "job": "jobsplus:miner",
+      "level": 20
     }
   ]
 }

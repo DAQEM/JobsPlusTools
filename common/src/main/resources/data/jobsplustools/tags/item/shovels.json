@@ -5,6 +5,7 @@
     "jobsplustools:golden_excavator",
     "jobsplustools:netherite_excavator",
     "jobsplustools:wooden_excavator",
-    "jobsplustools:iron_excavator"
+    "jobsplustools:iron_excavator",
+    "jobsplustools:copper_excavator"
   ]
 }

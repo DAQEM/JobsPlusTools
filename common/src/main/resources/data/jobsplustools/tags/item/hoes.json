@@ -5,6 +5,7 @@
     "jobsplustools:golden_harvester",
     "jobsplustools:netherite_harvester",
     "jobsplustools:wooden_harvester",
-    "jobsplustools:iron_harvester"
+    "jobsplustools:iron_harvester",
+    "jobsplustools:copper_harvester"
   ]
 }
