@@ -1,5 +1,6 @@
 package com.daqem.jobsplustools.item;
 
+import com.daqem.jobsplustools.item.breaker.BlockBreaker;
 import com.daqem.jobsplustools.item.mode.IMode;
 import com.daqem.jobsplustools.item.replacer.BlockReplacer;
 import com.daqem.jobsplustools.item.replacer.MultiBlockReplacer;
@@ -17,6 +18,7 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.NetherWartBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
@@ -42,7 +44,7 @@ public class HarvesterItem extends HoeItem implements MultiBlockReplacer {
                 if (hand == InteractionHand.MAIN_HAND) {
                     ItemStack itemStack = player.getMainHandItem();
                     if (itemStack.getItem() instanceof BlockReplacer blockReplacer) {
-                        BlockHitResult blockHitResult = getBlockHitResult(player, level);
+                        BlockHitResult blockHitResult = BlockBreaker.getBlockHitResult(player, level);
                         blockReplacer.replaceBlocks(serverPlayer, player.level(), blockHitResult.getBlockPos());
                     }
                 }

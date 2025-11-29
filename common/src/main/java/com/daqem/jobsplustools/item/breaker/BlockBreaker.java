@@ -51,7 +51,7 @@ public interface BlockBreaker {
         }
     }
 
-    default BlockHitResult getBlockHitResult(Player player, Level level) {
+    static BlockHitResult getBlockHitResult(Player player, Level level) {
         Vec3 eyePos = player.getEyePosition(1.0F);
         Vec3 viewVec = player.getViewVector(1.0F);
         Vec3 target = eyePos.add(viewVec.x * 5, viewVec.y * 5, viewVec.z * 5);

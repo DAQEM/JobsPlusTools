@@ -1,5 +1,7 @@
 package com.daqem.jobsplustools.mixin;
 
+import com.daqem.jobsplustools.JobsPlusTools;
+import com.daqem.jobsplustools.item.breaker.BlockBreaker;
 import com.daqem.jobsplustools.item.breaker.ConnectedBlockBreaker;
 import com.daqem.jobsplustools.item.breaker.MultiBlockBreaker;
 import com.daqem.jobsplustools.item.mode.breaker.connected.ConnectBlockBreakerModes;
@@ -10,13 +12,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
 import java.util.Set;
 
-@Mixin(BlockBehaviour.class)
+@Mixin(value = BlockBehaviour.class, priority = 900)
 public class MixinBlockBehaviour {
 
     @ModifyExpressionValue(
@@ -38,7 +41,7 @@ public class MixinBlockBehaviour {
             }
             if (itemStack.getItem() instanceof ConnectedBlockBreaker connectedBlockBreaker) {
                 if (connectedBlockBreaker.getActiveMode(itemStack) == ConnectBlockBreakerModes.ON) {
-                    Set<BlockPos> blocksToMine = connectedBlockBreaker.getBlocksToMine(player, level, blockState);
+                    Set<BlockPos> blocksToMine = connectedBlockBreaker.getBlocksToMine(player, level);
                     if (blocksToMine.size() > 1) {
                         return jobsplustools$getNewDestroySpeed(original, blockState, player, level, blocksToMine);
                     }
@@ -50,7 +53,8 @@ public class MixinBlockBehaviour {
 
     @Unique
     private float jobsplustools$getNewDestroySpeed(float original, BlockState blockState, Player player, Level level, Set<BlockPos> blocksToMine) {
-        float targetHardness = blockState.getDestroySpeed(level, player.blockPosition());
+        BlockHitResult blockHitResult = BlockBreaker.getBlockHitResult(player, level);
+        float targetHardness = blockState.getDestroySpeed(level, blockHitResult.getBlockPos());
         float totalHardness = blocksToMine.stream()
                 .map(pos -> level.getBlockState(pos).getDestroySpeed(level, pos))
                 .reduce(0.0f, Float::sum);

@@ -10,9 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public interface MultiBlockReplacer extends ModeItem, BlockReplacer {
 
@@ -20,23 +18,23 @@ public interface MultiBlockReplacer extends ModeItem, BlockReplacer {
     default void replaceBlocks(ServerPlayer player, Level level, BlockPos pos) {
         if (player.isShiftKeyDown()) return;
 
-        getBlocksToReplace(player, level, pos).forEach(blockPos ->
+        getBlocksToReplace(player, pos).forEach(blockPos ->
                 replaceBlock(player, blockPos, level, level.getBlockState(blockPos)));
     }
 
-    default List<BlockPos> getBlocksToReplace(Player player, Level level, BlockPos pos) {
-        if (player.isShiftKeyDown()) return new ArrayList<>();
+    default Set<BlockPos> getBlocksToReplace(Player player, BlockPos pos) {
+        if (player.isShiftKeyDown()) return Collections.emptySet();
 
         MultiBlockReplacerMode mode = (MultiBlockReplacerMode) getActiveMode(player.getMainHandItem());
         int rangeX = mode.getRangeX() / 2;
         int rangeY = mode.getRangeY() / 2;
         int rangeZ = mode.getRangeZ() / 2;
 
-        return getBlocksInRange(player, level, pos, rangeX, rangeY, rangeZ);
+        return getBlocksInRange(pos, rangeX, rangeY, rangeZ);
     }
 
-    default List<BlockPos> getBlocksInRange(Player player, Level level, BlockPos pos, int rangeX, int rangeY, int rangeZ) {
-        List<BlockPos> blocks = new ArrayList<>();
+    default Set<BlockPos> getBlocksInRange(BlockPos pos, int rangeX, int rangeY, int rangeZ) {
+        Set<BlockPos> blocks = new HashSet<>();
         for (int x = -rangeX; x <= rangeX; x++) {
             for (int y = -rangeY; y <= rangeY; y++) {
                 for (int z = -rangeZ; z <= rangeZ; z++) {

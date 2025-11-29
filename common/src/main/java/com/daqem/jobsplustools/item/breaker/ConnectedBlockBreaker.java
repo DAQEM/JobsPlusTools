@@ -26,22 +26,24 @@ public interface ConnectedBlockBreaker extends ModeItem, BlockBreaker {
     }
 
     default void breakConnectedBlocks(ServerPlayer player, Level level, BlockState state) {
-        getBlocksToMine(player, level, state)
+        getBlocksToMine(player, level)
                 .forEach(blockPos -> breakBlock(player, blockPos, level));
     }
 
-    default Set<BlockPos> getBlocksToMine(Player player, Level level, BlockState startState) {
-        if (!isValidBlock(player.getMainHandItem(), startState)) {
-            return Collections.emptySet();
-        }
+    default Set<BlockPos> getBlocksToMine(Player player, Level level) {
+        BlockHitResult blockHitResult = BlockBreaker.getBlockHitResult(player, level);
 
-        BlockHitResult blockHitResult = getBlockHitResult(player, level);
         if (blockHitResult.getType() != BlockHitResult.Type.BLOCK) {
             return Collections.emptySet();
         }
 
         BlockPos startPos = blockHitResult.getBlockPos();
-        Block targetBlock = startState.getBlock();
+        BlockState blockState = level.getBlockState(startPos);
+        Block targetBlock = blockState.getBlock();
+
+        if (!isValidBlock(player.getMainHandItem(), blockState)) {
+            return Collections.emptySet();
+        }
 
         Set<BlockPos> connectedBlocks = new HashSet<>(8);
         Queue<BlockPos> queue = new ArrayDeque<>(8);

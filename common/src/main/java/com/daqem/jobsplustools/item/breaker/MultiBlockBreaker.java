@@ -42,7 +42,7 @@ public interface MultiBlockBreaker extends ModeItem, BlockBreaker {
         int rY = mode.getRangeY() / 2;
         int rZ = mode.getRangeZ() / 2;
 
-        BlockHitResult blockHitResult = getBlockHitResult(player, level);
+        BlockHitResult blockHitResult = BlockBreaker.getBlockHitResult(player, level);
         if (blockHitResult.getType() != BlockHitResult.Type.BLOCK) {
             return Collections.emptySet();
         }
