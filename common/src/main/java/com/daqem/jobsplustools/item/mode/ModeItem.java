@@ -1,8 +1,8 @@
 package com.daqem.jobsplustools.item.mode;
 
 import com.daqem.jobsplustools.JobsPlusTools;
-import com.daqem.jobsplustools.component.ModDataComponentTypes;
-import com.daqem.jobsplustools.component.ModeItemComponent;
+import com.daqem.jobsplustools.item.component.JobsPlusDataComponentTypes;
+import com.daqem.jobsplustools.item.component.ModeItemComponent;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -69,14 +69,14 @@ public interface ModeItem extends ItemLike {
     class ModeItemSerializer {
 
         public static void serialize(@NotNull ItemStack stack, IMode mode, ModeItem item) {
-            stack.set(ModDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(item.getAvailableModes().indexOf(mode)));
+            stack.set(JobsPlusDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(item.getAvailableModes().indexOf(mode)));
         }
 
         public static IMode deserialize(ItemStack stack, ModeItem item) {
-            if (!stack.has(ModDataComponentTypes.MODE_ITEM_COMPONENT.get())) {
+            if (!stack.has(JobsPlusDataComponentTypes.MODE_ITEM_COMPONENT.get())) {
                 return item.getDefaultMode();
             }
-            return item.getAvailableModes().get(stack.get(ModDataComponentTypes.MODE_ITEM_COMPONENT.get()).mode());
+            return item.getAvailableModes().get(stack.get(JobsPlusDataComponentTypes.MODE_ITEM_COMPONENT.get()).mode());
         }
     }
 }
