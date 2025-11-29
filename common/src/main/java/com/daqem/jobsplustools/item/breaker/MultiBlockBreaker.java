@@ -8,14 +8,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public interface MultiBlockBreaker extends ModeItem, BlockBreaker {
 
@@ -30,32 +29,50 @@ public interface MultiBlockBreaker extends ModeItem, BlockBreaker {
         });
     }
 
-    default List<BlockPos> getBlocksToMine(Player player, Level level) {
-        if (player.isShiftKeyDown()) return new ArrayList<>();
+    default Set<BlockPos> getBlocksToMine(Player player, Level level) {
+        if (player.isShiftKeyDown()) {
+            return Collections.emptySet();
+        }
 
-        MultiBlockBreakerMode mode = (MultiBlockBreakerMode) getActiveMode(player.getMainHandItem());
-        int rangeX = mode.getRangeX() / 2;
-        int rangeY = mode.getRangeY() / 2;
-        int rangeZ = mode.getRangeZ() / 2;
+        ItemStack mainHandItem = player.getMainHandItem();
+        MultiBlockBreakerMode mode = (MultiBlockBreakerMode) getActiveMode(mainHandItem);
+
+        // Calculate half-ranges
+        int rX = mode.getRangeX() / 2;
+        int rY = mode.getRangeY() / 2;
+        int rZ = mode.getRangeZ() / 2;
 
         BlockHitResult blockHitResult = getBlockHitResult(player, level);
-        if (blockHitResult.getType() != BlockHitResult.Type.BLOCK) return new ArrayList<>();
+        if (blockHitResult.getType() != BlockHitResult.Type.BLOCK) {
+            return Collections.emptySet();
+        }
 
         Direction.Axis axis = blockHitResult.getDirection().getAxis();
-        int[] adjustedRanges = adjustRanges(axis, rangeX, rangeY, rangeZ);
+        int[] adj = adjustRanges(axis, rX, rY, rZ);
 
-        return getBlocksInRange(player, level, blockHitResult.getBlockPos(), adjustedRanges[0], adjustedRanges[1], adjustedRanges[2]);
+        return getBlocksInRange(player, level, blockHitResult.getBlockPos(), adj[0], adj[1], adj[2]);
     }
 
-    default List<BlockPos> getBlocksInRange(Player player, Level level, BlockPos pos, int rangeX, int rangeY, int rangeZ) {
-        List<BlockPos> blocks = new ArrayList<>();
+    default Set<BlockPos> getBlocksInRange(Player player, Level level, BlockPos origin, int rangeX, int rangeY, int rangeZ) {
+        // Calculate exact capacity to prevent HashSet resizing overhead
+        // (range * 2 + 1) gives the full width of the axis
+        int capacity = (rangeX * 2 + 1) * (rangeY * 2 + 1) * (rangeZ * 2 + 1);
+        Set<BlockPos> blocks = new HashSet<>(capacity);
+
+        ItemStack tool = player.getMainHandItem();
+        BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
+
         for (int x = -rangeX; x <= rangeX; x++) {
             for (int y = -rangeY; y <= rangeY; y++) {
                 for (int z = -rangeZ; z <= rangeZ; z++) {
-                    BlockPos offset = pos.offset(x, y, z);
-                    BlockState blockState = level.getBlockState(offset);
-                    if (player.getMainHandItem().isCorrectToolForDrops(blockState)) {
-                        blocks.add(offset);
+                    // Updates the mutable pos values without creating a new object
+                    mutablePos.setWithOffset(origin, x, y, z);
+
+                    BlockState blockState = level.getBlockState(mutablePos);
+
+                    // Only create the immutable BlockPos object if we are actually keeping it
+                    if (tool.isCorrectToolForDrops(blockState)) {
+                        blocks.add(mutablePos.immutable());
                     }
                 }
             }
