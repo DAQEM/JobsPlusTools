@@ -10,14 +10,6 @@ public class ReplaceableResult {
         this.shouldPlace = shouldPlace;
     }
 
-    public boolean shouldBreak() {
-        return shouldBreak;
-    }
-
-    public boolean shouldPlace() {
-        return shouldPlace;
-    }
-
     public static ReplaceableResult onlyBreak() {
         return new ReplaceableResult(true, false);
     }
@@ -32,5 +24,13 @@ public class ReplaceableResult {
 
     public static ReplaceableResult none() {
         return new ReplaceableResult(false, false);
+    }
+
+    public boolean shouldBreak() {
+        return shouldBreak;
+    }
+
+    public boolean shouldPlace() {
+        return shouldPlace;
     }
 }

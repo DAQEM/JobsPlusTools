@@ -1,7 +1,6 @@
 package com.daqem.jobsplustools.item.mode.replacer;
 
 import com.daqem.jobsplustools.JobsPlusTools;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
 public enum MultiBlockReplacerModes implements MultiBlockReplacerMode {

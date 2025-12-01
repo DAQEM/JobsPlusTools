@@ -33,5 +33,6 @@ public interface IModeType {
     }
 
     ResourceLocation getId();
+
     Class<? extends IMode> getModeClass();
 }

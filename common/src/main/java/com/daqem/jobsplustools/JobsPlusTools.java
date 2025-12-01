@@ -1,8 +1,8 @@
 package com.daqem.jobsplustools;
 
-import com.daqem.jobsplustools.item.component.JobsPlusToolsDataComponentTypes;
 import com.daqem.jobsplustools.event.BreakBlockEvent;
 import com.daqem.jobsplustools.item.JobsPlusToolsItems;
+import com.daqem.jobsplustools.item.component.JobsPlusToolsDataComponentTypes;
 import com.google.common.base.Suppliers;
 import com.mojang.logging.LogUtils;
 import dev.architectury.registry.CreativeTabRegistry;

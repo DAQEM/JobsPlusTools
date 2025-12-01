@@ -55,7 +55,8 @@ public class MixinLevelRenderer {
         if (player == null || this.level == null) return;
 
         HitResult hitResult = this.minecraft.hitResult;
-        if (!(hitResult instanceof BlockHitResult blockHitResult) || hitResult.getType() != HitResult.Type.BLOCK) return;
+        if (!(hitResult instanceof BlockHitResult blockHitResult) || hitResult.getType() != HitResult.Type.BLOCK)
+            return;
 
         ItemStack mainHandItem = player.getMainHandItem();
         if (mainHandItem.has(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get())) {
@@ -83,16 +84,19 @@ public class MixinLevelRenderer {
             Set<BlockPos> extraBlocks = Collections.emptySet();
 
             switch (modeType) {
-                case MultiBlockBreakerType breaker -> extraBlocks = breaker.getBlocksToMine(selectedMode, player, this.level, blockPos);
-                case ConnectedBlockBreakerType breaker -> extraBlocks = breaker.getBlocksToMine(selectedMode, player, this.level, blockPos);
-                case MultiBlockReplacerType replacer -> extraBlocks = replacer.getBlocksToMine(selectedMode, player, this.level, blockPos).stream()
-                        .filter(pos -> !pos.equals(blockPos))
-                        .filter(pos -> {
-                            BlockState state = this.level.getBlockState(pos);
-                            ReplaceableResult result = replacer.isReplaceable(state);
-                            return result.shouldBreak() || result.shouldPlace();
-                        })
-                        .collect(Collectors.toSet());
+                case MultiBlockBreakerType breaker ->
+                        extraBlocks = breaker.getBlocksToMine(selectedMode, player, this.level, blockPos);
+                case ConnectedBlockBreakerType breaker ->
+                        extraBlocks = breaker.getBlocksToMine(selectedMode, player, this.level, blockPos);
+                case MultiBlockReplacerType replacer ->
+                        extraBlocks = replacer.getBlocksToMine(selectedMode, player, this.level, blockPos).stream()
+                                .filter(pos -> !pos.equals(blockPos))
+                                .filter(pos -> {
+                                    BlockState state = this.level.getBlockState(pos);
+                                    ReplaceableResult result = replacer.isReplaceable(state);
+                                    return result.shouldBreak() || result.shouldPlace();
+                                })
+                                .collect(Collectors.toSet());
                 default -> {
                 }
             }

@@ -1,7 +1,6 @@
 package com.daqem.jobsplustools.item.mode.breaker.multi;
 
 import com.daqem.jobsplustools.JobsPlusTools;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
 public enum MultiBlockBreakerModes implements MultiBlockBreakerMode {

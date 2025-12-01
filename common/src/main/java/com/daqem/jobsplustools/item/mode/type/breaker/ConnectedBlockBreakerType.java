@@ -18,7 +18,7 @@ import java.util.*;
 
 public class ConnectedBlockBreakerType extends BlockBreakerType {
 
-    public static final int MAX_CONNECTED_BLOCKS = 32768;
+    public static final int MAX_CONNECTED_BLOCKS = 512;
 
     @Override
     public void breakBlocks(IMode selectedMode, ServerPlayer player, Level level, BlockPos pos, BlockState state) {

@@ -4,6 +4,8 @@ import com.daqem.jobsplustools.item.mode.IMode;
 
 public interface MultiBlockBreakerMode extends IMode {
     int getRangeX();
+
     int getRangeY();
+
     int getRangeZ();
 }

@@ -16,8 +16,20 @@ import java.util.Set;
 
 public abstract class BlockBreakerType implements IModeType {
 
+    public static BlockHitResult getBlockHitResult(Player player, Level level) {
+        Vec3 eyePos = player.getEyePosition(1.0F);
+        Vec3 viewVec = player.getViewVector(1.0F);
+        Vec3 target = eyePos.add(viewVec.x * 5, viewVec.y * 5, viewVec.z * 5);
+        return level.clip(new ClipContext(eyePos, target, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player));
+    }
+
     public abstract void breakBlocks(IMode selectedMode, ServerPlayer player, Level level, BlockPos pos, BlockState state);
+
     public abstract Set<BlockPos> getBlocksToMine(IMode selectedMode, Player player, Level level, BlockPos pos);
+
+    public void onBlockBreak(IMode selectedMode, ServerPlayer player, Level level, BlockPos pos, BlockState state) {
+        this.breakBlocks(selectedMode, player, level, pos, state);
+    }
 
     public void breakBlock(ServerPlayer player, BlockPos pos, Level level) {
         if (player instanceof JobsPlusToolsPlayer extension) {
@@ -27,12 +39,5 @@ public abstract class BlockBreakerType implements IModeType {
             level.levelEvent(2001, pos, Block.getId(state));
             extension.jobsplustools$setBreakingBlock(false);
         }
-    }
-
-    public static BlockHitResult getBlockHitResult(Player player, Level level) {
-        Vec3 eyePos = player.getEyePosition(1.0F);
-        Vec3 viewVec = player.getViewVector(1.0F);
-        Vec3 target = eyePos.add(viewVec.x * 5, viewVec.y * 5, viewVec.z * 5);
-        return level.clip(new ClipContext(eyePos, target, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player));
     }
 }

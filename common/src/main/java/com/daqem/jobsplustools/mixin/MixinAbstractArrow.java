@@ -16,7 +16,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbstractArrow.class)
 public class MixinAbstractArrow {
 
-    @Shadow private double baseDamage;
+    @Shadow
+    private double baseDamage;
 
     @Inject(at = @At("TAIL"), method = "<init>(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)V")
     private void init(EntityType<?> entityType, LivingEntity livingEntity, Level level, ItemStack itemStack, ItemStack itemStack2, CallbackInfo ci) {

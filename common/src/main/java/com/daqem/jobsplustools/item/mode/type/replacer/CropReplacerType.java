@@ -13,11 +13,9 @@ public class CropReplacerType extends MultiBlockReplacerType {
     public ReplaceableResult isReplaceable(BlockState state) {
         if (state.getBlock() instanceof CropBlock cropBlock && cropBlock.isMaxAge(state)) {
             return ReplaceableResult.breakAndPlace();
-        }
-        else if (state.getBlock() instanceof NetherWartBlock && state.getValue(NetherWartBlock.AGE) == NetherWartBlock.MAX_AGE) {
+        } else if (state.getBlock() instanceof NetherWartBlock && state.getValue(NetherWartBlock.AGE) == NetherWartBlock.MAX_AGE) {
             return ReplaceableResult.breakAndPlace();
-        }
-        else {
+        } else {
             return ReplaceableResult.none();
         }
     }
