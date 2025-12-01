@@ -23,7 +23,7 @@
       "type": "jobsplus:job_level",
       "inverted": true,
       "job": "jobsplus:farmer",
-      "level": 45
+      "level": 50
     }
   ]
 }

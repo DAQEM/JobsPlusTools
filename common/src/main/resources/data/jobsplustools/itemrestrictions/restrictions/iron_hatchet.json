@@ -22,7 +22,7 @@
       "type": "jobsplus:job_level",
       "inverted": true,
       "job": "jobsplus:lumberjack",
-      "level": 30
+      "level": 40
     }
   ]
 }

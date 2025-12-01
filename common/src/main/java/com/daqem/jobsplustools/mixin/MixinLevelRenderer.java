@@ -6,6 +6,7 @@ import com.daqem.jobsplustools.item.mode.IMode;
 import com.daqem.jobsplustools.item.mode.type.IModeType;
 import com.daqem.jobsplustools.item.mode.type.breaker.ConnectedBlockBreakerType;
 import com.daqem.jobsplustools.item.mode.type.breaker.MultiBlockBreakerType;
+import com.daqem.jobsplustools.item.mode.type.placer.MultiBlockPlacerType;
 import com.daqem.jobsplustools.item.mode.type.replacer.MultiBlockReplacerType;
 import com.daqem.jobsplustools.item.mode.type.replacer.result.ReplaceableResult;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -26,6 +27,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -35,13 +37,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Collection;
 import java.util.Collections;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Mixin(LevelRenderer.class)
 public class MixinLevelRenderer {
-
     @Shadow
     @Final
     private Minecraft minecraft;
@@ -70,7 +71,8 @@ public class MixinLevelRenderer {
             IMode selectedMode = modeType.getSelectedMode(modeItemComponent);
             if (selectedMode == null) return;
 
-            if (!mainHandItem.isCorrectToolForDrops(blockState)) {
+            // For Placer, we don't need correct tool check, but for others we might
+            if (!(modeType instanceof MultiBlockPlacerType) && !mainHandItem.isCorrectToolForDrops(blockState)) {
                 if (modeType instanceof MultiBlockReplacerType multiBlockReplacer) {
                     ReplaceableResult result = multiBlockReplacer.isReplaceable(blockState);
                     if (!result.shouldBreak() && !result.shouldPlace()) {
@@ -81,7 +83,7 @@ public class MixinLevelRenderer {
                 }
             }
 
-            Set<BlockPos> extraBlocks = Collections.emptySet();
+            Collection<BlockPos> extraBlocks = Collections.emptyList();
 
             switch (modeType) {
                 case MultiBlockBreakerType breaker ->
@@ -97,6 +99,8 @@ public class MixinLevelRenderer {
                                     return result.shouldBreak() || result.shouldPlace();
                                 })
                                 .collect(Collectors.toSet());
+                case MultiBlockPlacerType placer ->
+                        extraBlocks = placer.getBlocksToPlace(selectedMode, player, this.level, blockPos, blockHitResult.getDirection());
                 default -> {
                 }
             }
@@ -106,17 +110,21 @@ public class MixinLevelRenderer {
             Vec3 cameraPos = levelRenderState.cameraRenderState.pos;
             VertexConsumer linesBuffer = bufferSource.getBuffer(RenderType.lines());
 
-            // Standard vanilla selection color (Black with ~40% opacity)
             int color = ARGB.color(102, -16777216);
 
             for (BlockPos pos : extraBlocks) {
-                // Skip the block specifically being looked at, as vanilla already renders it
                 if (pos.equals(blockPos)) continue;
 
-                BlockState state = this.level.getBlockState(pos);
-                if (state.isAir() || !this.level.getWorldBorder().isWithinBounds(pos)) continue;
+                VoxelShape shape;
+                if (modeType instanceof MultiBlockPlacerType) {
+                    // Render full cube for placement preview
+                    shape = Shapes.block();
+                } else {
+                    BlockState state = this.level.getBlockState(pos);
+                    if (state.isAir() || !this.level.getWorldBorder().isWithinBounds(pos)) continue;
+                    shape = state.getShape(this.level, pos, CollisionContext.of(player));
+                }
 
-                VoxelShape shape = state.getShape(this.level, pos, CollisionContext.of(player));
                 if (shape.isEmpty()) continue;
 
                 jobsPlusTools$renderHitOutline(poseStack, linesBuffer, cameraPos.x, cameraPos.y, cameraPos.z, pos, shape, color);

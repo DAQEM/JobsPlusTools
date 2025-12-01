@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "jobsplustools:netherite_core",
+  "base": "jobsplustools:diamond_trowel",
+  "result": {
+    "id": "jobsplustools:netherite_trowel"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  A",
+    " C ",
+    "B  "
+  ],
+  "key": {
+    "A": "#minecraft:planks",
+    "B": "jobsplustools:wooden_grip",
+    "C": "jobsplustools:wooden_core"
+  },
+  "result": {
+    "id": "jobsplustools:wooden_trowel",
+    "count": 1
+  }
+}

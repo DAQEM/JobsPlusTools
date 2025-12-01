@@ -42,6 +42,13 @@
   "item.jobsplustools.diamond_compound_bow": "Diamond Compound Bow",
   "item.jobsplustools.copper_compound_bow": "Copper Compound Bow",
   "item.jobsplustools.netherite_compound_bow": "Netherite Compound Bow",
+  "item.jobsplustools.wooden_trowel": "Wooden Trowel",
+  "item.jobsplustools.stone_trowel": "Stone Trowel",
+  "item.jobsplustools.iron_trowel": "Iron Trowel",
+  "item.jobsplustools.golden_trowel": "Golden Trowel",
+  "item.jobsplustools.diamond_trowel": "Diamond Trowel",
+  "item.jobsplustools.copper_trowel": "Copper Trowel",
+  "item.jobsplustools.netherite_trowel": "Netherite Trowel",
   "item.jobsplustools.wooden_core": "Wooden Core",
   "item.jobsplustools.stone_core": "Stone Core",
   "item.jobsplustools.iron_core": "Iron Core",
@@ -65,6 +72,9 @@
   "jobsplustools.item.mode.replacer.multi.1x1": "Single Block",
   "jobsplustools.item.mode.replacer.multi.3x3": "3x3",
   "jobsplustools.item.mode.replacer.multi.5x5": "5x5",
+  "jobsplustools.item.mode.placer.multi.1x1": "1x1",
+  "jobsplustools.item.mode.placer.multi.3x3": "3x3",
+  "jobsplustools.item.mode.placer.multi.5x5": "5x5",
   "jobsplustools.tooltip.bonus_damage": "Bonus Damage: %s",
   "jobsplustools.tooltip.no_modes": "No Modes Available",
   "jobsplustools.tooltip.modes": "Modes: %s",
@@ -74,5 +84,6 @@
   "tag.item.jobsplustools.hoes": "Jobs+ Harvesters",
   "tag.item.jobsplustools.pickaxes": "Jobs+ Hammers",
   "tag.item.jobsplustools.shovels": "Jobs+ Excavators",
-  "tag.item.jobsplustools.swords": "Jobs+ Longswords"
+  "tag.item.jobsplustools.swords": "Jobs+ Longswords",
+  "tag.item.jobsplustools.trowels": "Jobs+ Trowels"
 }
