@@ -1,8 +1,11 @@
-package com.daqem.jobsplustools.item.breaker;
+package com.daqem.jobsplustools.item.mode.type.breaker;
 
-import com.daqem.jobsplustools.item.mode.ModeItem;
+import com.daqem.jobsplustools.JobsPlusTools;
+import com.daqem.jobsplustools.item.mode.IMode;
 import com.daqem.jobsplustools.item.mode.breaker.connected.ConnectedBlockBreakerModes;
+import com.daqem.jobsplustools.item.mode.type.BlockBreakerType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -13,25 +16,26 @@ import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.*;
 
-public interface ConnectedBlockBreaker extends ModeItem, BlockBreaker {
+public class ConnectedBlockBreakerType extends BlockBreakerType {
 
-    int MAX_CONNECTED_BLOCKS = 32768;
+    public static final int MAX_CONNECTED_BLOCKS = 32768;
 
     @Override
-    default void breakBlocks(ServerPlayer player, Level level, BlockPos pos, BlockState state) {
-        if (getActiveMode(player.getMainHandItem()) == ConnectedBlockBreakerModes.OFF) return;
-        if (!player.getMainHandItem().isCorrectToolForDrops(state)) return;
+    public void breakBlocks(IMode selectedMode, ServerPlayer player, Level level, BlockPos pos, BlockState state) {
+        if (selectedMode instanceof ConnectedBlockBreakerModes modes) {
+            if (modes == ConnectedBlockBreakerModes.OFF) return;
+            if (!player.getMainHandItem().isCorrectToolForDrops(state)) return;
 
-        breakConnectedBlocks(player, level, state);
+            breakConnectedBlocks(selectedMode, player, level, pos);
+        }
     }
 
-    default void breakConnectedBlocks(ServerPlayer player, Level level, BlockState state) {
-        getBlocksToMine(player, level)
-                .forEach(blockPos -> breakBlock(player, blockPos, level));
+    public void breakConnectedBlocks(IMode selectedMode, ServerPlayer player, Level level, BlockPos pos) {
+        getBlocksToMine(selectedMode, player, level, pos).forEach(blockPos -> breakBlock(player, blockPos, level));
     }
 
-    default Set<BlockPos> getBlocksToMine(Player player, Level level) {
-        BlockHitResult blockHitResult = BlockBreaker.getBlockHitResult(player, level);
+    public Set<BlockPos> getBlocksToMine(IMode selectedMode, Player player, Level level, BlockPos pos) {
+        BlockHitResult blockHitResult = BlockBreakerType.getBlockHitResult(player, level);
 
         if (blockHitResult.getType() != BlockHitResult.Type.BLOCK) {
             return Collections.emptySet();
@@ -93,5 +97,17 @@ public interface ConnectedBlockBreaker extends ModeItem, BlockBreaker {
         return connectedBlocks;
     }
 
-    boolean isValidBlock(ItemStack stack, BlockState blockState);
+    public boolean isValidBlock(ItemStack stack, BlockState blockState) {
+        return true;
+    }
+
+    @Override
+    public ResourceLocation getId() {
+        return JobsPlusTools.getId("connected_block_breaker");
+    }
+
+    @Override
+    public Class<? extends IMode> getModeClass() {
+        return ConnectedBlockBreakerModes.class;
+    }
 }

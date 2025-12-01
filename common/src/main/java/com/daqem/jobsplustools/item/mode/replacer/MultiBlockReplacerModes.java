@@ -2,6 +2,7 @@ package com.daqem.jobsplustools.item.mode.replacer;
 
 import com.daqem.jobsplustools.JobsPlusTools;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
 public enum MultiBlockReplacerModes implements MultiBlockReplacerMode {
 
@@ -23,7 +24,7 @@ public enum MultiBlockReplacerModes implements MultiBlockReplacerMode {
     }
 
     @Override
-    public Component getName() {
+    public MutableComponent getName() {
         return JobsPlusTools.translatable("item.mode.replacer.multi." + name);
     }
 

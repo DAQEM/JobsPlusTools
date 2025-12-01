@@ -11,7 +11,7 @@ import net.minecraft.network.codec.StreamCodec;
 
 import static com.daqem.jobsplustools.JobsPlusTools.MANAGER;
 
-public interface JobsPlusDataComponentTypes {
+public interface JobsPlusToolsDataComponentTypes {
 
     Registrar<DataComponentType<?>> COMPONENTS = MANAGER.get().get(Registries.DATA_COMPONENT_TYPE);
 

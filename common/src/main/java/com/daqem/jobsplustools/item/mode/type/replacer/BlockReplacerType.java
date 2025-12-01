@@ -1,18 +1,19 @@
-package com.daqem.jobsplustools.item.replacer;
+package com.daqem.jobsplustools.item.mode.type.replacer;
 
-import com.daqem.jobsplustools.item.breaker.BlockBreaker;
-import com.daqem.jobsplustools.item.replacer.result.ReplaceableResult;
+import com.daqem.jobsplustools.item.mode.IMode;
+import com.daqem.jobsplustools.item.mode.type.BlockBreakerType;
+import com.daqem.jobsplustools.item.mode.type.replacer.result.ReplaceableResult;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public interface BlockReplacer extends BlockBreaker {
+public abstract class BlockReplacerType extends BlockBreakerType {
 
-    void replaceBlocks(ServerPlayer player, Level level, BlockPos pos);
+    public abstract void replaceBlocks(IMode selectedMode, ServerPlayer player, Level level, BlockPos pos);
 
-    default void replaceBlock(ServerPlayer player, BlockPos pos, Level level, BlockState blockState) {
+    public void replaceBlock(ServerPlayer player, BlockPos pos, Level level, BlockState blockState) {
         ReplaceableResult result = isReplaceable(blockState);
         Block block = blockState.getBlock();
 
@@ -25,7 +26,7 @@ public interface BlockReplacer extends BlockBreaker {
         }
     }
 
-    default ReplaceableResult isReplaceable(BlockState state) {
+    public ReplaceableResult isReplaceable(BlockState state) {
         return ReplaceableResult.breakAndPlace();
     }
 }

@@ -2,6 +2,7 @@ package com.daqem.jobsplustools.item.mode.breaker.connected;
 
 import com.daqem.jobsplustools.JobsPlusTools;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
 public enum ConnectedBlockBreakerModes implements ConnectedBlockBreakerMode {
 
@@ -15,7 +16,7 @@ public enum ConnectedBlockBreakerModes implements ConnectedBlockBreakerMode {
     }
 
     @Override
-    public Component getName() {
+    public MutableComponent getName() {
         return JobsPlusTools.translatable("item.mode.breaker.connected." + name);
     }
 }

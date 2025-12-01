@@ -2,6 +2,7 @@ package com.daqem.jobsplustools.item.mode.breaker.multi;
 
 import com.daqem.jobsplustools.JobsPlusTools;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
 public enum MultiBlockBreakerModes implements MultiBlockBreakerMode {
 
@@ -24,7 +25,7 @@ public enum MultiBlockBreakerModes implements MultiBlockBreakerMode {
     }
 
     @Override
-    public Component getName() {
+    public MutableComponent getName() {
         return JobsPlusTools.translatable("item.mode.breaker.multi." + name);
     }
 

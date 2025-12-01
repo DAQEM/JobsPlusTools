@@ -1,6 +1,6 @@
 package com.daqem.jobsplustools;
 
-import com.daqem.jobsplustools.item.component.JobsPlusDataComponentTypes;
+import com.daqem.jobsplustools.item.component.JobsPlusToolsDataComponentTypes;
 import com.daqem.jobsplustools.event.BreakBlockEvent;
 import com.daqem.jobsplustools.item.JobsPlusToolsItems;
 import com.google.common.base.Suppliers;
@@ -12,6 +12,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -32,7 +33,7 @@ public class JobsPlusTools {
                     () -> new ItemStack(JobsPlusToolsItems.DIAMOND_HAMMER.get())));
 
     public static void init() {
-        JobsPlusDataComponentTypes.init();
+        JobsPlusToolsDataComponentTypes.init();
         JobsPlusToolsItems.init();
 
         registerEvents();
@@ -42,11 +43,11 @@ public class JobsPlusTools {
         BreakBlockEvent.registerEvent();
     }
 
-    public static Component translatable(String s) {
+    public static MutableComponent translatable(String s) {
         return translatable(s, new Object[0]);
     }
 
-    public static Component translatable(String s, Object... objects) {
+    public static MutableComponent translatable(String s, Object... objects) {
         return Component.translatable(MOD_ID + "." + s, objects);
     }
 
@@ -54,7 +55,7 @@ public class JobsPlusTools {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, str);
     }
 
-    public static Component literal(String str) {
+    public static MutableComponent literal(String str) {
         return Component.literal(str);
     }
 }

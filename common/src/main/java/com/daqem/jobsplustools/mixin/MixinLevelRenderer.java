@@ -1,12 +1,15 @@
 package com.daqem.jobsplustools.mixin;
 
-import com.daqem.jobsplustools.item.breaker.ConnectedBlockBreaker;
-import com.daqem.jobsplustools.item.breaker.MultiBlockBreaker;
-import com.daqem.jobsplustools.item.replacer.MultiBlockReplacer;
-import com.daqem.jobsplustools.item.replacer.result.ReplaceableResult;
+import com.daqem.jobsplustools.item.component.JobsPlusToolsDataComponentTypes;
+import com.daqem.jobsplustools.item.component.ModeItemComponent;
+import com.daqem.jobsplustools.item.mode.IMode;
+import com.daqem.jobsplustools.item.mode.type.IModeType;
+import com.daqem.jobsplustools.item.mode.type.breaker.ConnectedBlockBreakerType;
+import com.daqem.jobsplustools.item.mode.type.breaker.MultiBlockBreakerType;
+import com.daqem.jobsplustools.item.mode.type.replacer.MultiBlockReplacerType;
+import com.daqem.jobsplustools.item.mode.type.replacer.result.ReplaceableResult;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.LevelRenderer;
@@ -15,10 +18,8 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShapeRenderer;
 import net.minecraft.client.renderer.state.LevelRenderState;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.BlockDestructionProgress;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -57,57 +58,65 @@ public class MixinLevelRenderer {
         if (!(hitResult instanceof BlockHitResult blockHitResult) || hitResult.getType() != HitResult.Type.BLOCK) return;
 
         ItemStack mainHandItem = player.getMainHandItem();
-        Item item = mainHandItem.getItem();
-        BlockPos blockPos = blockHitResult.getBlockPos();
-        BlockState blockState = this.level.getBlockState(blockPos);
+        if (mainHandItem.has(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get())) {
+            ModeItemComponent modeItemComponent = mainHandItem.get(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get());
+            if (modeItemComponent == null) return;
 
-        if (!mainHandItem.isCorrectToolForDrops(blockState)) {
-            if (item instanceof MultiBlockReplacer multiBlockReplacer) {
-                ReplaceableResult result = multiBlockReplacer.isReplaceable(blockState);
-                if (!result.shouldBreak() && !result.shouldPlace()) {
+            BlockPos blockPos = blockHitResult.getBlockPos();
+            BlockState blockState = this.level.getBlockState(blockPos);
+            IModeType modeType = modeItemComponent.getModeType();
+            if (modeType == null) return;
+            IMode selectedMode = modeType.getSelectedMode(modeItemComponent);
+            if (selectedMode == null) return;
+
+            if (!mainHandItem.isCorrectToolForDrops(blockState)) {
+                if (modeType instanceof MultiBlockReplacerType multiBlockReplacer) {
+                    ReplaceableResult result = multiBlockReplacer.isReplaceable(blockState);
+                    if (!result.shouldBreak() && !result.shouldPlace()) {
+                        return;
+                    }
+                } else {
                     return;
                 }
-            } else {
-                return;
             }
-        }
 
-        Set<BlockPos> extraBlocks = Collections.emptySet();
+            Set<BlockPos> extraBlocks = Collections.emptySet();
 
-        switch (item) {
-            case MultiBlockBreaker breaker -> extraBlocks = breaker.getBlocksToMine(player, this.level);
-            case ConnectedBlockBreaker breaker -> extraBlocks = breaker.getBlocksToMine(player, this.level);
-            case MultiBlockReplacer replacer -> extraBlocks = replacer.getBlocksToReplace(player, blockPos).stream()
-                    .filter(pos -> !pos.equals(blockPos))
-                    .filter(pos -> {
-                        BlockState state = this.level.getBlockState(pos);
-                        ReplaceableResult result = replacer.isReplaceable(state);
-                        return result.shouldBreak() || result.shouldPlace();
-                    })
-                    .collect(Collectors.toSet());
-            default -> {
+            switch (modeType) {
+                case MultiBlockBreakerType breaker -> extraBlocks = breaker.getBlocksToMine(selectedMode, player, this.level, blockPos);
+                case ConnectedBlockBreakerType breaker -> extraBlocks = breaker.getBlocksToMine(selectedMode, player, this.level, blockPos);
+                case MultiBlockReplacerType replacer -> extraBlocks = replacer.getBlocksToMine(selectedMode, player, this.level, blockPos).stream()
+                        .filter(pos -> !pos.equals(blockPos))
+                        .filter(pos -> {
+                            BlockState state = this.level.getBlockState(pos);
+                            ReplaceableResult result = replacer.isReplaceable(state);
+                            return result.shouldBreak() || result.shouldPlace();
+                        })
+                        .collect(Collectors.toSet());
+                default -> {
+                }
             }
-        }
 
-        if (extraBlocks.isEmpty()) return;
+            if (extraBlocks.isEmpty()) return;
 
-        Vec3 cameraPos = levelRenderState.cameraRenderState.pos;
-        VertexConsumer linesBuffer = bufferSource.getBuffer(RenderType.lines());
+            Vec3 cameraPos = levelRenderState.cameraRenderState.pos;
+            VertexConsumer linesBuffer = bufferSource.getBuffer(RenderType.lines());
 
-        // Standard vanilla selection color (Black with ~40% opacity)
-        int color = ARGB.color(102, -16777216);
+            // Standard vanilla selection color (Black with ~40% opacity)
+            int color = ARGB.color(102, -16777216);
 
-        for (BlockPos pos : extraBlocks) {
-            // Skip the block specifically being looked at, as vanilla already renders it
-            if (pos.equals(blockPos)) continue;
+            for (BlockPos pos : extraBlocks) {
+                // Skip the block specifically being looked at, as vanilla already renders it
+                if (pos.equals(blockPos)) continue;
 
-            BlockState state = this.level.getBlockState(pos);
-            if (state.isAir() || !this.level.getWorldBorder().isWithinBounds(pos)) continue;
+                BlockState state = this.level.getBlockState(pos);
+                if (state.isAir() || !this.level.getWorldBorder().isWithinBounds(pos)) continue;
 
-            VoxelShape shape = state.getShape(this.level, pos, CollisionContext.of(player));
-            if (shape.isEmpty()) continue;
+                VoxelShape shape = state.getShape(this.level, pos, CollisionContext.of(player));
+                if (shape.isEmpty()) continue;
 
-            jobsPlusTools$renderHitOutline(poseStack, linesBuffer, cameraPos.x, cameraPos.y, cameraPos.z, pos, shape, color);
+                jobsPlusTools$renderHitOutline(poseStack, linesBuffer, cameraPos.x, cameraPos.y, cameraPos.z, pos, shape, color);
+            }
         }
     }
 

@@ -1,8 +1,8 @@
 package com.daqem.jobsplustools.item.mode;
 
-import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
 public interface IMode {
 
-    Component getName();
+    MutableComponent getName();
 }

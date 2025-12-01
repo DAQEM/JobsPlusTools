@@ -1,4 +1,4 @@
-package com.daqem.jobsplustools.item.replacer.result;
+package com.daqem.jobsplustools.item.mode.type.replacer.result;
 
 public class ReplaceableResult {
 
