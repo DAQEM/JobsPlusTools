@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  A",
+    " C ",
+    "A  "
+  ],
+  "key": {
+    "A": "minecraft:gold_ingot",
+    "C": "jobsplustools:golden_core"
+  },
+  "result": {
+    "id": "jobsplustools:golden_wrench",
+    "count": 1
+  }
+}

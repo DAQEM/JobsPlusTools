@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  A",
+    " C ",
+    "A  "
+  ],
+  "key": {
+    "A": "#minecraft:stone_tool_materials",
+    "C": "jobsplustools:stone_core"
+  },
+  "result": {
+    "id": "jobsplustools:stone_wrench",
+    "count": 1
+  }
+}

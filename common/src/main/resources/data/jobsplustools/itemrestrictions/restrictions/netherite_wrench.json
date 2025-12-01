@@ -1,0 +1,28 @@
+{
+  "icon": {
+    "id": "jobsplustools:netherite_wrench"
+  },
+  "types": [
+    "craft",
+    "smelt",
+    "enchant",
+    "repair",
+    "item_break_block",
+    "hurt_entity"
+  ],
+  "conditions": [
+    {
+      "type": "arc:item",
+      "check_components": false,
+      "item": {
+        "id": "jobsplustools:netherite_wrench"
+      }
+    },
+    {
+      "type": "jobsplus:job_level",
+      "inverted": true,
+      "job": "jobsplus:smith",
+      "level": 75
+    }
+  ]
+}

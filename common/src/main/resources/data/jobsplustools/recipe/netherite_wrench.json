@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "jobsplustools:netherite_core",
+  "base": "jobsplustools:diamond_wrench",
+  "result": {
+    "id": "jobsplustools:netherite_wrench"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

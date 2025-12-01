@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  A",
+    " C ",
+    "A  "
+  ],
+  "key": {
+    "A": "minecraft:copper_ingot",
+    "C": "jobsplustools:copper_core"
+  },
+  "result": {
+    "id": "jobsplustools:copper_wrench",
+    "count": 1
+  }
+}
