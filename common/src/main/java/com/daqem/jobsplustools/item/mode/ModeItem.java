@@ -13,6 +13,7 @@ import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Objects;
 
 public interface ModeItem extends ItemLike {
 
@@ -23,6 +24,7 @@ public interface ModeItem extends ItemLike {
     default void setActiveMode(@NotNull ItemStack stack, @NotNull IMode mode) {
         ModeItem.ModeItemSerializer.serialize(stack, mode, this);
     }
+
     List<IMode> getAvailableModes();
 
     default IMode getDefaultMode() {
@@ -46,7 +48,8 @@ public interface ModeItem extends ItemLike {
 
     default List<Component> getModesTooltip(ItemStack stack) {
         List<IMode> availableModes = getAvailableModes();
-        if (availableModes.isEmpty()) return List.of(JobsPlusTools.translatable("tooltip.no_modes").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
+        if (availableModes.isEmpty())
+            return List.of(JobsPlusTools.translatable("tooltip.no_modes").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
         MutableComponent modes = JobsPlusTools.literal("").copy();
         for (IMode mode : availableModes) {
             MutableComponent component = mode.getName().copy();
@@ -69,14 +72,22 @@ public interface ModeItem extends ItemLike {
     class ModeItemSerializer {
 
         public static void serialize(@NotNull ItemStack stack, IMode mode, ModeItem item) {
-            stack.set(JobsPlusDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(item.getAvailableModes().indexOf(mode)));
+            stack.update(
+                    JobsPlusDataComponentTypes.MODE_ITEM_COMPONENT.get(),
+                    Objects.requireNonNull(stack.get(JobsPlusDataComponentTypes.MODE_ITEM_COMPONENT.get())),
+                    x -> new ModeItemComponent(
+                            x.modeType(),
+                            item.getAvailableModes().indexOf(mode),
+                            x.availableModes()
+                    )
+            );
         }
 
         public static IMode deserialize(ItemStack stack, ModeItem item) {
             if (!stack.has(JobsPlusDataComponentTypes.MODE_ITEM_COMPONENT.get())) {
                 return item.getDefaultMode();
             }
-            return item.getAvailableModes().get(stack.get(JobsPlusDataComponentTypes.MODE_ITEM_COMPONENT.get()).mode());
+            return item.getAvailableModes().get(Objects.requireNonNull(stack.get(JobsPlusDataComponentTypes.MODE_ITEM_COMPONENT.get())).selectedMode());
         }
     }
 }

@@ -3,14 +3,14 @@ package com.daqem.jobsplustools.item.mode.breaker.connected;
 import com.daqem.jobsplustools.JobsPlusTools;
 import net.minecraft.network.chat.Component;
 
-public enum ConnectBlockBreakerModes implements ConnectBlockBreakerMode {
+public enum ConnectedBlockBreakerModes implements ConnectedBlockBreakerMode {
 
     ON("on"),
     OFF("off");
 
     private final String name;
 
-    ConnectBlockBreakerModes(String name) {
+    ConnectedBlockBreakerModes(String name) {
         this.name = name;
     }
 

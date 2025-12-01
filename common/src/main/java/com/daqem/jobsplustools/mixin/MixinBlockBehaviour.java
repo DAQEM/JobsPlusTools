@@ -1,10 +1,9 @@
 package com.daqem.jobsplustools.mixin;
 
-import com.daqem.jobsplustools.JobsPlusTools;
 import com.daqem.jobsplustools.item.breaker.BlockBreaker;
 import com.daqem.jobsplustools.item.breaker.ConnectedBlockBreaker;
 import com.daqem.jobsplustools.item.breaker.MultiBlockBreaker;
-import com.daqem.jobsplustools.item.mode.breaker.connected.ConnectBlockBreakerModes;
+import com.daqem.jobsplustools.item.mode.breaker.connected.ConnectedBlockBreakerModes;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
@@ -40,7 +39,7 @@ public class MixinBlockBehaviour {
                 }
             }
             if (itemStack.getItem() instanceof ConnectedBlockBreaker connectedBlockBreaker) {
-                if (connectedBlockBreaker.getActiveMode(itemStack) == ConnectBlockBreakerModes.ON) {
+                if (connectedBlockBreaker.getActiveMode(itemStack) == ConnectedBlockBreakerModes.ON) {
                     Set<BlockPos> blocksToMine = connectedBlockBreaker.getBlocksToMine(player, level);
                     if (blocksToMine.size() > 1) {
                         return jobsplustools$getNewDestroySpeed(original, blockState, player, level, blocksToMine);

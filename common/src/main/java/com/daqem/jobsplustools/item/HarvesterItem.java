@@ -70,10 +70,4 @@ public class HarvesterItem extends HoeItem implements MultiBlockReplacer {
             return ReplaceableResult.none();
         }
     }
-
-    @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, TooltipDisplay tooltipDisplay, Consumer<Component> consumer, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack, tooltipContext, tooltipDisplay, consumer, tooltipFlag);
-        getModesTooltip(itemStack).forEach(consumer);
-    }
 }

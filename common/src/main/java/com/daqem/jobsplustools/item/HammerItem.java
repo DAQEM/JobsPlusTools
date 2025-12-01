@@ -38,10 +38,4 @@ public class HammerItem extends Item implements MultiBlockBreaker {
     public List<IMode> getAvailableModes() {
         return MultiBlockBreaker.generateAvailableModes(this.toolMaterial);
     }
-
-    @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, TooltipDisplay tooltipDisplay, Consumer<Component> consumer, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack, tooltipContext, tooltipDisplay, consumer, tooltipFlag);
-        getModesTooltip(itemStack).forEach(consumer);
-    }
 }

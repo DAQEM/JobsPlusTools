@@ -1,7 +1,7 @@
 package com.daqem.jobsplustools.item.breaker;
 
 import com.daqem.jobsplustools.item.mode.ModeItem;
-import com.daqem.jobsplustools.item.mode.breaker.connected.ConnectBlockBreakerModes;
+import com.daqem.jobsplustools.item.mode.breaker.connected.ConnectedBlockBreakerModes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -19,7 +19,7 @@ public interface ConnectedBlockBreaker extends ModeItem, BlockBreaker {
 
     @Override
     default void breakBlocks(ServerPlayer player, Level level, BlockPos pos, BlockState state) {
-        if (getActiveMode(player.getMainHandItem()) == ConnectBlockBreakerModes.OFF) return;
+        if (getActiveMode(player.getMainHandItem()) == ConnectedBlockBreakerModes.OFF) return;
         if (!player.getMainHandItem().isCorrectToolForDrops(state)) return;
 
         breakConnectedBlocks(player, level, state);

@@ -2,7 +2,7 @@ package com.daqem.jobsplustools.item;
 
 import com.daqem.jobsplustools.item.breaker.ConnectedBlockBreaker;
 import com.daqem.jobsplustools.item.mode.IMode;
-import com.daqem.jobsplustools.item.mode.breaker.connected.ConnectBlockBreakerModes;
+import com.daqem.jobsplustools.item.mode.breaker.connected.ConnectedBlockBreakerModes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -35,13 +35,7 @@ public class HatchetItem extends AxeItem implements ConnectedBlockBreaker {
 
     @Override
     public List<IMode> getAvailableModes() {
-        return List.of(ConnectBlockBreakerModes.values());
-    }
-
-    @Override
-    public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, TooltipDisplay tooltipDisplay, Consumer<Component> consumer, TooltipFlag tooltipFlag) {
-        super.appendHoverText(itemStack, tooltipContext, tooltipDisplay, consumer, tooltipFlag);
-        getModesTooltip(itemStack).forEach(consumer);
+        return List.of(ConnectedBlockBreakerModes.values());
     }
 
     @Override
