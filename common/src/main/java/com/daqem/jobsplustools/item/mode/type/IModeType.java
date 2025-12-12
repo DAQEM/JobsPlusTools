@@ -5,6 +5,7 @@ import com.daqem.jobsplustools.item.mode.IMode;
 import com.daqem.jobsplustools.item.mode.type.breaker.ConnectedBlockBreakerType;
 import com.daqem.jobsplustools.item.mode.type.breaker.MultiBlockBreakerType;
 import com.daqem.jobsplustools.item.mode.type.breaker.TreeBreakerType;
+import com.daqem.jobsplustools.item.mode.type.fishing.MultiBobberType;
 import com.daqem.jobsplustools.item.mode.type.placer.MultiBlockPlacerType;
 import com.daqem.jobsplustools.item.mode.type.replacer.CropReplacerType;
 import com.daqem.jobsplustools.item.mode.type.replacer.MultiBlockReplacerType;
@@ -23,6 +24,7 @@ public interface IModeType {
     MultiBlockReplacerType MULTI_BLOCK_REPLACER_MODE = register(new MultiBlockReplacerType());
     MultiBlockPlacerType MULTI_BLOCK_PLACER_MODE = register(new MultiBlockPlacerType());
     CropReplacerType CROP_REPLACER_MODE = register(new CropReplacerType());
+    MultiBobberType MULTI_BOBBER_MODE = register(new MultiBobberType());
 
     static <T extends IModeType> T register(T modeType) {
         MODE_TYPES.put(modeType.getId(), modeType);

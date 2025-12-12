@@ -1,14 +1,11 @@
 {
   "icon": {
-    "id": "jobsplustools:golden_wrench"
+    "id": "jobsplustools:wooden_fishing_rod"
   },
   "types": [
     "craft",
-    "smelt",
     "enchant",
     "repair",
-    "item_break_block",
-    "hurt_entity",
     "use_item"
   ],
   "conditions": [
@@ -16,14 +13,14 @@
       "type": "arc:item",
       "check_components": false,
       "item": {
-        "id": "jobsplustools:golden_wrench"
+        "id": "jobsplustools:wooden_fishing_rod"
       }
     },
     {
       "type": "jobsplus:job_level",
       "inverted": true,
-      "job": "jobsplus:smith",
-      "level": 50
+      "job": "jobsplus:fisherman",
+      "level": 1
     }
   ]
 }

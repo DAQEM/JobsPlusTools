@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld_rod",
+  "textures": {
+    "layer0": "jobsplustools:item/diamond_fishing_rod"
+  }
+}

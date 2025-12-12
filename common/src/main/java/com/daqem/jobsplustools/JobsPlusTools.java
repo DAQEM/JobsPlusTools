@@ -2,6 +2,7 @@ package com.daqem.jobsplustools;
 
 import java.util.function.Supplier;
 
+import com.daqem.jobsplustools.entity.JobsPlusToolsEntityTypes;
 import org.slf4j.Logger;
 
 import com.daqem.jobsplustools.event.BreakBlockEvent;
@@ -37,6 +38,7 @@ public class JobsPlusTools {
     public static void init() {
         JobsPlusToolsDataComponentTypes.init();
         JobsPlusToolsItems.init();
+        JobsPlusToolsEntityTypes.init();
 
         registerEvents();
     }

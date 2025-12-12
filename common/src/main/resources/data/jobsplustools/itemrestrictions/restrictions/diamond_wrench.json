@@ -8,7 +8,8 @@
     "enchant",
     "repair",
     "item_break_block",
-    "hurt_entity"
+    "hurt_entity",
+    "use_item"
   ],
   "conditions": [
     {

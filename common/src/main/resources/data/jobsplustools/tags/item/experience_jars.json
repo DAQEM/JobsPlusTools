@@ -1,0 +1,11 @@
+{
+  "values": [
+    "jobsplustools:diamond_experience_jar",
+    "jobsplustools:stone_experience_jar",
+    "jobsplustools:golden_experience_jar",
+    "jobsplustools:netherite_experience_jar",
+    "jobsplustools:wooden_experience_jar",
+    "jobsplustools:iron_experience_jar",
+    "jobsplustools:copper_experience_jar"
+  ]
+}
