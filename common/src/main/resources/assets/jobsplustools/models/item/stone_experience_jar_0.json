@@ -1,6 +1,6 @@
 {
   "parent": "jobsplustools:item/experience_jar",
   "textures": {
-    "layer2": "jobsplustools:item/experience_jar_wooden"
+    "layer2": "jobsplustools:item/experience_jar_stone"
   }
 }

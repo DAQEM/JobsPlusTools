@@ -1,0 +1,24 @@
+{
+  "icon": {
+    "id": "jobsplustools:netherite_experience_jar"
+  },
+  "types": [
+    "craft",
+    "use_item"
+  ],
+  "conditions": [
+    {
+      "type": "arc:item",
+      "check_components": false,
+      "item": {
+        "id": "jobsplustools:netherite_experience_jar"
+      }
+    },
+    {
+      "type": "jobsplus:job_level",
+      "inverted": true,
+      "job": "jobsplus:enchanter",
+      "level": 75
+    }
+  ]
+}
