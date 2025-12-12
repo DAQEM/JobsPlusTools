@@ -1,10 +1,15 @@
 package com.daqem.jobsplustools;
 
+import java.util.function.Supplier;
+
+import org.slf4j.Logger;
+
 import com.daqem.jobsplustools.event.BreakBlockEvent;
 import com.daqem.jobsplustools.item.JobsPlusToolsItems;
 import com.daqem.jobsplustools.item.component.JobsPlusToolsDataComponentTypes;
 import com.google.common.base.Suppliers;
 import com.mojang.logging.LogUtils;
+
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrarManager;
@@ -16,9 +21,6 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import org.slf4j.Logger;
-
-import java.util.function.Supplier;
 
 public class JobsPlusTools {
     public static final String MOD_ID = "jobsplustools";

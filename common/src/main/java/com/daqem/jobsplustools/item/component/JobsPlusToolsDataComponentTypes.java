@@ -16,6 +16,7 @@ public interface JobsPlusToolsDataComponentTypes {
     Registrar<DataComponentType<?>> COMPONENTS = MANAGER.get().get(Registries.DATA_COMPONENT_TYPE);
 
     RegistrySupplier<DataComponentType<ModeItemComponent>> MODE_ITEM_COMPONENT = register("mode", ModeItemComponent.CODEC, ModeItemComponent.STREAM_CODEC);
+    RegistrySupplier<DataComponentType<ExperienceItemComponent>> EXPERIENCE_ITEM_COMPONENT = register("experience", ExperienceItemComponent.CODEC, ExperienceItemComponent.STREAM_CODEC);
 
     static void init() {
     }

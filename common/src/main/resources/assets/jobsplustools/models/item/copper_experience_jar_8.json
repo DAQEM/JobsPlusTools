@@ -1,0 +1,7 @@
+{
+  "parent": "jobsplustools:item/experience_jar",
+  "textures": {
+    "layer1": "jobsplustools:item/experience_jar_fill_8",
+    "layer2": "jobsplustools:item/experience_jar_copper"
+  }
+}

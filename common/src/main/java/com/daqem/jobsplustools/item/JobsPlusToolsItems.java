@@ -1,18 +1,23 @@
 package com.daqem.jobsplustools.item;
 
+import java.util.List;
+import java.util.function.Function;
+
 import com.daqem.jobsplustools.JobsPlusTools;
+import com.daqem.jobsplustools.item.component.ExperienceItemComponent;
 import com.daqem.jobsplustools.item.component.JobsPlusToolsDataComponentTypes;
 import com.daqem.jobsplustools.item.component.ModeItemComponent;
 import com.daqem.jobsplustools.item.mode.type.IModeType;
+
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.*;
-
-import java.util.List;
-import java.util.function.Function;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ToolMaterial;
 
 public interface JobsPlusToolsItems {
 
@@ -27,6 +32,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> WOODEN_HARVESTER = item(JobsPlusTools.getId("wooden_harvester"), p -> new HoeItem(ToolMaterial.WOOD, 0, -3.0F, p.component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.CROP_REPLACER_MODE.getId(), 0, List.of(0)))));
     RegistrySupplier<Item> WOODEN_TROWEL = item(JobsPlusTools.getId("wooden_trowel"), p -> new TrowelItem(p.durability(ToolMaterial.WOOD.durability()).component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.MULTI_BLOCK_PLACER_MODE.getId(), 0, List.of(0)))));
     RegistrySupplier<Item> WOODEN_WRENCH = item(JobsPlusTools.getId("wooden_wrench"), p -> new WrenchItem(p.durability(ToolMaterial.WOOD.durability())));
+    RegistrySupplier<Item> WOODEN_EXPERIENCE_JAR = item(JobsPlusTools.getId("wooden_experience_jar"), p -> new Item(p.component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 500))));
     RegistrySupplier<Item> WOODEN_CORE = item(JobsPlusTools.getId("wooden_core"), Item::new);
     RegistrySupplier<Item> WOODEN_GRIP = item(JobsPlusTools.getId("wooden_grip"), Item::new);
 
@@ -39,6 +45,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> STONE_HARVESTER = item(JobsPlusTools.getId("stone_harvester"), p -> new HoeItem(ToolMaterial.STONE, -1, -2.0f, p.component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.CROP_REPLACER_MODE.getId(), 0, List.of(0)))));
     RegistrySupplier<Item> STONE_TROWEL = item(JobsPlusTools.getId("stone_trowel"), p -> new TrowelItem(p.durability(ToolMaterial.STONE.durability()).component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.MULTI_BLOCK_PLACER_MODE.getId(), 0, List.of(0)))));
     RegistrySupplier<Item> STONE_WRENCH = item(JobsPlusTools.getId("stone_wrench"), p -> new WrenchItem(p.durability(ToolMaterial.STONE.durability())));
+    RegistrySupplier<Item> STONE_EXPERIENCE_JAR = item(JobsPlusTools.getId("stone_experience_jar"), p -> new Item(p.component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 1000))));
     RegistrySupplier<Item> STONE_CORE = item(JobsPlusTools.getId("stone_core"), Item::new);
     RegistrySupplier<Item> STONE_GRIP = item(JobsPlusTools.getId("stone_grip"), Item::new);
 
@@ -51,6 +58,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> COPPER_HARVESTER = item(JobsPlusTools.getId("copper_harvester"), p -> new HoeItem(ToolMaterial.COPPER, -1, -2.0f, p.component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.CROP_REPLACER_MODE.getId(), 0, List.of(0)))));
     RegistrySupplier<Item> COPPER_TROWEL = item(JobsPlusTools.getId("copper_trowel"), p -> new TrowelItem(p.durability(ToolMaterial.COPPER.durability()).component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.MULTI_BLOCK_PLACER_MODE.getId(), 0, List.of(0, 1)))));
     RegistrySupplier<Item> COPPER_WRENCH = item(JobsPlusTools.getId("copper_wrench"), p -> new WrenchItem(p.durability(ToolMaterial.COPPER.durability())));
+    RegistrySupplier<Item> COPPER_EXPERIENCE_JAR = item(JobsPlusTools.getId("copper_experience_jar"), p -> new Item(p.component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 1500))));
     RegistrySupplier<Item> COPPER_CORE = item(JobsPlusTools.getId("copper_core"), Item::new);
     RegistrySupplier<Item> COPPER_GRIP = item(JobsPlusTools.getId("copper_grip"), Item::new);
 
@@ -63,6 +71,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> IRON_HARVESTER = item(JobsPlusTools.getId("iron_harvester"), p -> new HoeItem(ToolMaterial.IRON, -2, -1.0f, p.component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.CROP_REPLACER_MODE.getId(), 0, List.of(0, 1)))));
     RegistrySupplier<Item> IRON_TROWEL = item(JobsPlusTools.getId("iron_trowel"), p -> new TrowelItem(p.durability(ToolMaterial.IRON.durability()).component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.MULTI_BLOCK_PLACER_MODE.getId(), 0, List.of(0, 1)))));
     RegistrySupplier<Item> IRON_WRENCH = item(JobsPlusTools.getId("iron_wrench"), p -> new WrenchItem(p.durability(ToolMaterial.IRON.durability())));
+    RegistrySupplier<Item> IRON_EXPERIENCE_JAR = item(JobsPlusTools.getId("iron_experience_jar"), p -> new Item(p.component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 2500))));
     RegistrySupplier<Item> IRON_CORE = item(JobsPlusTools.getId("iron_core"), Item::new);
     RegistrySupplier<Item> IRON_GRIP = item(JobsPlusTools.getId("iron_grip"), Item::new);
 
@@ -75,6 +84,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> GOLDEN_HARVESTER = item(JobsPlusTools.getId("golden_harvester"), p -> new HoeItem(ToolMaterial.GOLD, -2, -0.5F, p.component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.CROP_REPLACER_MODE.getId(), 0, List.of(0, 1)))));
     RegistrySupplier<Item> GOLDEN_TROWEL = item(JobsPlusTools.getId("golden_trowel"), p -> new TrowelItem(p.durability(ToolMaterial.GOLD.durability()).component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.MULTI_BLOCK_PLACER_MODE.getId(), 0, List.of(0, 1, 2, 3)))));
     RegistrySupplier<Item> GOLDEN_WRENCH = item(JobsPlusTools.getId("golden_wrench"), p -> new WrenchItem(p.durability(ToolMaterial.GOLD.durability())));
+    RegistrySupplier<Item> GOLDEN_EXPERIENCE_JAR = item(JobsPlusTools.getId("golden_experience_jar"), p -> new Item(p.component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 4000))));
     RegistrySupplier<Item> GOLDEN_CORE = item(JobsPlusTools.getId("golden_core"), Item::new);
     RegistrySupplier<Item> GOLDEN_GRIP = item(JobsPlusTools.getId("golden_grip"), Item::new);
 
@@ -87,6 +97,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> DIAMOND_HARVESTER = item(JobsPlusTools.getId("diamond_harvester"), p -> new HoeItem(ToolMaterial.DIAMOND, -3, 0.0F, p.component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.CROP_REPLACER_MODE.getId(), 0, List.of(0, 1, 2)))));
     RegistrySupplier<Item> DIAMOND_TROWEL = item(JobsPlusTools.getId("diamond_trowel"), p -> new TrowelItem(p.durability(ToolMaterial.DIAMOND.durability()).component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.MULTI_BLOCK_PLACER_MODE.getId(), 0, List.of(0, 1, 2, 3)))));
     RegistrySupplier<Item> DIAMOND_WRENCH = item(JobsPlusTools.getId("diamond_wrench"), p -> new WrenchItem(p.durability(ToolMaterial.DIAMOND.durability())));
+    RegistrySupplier<Item> DIAMOND_EXPERIENCE_JAR = item(JobsPlusTools.getId("diamond_experience_jar"), p -> new Item(p.component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 10000))));
     RegistrySupplier<Item> DIAMOND_CORE = item(JobsPlusTools.getId("diamond_core"), Item::new);
     RegistrySupplier<Item> DIAMOND_GRIP = item(JobsPlusTools.getId("diamond_grip"), Item::new);
 
@@ -99,6 +110,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> NETHERITE_HARVESTER = item(JobsPlusTools.getId("netherite_harvester"), p -> new HoeItem(ToolMaterial.NETHERITE, -4, 0.0F, p.fireResistant().component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.CROP_REPLACER_MODE.getId(), 0, List.of(0, 1, 2)))));
     RegistrySupplier<Item> NETHERITE_TROWEL = item(JobsPlusTools.getId("netherite_trowel"), p -> new TrowelItem(p.fireResistant().durability(ToolMaterial.NETHERITE.durability()).component(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), new ModeItemComponent(IModeType.MULTI_BLOCK_PLACER_MODE.getId(), 0, List.of(0, 1, 2)))));
     RegistrySupplier<Item> NETHERITE_WRENCH = item(JobsPlusTools.getId("netherite_wrench"), p -> new WrenchItem(p.fireResistant().durability(ToolMaterial.NETHERITE.durability())));
+    RegistrySupplier<Item> NETHERITE_EXPERIENCE_JAR = item(JobsPlusTools.getId("netherite_experience_jar"), p -> new Item(p.fireResistant().component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 25000))));
     RegistrySupplier<Item> NETHERITE_CORE = item(JobsPlusTools.getId("netherite_core"), p -> new Item(p.fireResistant()));
 
     static void init() {

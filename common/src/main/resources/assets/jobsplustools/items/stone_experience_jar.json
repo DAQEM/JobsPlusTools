@@ -1,0 +1,78 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "entries": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "jobsplustools:item/stone_experience_jar_0"
+        },
+        "threshold": 0.0
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "jobsplustools:item/stone_experience_jar_1"
+        },
+        "threshold": 0.01
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "jobsplustools:item/stone_experience_jar_2"
+        },
+        "threshold": 0.13375
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "jobsplustools:item/stone_experience_jar_3"
+        },
+        "threshold": 0.2575
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "jobsplustools:item/stone_experience_jar_4"
+        },
+        "threshold": 0.38125
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "jobsplustools:item/stone_experience_jar_5"
+        },
+        "threshold": 0.505
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "jobsplustools:item/stone_experience_jar_6"
+        },
+        "threshold": 0.62875
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "jobsplustools:item/stone_experience_jar_7"
+        },
+        "threshold": 0.7525
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "jobsplustools:item/stone_experience_jar_8"
+        },
+        "threshold": 0.87625
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "jobsplustools:item/stone_experience_jar_9"
+        },
+        "threshold": 1.0
+      }
+    ],
+    "property": "jobsplustools:experience"
+  }
+}

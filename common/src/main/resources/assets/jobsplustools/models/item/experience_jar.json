@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "jobsplustools:item/experience_jar",
+    "layer1": "jobsplustools:item/experience_jar_fill_0"
+  }
+}
