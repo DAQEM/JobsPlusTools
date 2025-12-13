@@ -1,0 +1,29 @@
+{
+  "icon": {
+    "id": "jobsplustools:copper_wand"
+  },
+  "types": [
+    "craft",
+    "smelt",
+    "enchant",
+    "repair",
+    "item_break_block",
+    "hurt_entity",
+    "use_item"
+  ],
+  "conditions": [
+    {
+      "type": "arc:item",
+      "check_components": false,
+      "item": {
+        "id": "jobsplustools:copper_wand"
+      }
+    },
+    {
+      "type": "jobsplus:job_level",
+      "inverted": true,
+      "job": "jobsplus:alchemist",
+      "level": 25
+    }
+  ]
+}
