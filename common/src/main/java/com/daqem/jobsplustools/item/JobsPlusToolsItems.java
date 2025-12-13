@@ -7,6 +7,7 @@ import com.daqem.jobsplustools.JobsPlusTools;
 import com.daqem.jobsplustools.item.component.ExperienceItemComponent;
 import com.daqem.jobsplustools.item.component.JobsPlusToolsDataComponentTypes;
 import com.daqem.jobsplustools.item.component.ModeItemComponent;
+import com.daqem.jobsplustools.item.component.PotionStorageItemComponent;
 import com.daqem.jobsplustools.item.mode.type.IModeType;
 
 import dev.architectury.registry.registries.Registrar;
@@ -18,6 +19,7 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.alchemy.PotionContents;
 
 public interface JobsPlusToolsItems {
 
@@ -35,6 +37,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> WOODEN_EXPERIENCE_JAR = item(JobsPlusTools.getId("wooden_experience_jar"), p -> new Item(p.component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 500))));
     RegistrySupplier<Item> WOODEN_CORE = item(JobsPlusTools.getId("wooden_core"), Item::new);
     RegistrySupplier<Item> WOODEN_GRIP = item(JobsPlusTools.getId("wooden_grip"), Item::new);
+    RegistrySupplier<Item> WOODEN_WAND = item(JobsPlusTools.getId("wooden_wand"), p -> new WandItem(ToolMaterial.WOOD, p.component(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), new PotionStorageItemComponent(PotionContents.EMPTY, 0, 3, false))));
 
     // STONE
     RegistrySupplier<Item> STONE_LONGSWORD = item(JobsPlusTools.getId("stone_longsword"), p -> new LongswordItem(ToolMaterial.STONE, 5, -3.2F, p));
@@ -49,6 +52,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> STONE_EXPERIENCE_JAR = item(JobsPlusTools.getId("stone_experience_jar"), p -> new Item(p.component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 1000))));
     RegistrySupplier<Item> STONE_CORE = item(JobsPlusTools.getId("stone_core"), Item::new);
     RegistrySupplier<Item> STONE_GRIP = item(JobsPlusTools.getId("stone_grip"), Item::new);
+    RegistrySupplier<Item> STONE_WAND = item(JobsPlusTools.getId("stone_wand"), p -> new WandItem(ToolMaterial.STONE, p.component(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), new PotionStorageItemComponent(PotionContents.EMPTY, 0, 9, false))));
 
     // COPPER
     RegistrySupplier<Item> COPPER_LONGSWORD = item(JobsPlusTools.getId("copper_longsword"), p -> new LongswordItem(ToolMaterial.COPPER, 5, -3.2F, p));
@@ -63,6 +67,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> COPPER_EXPERIENCE_JAR = item(JobsPlusTools.getId("copper_experience_jar"), p -> new Item(p.component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 1500))));
     RegistrySupplier<Item> COPPER_CORE = item(JobsPlusTools.getId("copper_core"), Item::new);
     RegistrySupplier<Item> COPPER_GRIP = item(JobsPlusTools.getId("copper_grip"), Item::new);
+    RegistrySupplier<Item> COPPER_WAND = item(JobsPlusTools.getId("copper_wand"), p -> new WandItem(ToolMaterial.COPPER, p.component(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), new PotionStorageItemComponent(PotionContents.EMPTY, 0, 9, false))));
 
     // IRON
     RegistrySupplier<Item> IRON_LONGSWORD = item(JobsPlusTools.getId("iron_longsword"), p -> new LongswordItem(ToolMaterial.IRON, 6, -3.1F, p));
@@ -77,6 +82,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> IRON_EXPERIENCE_JAR = item(JobsPlusTools.getId("iron_experience_jar"), p -> new Item(p.component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 2500))));
     RegistrySupplier<Item> IRON_CORE = item(JobsPlusTools.getId("iron_core"), Item::new);
     RegistrySupplier<Item> IRON_GRIP = item(JobsPlusTools.getId("iron_grip"), Item::new);
+    RegistrySupplier<Item> IRON_WAND = item(JobsPlusTools.getId("iron_wand"), p -> new WandItem(ToolMaterial.IRON, p.component(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), new PotionStorageItemComponent(PotionContents.EMPTY, 0, 27, false))));
 
     // GOLDEN
     RegistrySupplier<Item> GOLDEN_LONGSWORD = item(JobsPlusTools.getId("golden_longsword"), p -> new LongswordItem(ToolMaterial.GOLD, 6, -3.0F, p));
@@ -91,6 +97,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> GOLDEN_EXPERIENCE_JAR = item(JobsPlusTools.getId("golden_experience_jar"), p -> new Item(p.component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 4000))));
     RegistrySupplier<Item> GOLDEN_CORE = item(JobsPlusTools.getId("golden_core"), Item::new);
     RegistrySupplier<Item> GOLDEN_GRIP = item(JobsPlusTools.getId("golden_grip"), Item::new);
+    RegistrySupplier<Item> GOLDEN_WAND = item(JobsPlusTools.getId("golden_wand"), p -> new WandItem(ToolMaterial.GOLD, p.component(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), new PotionStorageItemComponent(PotionContents.EMPTY, 0, 27, false))));
 
     // DIAMOND
     RegistrySupplier<Item> DIAMOND_LONGSWORD = item(JobsPlusTools.getId("diamond_longsword"), p -> new LongswordItem(ToolMaterial.DIAMOND, 7, -3.0F, p));
@@ -105,6 +112,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> DIAMOND_EXPERIENCE_JAR = item(JobsPlusTools.getId("diamond_experience_jar"), p -> new Item(p.component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 10000))));
     RegistrySupplier<Item> DIAMOND_CORE = item(JobsPlusTools.getId("diamond_core"), Item::new);
     RegistrySupplier<Item> DIAMOND_GRIP = item(JobsPlusTools.getId("diamond_grip"), Item::new);
+    RegistrySupplier<Item> DIAMOND_WAND = item(JobsPlusTools.getId("diamond_wand"), p -> new WandItem(ToolMaterial.DIAMOND, p.component(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), new PotionStorageItemComponent(PotionContents.EMPTY, 0, 64, false))));
 
     // NETHERITE
     RegistrySupplier<Item> NETHERITE_LONGSWORD = item(JobsPlusTools.getId("netherite_longsword"), p -> new LongswordItem(ToolMaterial.NETHERITE, 7, -3.0F, p.fireResistant()));
@@ -118,6 +126,7 @@ public interface JobsPlusToolsItems {
     RegistrySupplier<Item> NETHERITE_WRENCH = item(JobsPlusTools.getId("netherite_wrench"), p -> new WrenchItem(p.fireResistant().durability(ToolMaterial.NETHERITE.durability())));
     RegistrySupplier<Item> NETHERITE_EXPERIENCE_JAR = item(JobsPlusTools.getId("netherite_experience_jar"), p -> new Item(p.fireResistant().component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 25000))));
     RegistrySupplier<Item> NETHERITE_CORE = item(JobsPlusTools.getId("netherite_core"), p -> new Item(p.fireResistant()));
+    RegistrySupplier<Item> NETHERITE_WAND = item(JobsPlusTools.getId("netherite_wand"), p -> new WandItem(ToolMaterial.NETHERITE, p.fireResistant().component(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), new PotionStorageItemComponent(PotionContents.EMPTY, 0, 128, false))));
 
     static void init() {
     }

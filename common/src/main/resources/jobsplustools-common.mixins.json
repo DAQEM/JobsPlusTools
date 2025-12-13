@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [
-    "MixinLevelRenderer",
+    "client.MixinItemTintSources",
+    "client.MixinLevelRenderer",
     "client.MixinRangeSelectItemModelProperties"
   ],
   "mixins": [

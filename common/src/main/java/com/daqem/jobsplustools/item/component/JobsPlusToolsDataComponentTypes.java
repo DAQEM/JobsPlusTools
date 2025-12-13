@@ -1,7 +1,10 @@
 package com.daqem.jobsplustools.item.component;
 
+import static com.daqem.jobsplustools.JobsPlusTools.MANAGER;
+
 import com.daqem.jobsplustools.JobsPlusTools;
 import com.mojang.serialization.Codec;
+
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.component.DataComponentType;
@@ -9,14 +12,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 
-import static com.daqem.jobsplustools.JobsPlusTools.MANAGER;
-
 public interface JobsPlusToolsDataComponentTypes {
 
     Registrar<DataComponentType<?>> COMPONENTS = MANAGER.get().get(Registries.DATA_COMPONENT_TYPE);
 
     RegistrySupplier<DataComponentType<ModeItemComponent>> MODE_ITEM_COMPONENT = register("mode", ModeItemComponent.CODEC, ModeItemComponent.STREAM_CODEC);
     RegistrySupplier<DataComponentType<ExperienceItemComponent>> EXPERIENCE_ITEM_COMPONENT = register("experience", ExperienceItemComponent.CODEC, ExperienceItemComponent.STREAM_CODEC);
+    RegistrySupplier<DataComponentType<PotionStorageItemComponent>> POTION_STORAGE_ITEM_COMPONENT = register("potion_storage", PotionStorageItemComponent.CODEC, PotionStorageItemComponent.STREAM_CODEC);
 
     static void init() {
     }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "jobsplustools:item/wooden_wand",
+    "layer1": "jobsplustools:item/wand_potion"
+  }
+}

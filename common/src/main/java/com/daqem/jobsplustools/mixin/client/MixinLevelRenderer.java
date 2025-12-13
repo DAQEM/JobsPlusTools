@@ -1,4 +1,4 @@
-package com.daqem.jobsplustools.mixin;
+package com.daqem.jobsplustools.mixin.client;
 
 import com.daqem.jobsplustools.item.component.JobsPlusToolsDataComponentTypes;
 import com.daqem.jobsplustools.item.component.ModeItemComponent;

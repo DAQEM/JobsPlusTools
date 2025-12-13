@@ -1,5 +1,13 @@
 package com.daqem.jobsplustools.mixin;
 
+import java.util.function.Consumer;
+
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
 import com.daqem.jobsplustools.item.component.ExperienceItemComponent;
 import com.daqem.jobsplustools.item.component.JobsPlusToolsDataComponentTypes;
 import com.daqem.jobsplustools.item.component.ModeItemComponent;
@@ -9,6 +17,7 @@ import com.daqem.jobsplustools.item.mode.type.IModeType;
 import com.daqem.jobsplustools.item.mode.type.replacer.BlockReplacerType;
 import com.daqem.jobsplustools.util.ExperienceHandler;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.chat.Component;
@@ -22,16 +31,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.component.TooltipProvider;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.util.function.Consumer;
 
 @Mixin(ItemStack.class)
 public abstract class MixinItemStack {
@@ -46,6 +47,7 @@ public abstract class MixinItemStack {
     private void jobsplustools$addDetailsToTooltip(Item.TooltipContext tooltipContext, TooltipDisplay tooltipDisplay, Player player, TooltipFlag tooltipFlag, Consumer<Component> consumer, CallbackInfo ci) {
         this.addToTooltip(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), tooltipContext, tooltipDisplay, consumer, tooltipFlag);
         this.addToTooltip(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), tooltipContext, tooltipDisplay, consumer, tooltipFlag);
+        this.addToTooltip(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), tooltipContext, tooltipDisplay, consumer, tooltipFlag);
     }
 
     @ModifyExpressionValue(
