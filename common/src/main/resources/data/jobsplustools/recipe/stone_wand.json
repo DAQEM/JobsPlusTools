@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "AAA",
+    " C ",
+    " B "
+  ],
+  "key": {
+    "A": "#minecraft:stone_tool_materials",
+    "B": "jobsplustools:stone_grip",
+    "C": "jobsplustools:stone_core"
+  },
+  "result": {
+    "id": "jobsplustools:stone_wand",
+    "count": 1
+  }
+}

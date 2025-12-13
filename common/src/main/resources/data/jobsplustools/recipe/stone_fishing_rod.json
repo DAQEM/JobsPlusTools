@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  A",
+    " CB",
+    "D B"
+  ],
+  "key": {
+    "A": "#minecraft:stone_tool_materials",
+    "B": "minecraft:string",
+    "C": "jobsplustools:stone_core",
+    "D": "jobsplustools:stone_grip"
+  },
+  "result": {
+    "id": "jobsplustools:stone_fishing_rod",
+    "count": 1
+  }
+}

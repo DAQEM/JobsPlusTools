@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "jobsplustools:netherite_core",
+  "base": "jobsplustools:diamond_fishing_rod",
+  "result": {
+    "id": "jobsplustools:netherite_fishing_rod"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

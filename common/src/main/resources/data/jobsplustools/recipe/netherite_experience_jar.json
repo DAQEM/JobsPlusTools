@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "jobsplustools:netherite_core",
+  "base": "jobsplustools:diamond_experience_jar",
+  "result": {
+    "id": "jobsplustools:netherite_experience_jar"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

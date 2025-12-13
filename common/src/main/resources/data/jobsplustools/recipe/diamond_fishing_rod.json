@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  A",
+    " CB",
+    "D B"
+  ],
+  "key": {
+    "A": "minecraft:diamond",
+    "B": "minecraft:string",
+    "C": "jobsplustools:diamond_core",
+    "D": "jobsplustools:diamond_grip"
+  },
+  "result": {
+    "id": "jobsplustools:diamond_fishing_rod",
+    "count": 1
+  }
+}

@@ -43,6 +43,7 @@ dependencies {
     modRuntimeOnly "com.daqem.arc:arc-fabric:${project.arc_version}"
     modRuntimeOnly "com.daqem.itemrestrictions:itemrestrictions-fabric:${project.item_restrictions_version}"
     modRuntimeOnly "com.daqem.jobsplus:jobsplus-fabric:${project.jobsplus_version}"
+    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 }
 
 processResources {

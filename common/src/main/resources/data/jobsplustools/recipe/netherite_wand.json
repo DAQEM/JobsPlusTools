@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "jobsplustools:netherite_core",
+  "base": "jobsplustools:diamond_wand",
+  "result": {
+    "id": "jobsplustools:netherite_wand"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

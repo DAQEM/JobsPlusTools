@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "AAA",
+    " C ",
+    " B "
+  ],
+  "key": {
+    "A": "minecraft:gold_ingot",
+    "B": "jobsplustools:golden_grip",
+    "C": "jobsplustools:golden_core"
+  },
+  "result": {
+    "id": "jobsplustools:golden_wand",
+    "count": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "AAA",
+    " C ",
+    " B "
+  ],
+  "key": {
+    "A": "#minecraft:planks",
+    "B": "jobsplustools:wooden_grip",
+    "C": "jobsplustools:wooden_core"
+  },
+  "result": {
+    "id": "jobsplustools:wooden_wand",
+    "count": 1
+  }
+}

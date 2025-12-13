@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  A",
+    " CB",
+    "D B"
+  ],
+  "key": {
+    "A": "minecraft:gold_ingot",
+    "B": "minecraft:string",
+    "C": "jobsplustools:golden_core",
+    "D": "jobsplustools:golden_grip"
+  },
+  "result": {
+    "id": "jobsplustools:golden_fishing_rod",
+    "count": 1
+  }
+}
