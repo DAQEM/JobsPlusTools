@@ -46,6 +46,7 @@ public record PotionStorageItemComponent(PotionContents contents, int charges, i
     public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
         PotionStorageItemComponent component = dataComponentGetter.get(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get());
         if (component != null && component.charges() > 0) {
+            consumer.accept(JobsPlusTools.translatable("tooltip.wand.shoot").withStyle(ChatFormatting.GRAY));
             PotionContents.addPotionTooltip(component.contents().getAllEffects(), consumer, 1.0F, tooltipContext.tickRate());
             consumer.accept(JobsPlusTools.translatable("tooltip.potion_storage.charges", component.charges(), component.capacity()).withStyle(ChatFormatting.GRAY));
             consumer.accept(JobsPlusTools.translatable("tooltip.potion_storage.type", 
@@ -53,6 +54,9 @@ public record PotionStorageItemComponent(PotionContents contents, int charges, i
                     JobsPlusTools.translatable("tooltip.potion_storage.type.lingering") : 
                     JobsPlusTools.translatable("tooltip.potion_storage.type.splash")
             ).withStyle(ChatFormatting.GRAY));
+        } else {
+            consumer.accept(JobsPlusTools.translatable("tooltip.wand.use").withStyle(ChatFormatting.GRAY));
+            consumer.accept(JobsPlusTools.translatable("tooltip.wand.shoot").withStyle(ChatFormatting.GRAY));
         }
     }
 

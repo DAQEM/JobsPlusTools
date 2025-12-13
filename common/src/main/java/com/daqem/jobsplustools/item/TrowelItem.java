@@ -1,13 +1,17 @@
 package com.daqem.jobsplustools.item;
 
+import com.daqem.jobsplustools.JobsPlusTools;
 import com.daqem.jobsplustools.item.component.JobsPlusToolsDataComponentTypes;
 import com.daqem.jobsplustools.item.component.ModeItemComponent;
 import com.daqem.jobsplustools.item.mode.IMode;
 import com.daqem.jobsplustools.item.mode.type.IModeType;
 import com.daqem.jobsplustools.item.mode.type.placer.MultiBlockPlacerType;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.context.UseOnContext;
 import org.jetbrains.annotations.NotNull;
@@ -15,17 +19,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class TrowelItem extends Item {
-    public TrowelItem(Properties properties) {
-        super(properties.component(DataComponents.TOOL, createToolProperties()));
-    }
-
-    public static Tool createToolProperties() {
-        return new Tool(
-                List.of(),
-                1.0F,
-                1,
-                true
-        );
+    public TrowelItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Properties properties) {
+        super(properties.tool(toolMaterial, TagKey.create(Registries.BLOCK, JobsPlusTools.getId("mineable/trowel")), attackDamage, attackSpeed, 0.0F));
     }
 
     @Override

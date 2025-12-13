@@ -1,12 +1,15 @@
 package com.daqem.jobsplustools.item;
 
+import com.daqem.jobsplustools.JobsPlusTools;
 import com.daqem.jobsplustools.item.component.JobsPlusToolsDataComponentTypes;
 import com.daqem.jobsplustools.item.component.PotionStorageItemComponent;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -28,19 +31,19 @@ public class WandItem extends Item {
 
     private final int maxCapacity;
 
-    public WandItem(ToolMaterial tier, Properties properties) {
-        super(properties);
-        this.maxCapacity = getCapacityForTier(tier);
+    public WandItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Properties properties) {
+        super(properties.tool(toolMaterial, TagKey.create(Registries.BLOCK, JobsPlusTools.getId("mineable/wand")), attackDamage, attackSpeed, 0.0F));
+        this.maxCapacity = getCapacityForToolMaterial(toolMaterial);
     }
 
-    private int getCapacityForTier(ToolMaterial tier) {
-        if (tier == ToolMaterial.WOOD) return 3;
-        if (tier == ToolMaterial.STONE) return 9;
-        if (tier == ToolMaterial.COPPER) return 9;
-        if (tier == ToolMaterial.IRON) return 27;
-        if (tier == ToolMaterial.GOLD) return 27;
-        if (tier == ToolMaterial.DIAMOND) return 64;
-        if (tier == ToolMaterial.NETHERITE) return 128;
+    private int getCapacityForToolMaterial(ToolMaterial toolMaterial) {
+        if (toolMaterial == ToolMaterial.WOOD) return 3;
+        if (toolMaterial == ToolMaterial.STONE) return 9;
+        if (toolMaterial == ToolMaterial.COPPER) return 9;
+        if (toolMaterial == ToolMaterial.IRON) return 27;
+        if (toolMaterial == ToolMaterial.GOLD) return 27;
+        if (toolMaterial == ToolMaterial.DIAMOND) return 64;
+        if (toolMaterial == ToolMaterial.NETHERITE) return 128;
         return 3;
     }
 
@@ -64,7 +67,7 @@ public class WandItem extends Item {
                 ItemStack potionStack = brewingStand.getItem(i);
                 if (potionStack.isEmpty()) continue;
 
-                boolean isSplash = potionStack.getItem() == Items.SPLASH_POTION;
+                boolean isSplash = potionStack.getItem() == Items.SPLASH_POTION || potionStack.getItem() == Items.POTION;
                 boolean isLingering = potionStack.getItem() == Items.LINGERING_POTION;
 
                 if (!isSplash && !isLingering) continue;
