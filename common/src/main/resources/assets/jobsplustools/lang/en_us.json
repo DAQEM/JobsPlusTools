@@ -134,5 +134,9 @@
   "block.jobsplustools.iron_experience_jar": "Iron Experience Jar",
   "block.jobsplustools.golden_experience_jar": "Golden Experience Jar",
   "block.jobsplustools.diamond_experience_jar": "Diamond Experience Jar",
-  "block.jobsplustools.netherite_experience_jar": "Netherite Experience Jar"
+  "block.jobsplustools.netherite_experience_jar": "Netherite Experience Jar",
+  "tag.item.jobsplustools.wrenches": "Jobs+ Wrenches",
+  "tag.item.jobsplustools.fishing_rods": "Jobs+ Fishing Rods",
+  "tag.item.jobsplustools.experience_jars": "Jobs+ Experience Jars",
+  "tag.item.jobsplustools.wands": "Jobs+ Wands"
 }
