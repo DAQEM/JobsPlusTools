@@ -14,7 +14,7 @@ import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
@@ -131,7 +131,7 @@ public interface JobsPlusToolsItems {
     static void init() {
     }
 
-    static <T extends Item> RegistrySupplier<T> item(ResourceLocation id, Function<Item.Properties, T> constructor) {
+    static <T extends Item> RegistrySupplier<T> item(Identifier id, Function<Item.Properties, T> constructor) {
         return ITEMS.register(id, () -> constructor.apply(new Item.Properties().arch$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB).setId(ResourceKey.create(Registries.ITEM, id))));
     }
 }

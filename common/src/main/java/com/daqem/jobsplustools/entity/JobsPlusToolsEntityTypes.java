@@ -5,7 +5,7 @@ import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -32,7 +32,7 @@ public interface JobsPlusToolsEntityTypes {
     }
 
     static <T extends Entity> RegistrySupplier<EntityType<T>> entityType(String name, EntityType.Builder<T> builder) {
-        ResourceLocation id = JobsPlusTools.getId(name);
+        Identifier id = JobsPlusTools.getId(name);
         ResourceKey<EntityType<?>> key = ResourceKey.create(Registries.ENTITY_TYPE, id);
         return ENTITY_TYPES.register(id, () -> builder.build(key));
     }

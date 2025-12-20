@@ -9,14 +9,14 @@ import com.daqem.jobsplustools.item.mode.type.fishing.MultiBobberType;
 import com.daqem.jobsplustools.item.mode.type.placer.MultiBlockPlacerType;
 import com.daqem.jobsplustools.item.mode.type.replacer.CropReplacerType;
 import com.daqem.jobsplustools.item.mode.type.replacer.MultiBlockReplacerType;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public interface IModeType {
 
-    Map<ResourceLocation, IModeType> MODE_TYPES = new HashMap<>();
+    Map<Identifier, IModeType> MODE_TYPES = new HashMap<>();
 
     ConnectedBlockBreakerType CONNECTED_BLOCK_BREAKER_MODE = register(new ConnectedBlockBreakerType());
     TreeBreakerType TREE_BREAKER_MODE = register(new TreeBreakerType());
@@ -39,7 +39,7 @@ public interface IModeType {
         return allModes[0];
     }
 
-    ResourceLocation getId();
+    Identifier getId();
 
     Class<? extends IMode> getModeClass();
 }

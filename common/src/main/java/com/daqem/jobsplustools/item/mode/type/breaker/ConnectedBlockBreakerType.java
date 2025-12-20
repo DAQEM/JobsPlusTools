@@ -5,7 +5,7 @@ import com.daqem.jobsplustools.item.mode.IMode;
 import com.daqem.jobsplustools.item.mode.breaker.connected.ConnectedBlockBreakerModes;
 import com.daqem.jobsplustools.item.mode.type.BlockBreakerType;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -102,7 +102,7 @@ public class ConnectedBlockBreakerType extends BlockBreakerType {
     }
 
     @Override
-    public ResourceLocation getId() {
+    public Identifier getId() {
         return JobsPlusTools.getId("connected_block_breaker");
     }
 

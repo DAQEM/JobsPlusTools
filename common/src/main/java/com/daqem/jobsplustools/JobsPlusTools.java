@@ -19,7 +19,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
@@ -55,8 +55,8 @@ public class JobsPlusTools {
         return Component.translatable(MOD_ID + "." + s, objects);
     }
 
-    public static ResourceLocation getId(String str) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, str);
+    public static Identifier getId(String str) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, str);
     }
 
     public static MutableComponent literal(String str) {

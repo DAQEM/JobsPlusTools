@@ -15,8 +15,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShapeRenderer;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.LevelRenderState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.ARGB;
@@ -108,7 +108,7 @@ public class MixinLevelRenderer {
             if (extraBlocks.isEmpty()) return;
 
             Vec3 cameraPos = levelRenderState.cameraRenderState.pos;
-            VertexConsumer linesBuffer = bufferSource.getBuffer(RenderType.lines());
+            VertexConsumer linesBuffer = bufferSource.getBuffer(RenderTypes.lines());
 
             int color = ARGB.color(102, -16777216);
 
@@ -141,7 +141,8 @@ public class MixinLevelRenderer {
                 pos.getX() - camX,
                 pos.getY() - camY,
                 pos.getZ() - camZ,
-                color
+                color,
+                this.minecraft.getWindow().getAppropriateLineWidth()
         );
     }
 }

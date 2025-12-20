@@ -7,7 +7,7 @@ import com.daqem.jobsplustools.item.mode.placer.MultiBlockPlacerModes;
 import com.daqem.jobsplustools.item.mode.type.IModeType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class MultiBlockPlacerType implements IModeType {
     @Override
-    public ResourceLocation getId() {
+    public Identifier getId() {
         return JobsPlusTools.getId("multi_block_placer");
     }
 

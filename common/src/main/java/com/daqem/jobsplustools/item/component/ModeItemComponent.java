@@ -13,7 +13,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -25,21 +25,21 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 public record ModeItemComponent(
-        ResourceLocation modeType,
+        Identifier modeType,
         int selectedMode,
         List<Integer> availableModes
 ) implements TooltipProvider {
 
     public static final Codec<ModeItemComponent> CODEC = Codec.lazyInitialized(() ->
             RecordCodecBuilder.create(instance -> instance.group(
-                    ResourceLocation.CODEC.fieldOf("type").forGetter(ModeItemComponent::modeType),
+                    Identifier.CODEC.fieldOf("type").forGetter(ModeItemComponent::modeType),
                     Codec.INT.fieldOf("selected").forGetter(ModeItemComponent::selectedMode),
                     Codec.list(Codec.INT).fieldOf("available").forGetter(ModeItemComponent::availableModes)
             ).apply(instance, ModeItemComponent::new))
     );
 
     public static final StreamCodec<RegistryFriendlyByteBuf, ModeItemComponent> STREAM_CODEC = StreamCodec.composite(
-            ResourceLocation.STREAM_CODEC,
+            Identifier.STREAM_CODEC,
             ModeItemComponent::modeType,
             ByteBufCodecs.INT,
             ModeItemComponent::selectedMode,
@@ -112,7 +112,7 @@ public record ModeItemComponent(
     }
 
     public IModeType getModeType() {
-        Set<ResourceLocation> locations = IModeType.MODE_TYPES.keySet();
+        Set<Identifier> locations = IModeType.MODE_TYPES.keySet();
         if (locations.contains(this.modeType())) {
             return IModeType.MODE_TYPES.get(this.modeType());
         }

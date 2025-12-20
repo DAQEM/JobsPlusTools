@@ -23,7 +23,8 @@
     ]
   },
   "mixins": [
-    "jobsplustools-common.mixins.json"
+    "jobsplustools-common.mixins.json",
+    "jobsplustools.mixins.json"
   ],
   "depends": {
     "fabric": "*",

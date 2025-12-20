@@ -5,7 +5,7 @@ import com.daqem.jobsplustools.item.mode.IMode;
 import com.daqem.jobsplustools.item.mode.replacer.MultiBlockReplacerMode;
 import com.daqem.jobsplustools.item.mode.replacer.MultiBlockReplacerModes;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -55,7 +55,7 @@ public class MultiBlockReplacerType extends BlockReplacerType {
     }
 
     @Override
-    public ResourceLocation getId() {
+    public Identifier getId() {
         return JobsPlusTools.getId("multi_block_replacer");
     }
 

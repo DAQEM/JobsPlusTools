@@ -2,7 +2,7 @@ package com.daqem.jobsplustools.item.mode.type.replacer;
 
 import com.daqem.jobsplustools.JobsPlusTools;
 import com.daqem.jobsplustools.item.mode.type.replacer.result.ReplaceableResult;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.NetherWartBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,7 +21,7 @@ public class CropReplacerType extends MultiBlockReplacerType {
     }
 
     @Override
-    public ResourceLocation getId() {
+    public Identifier getId() {
         return JobsPlusTools.getId("crop_replacer");
     }
 }

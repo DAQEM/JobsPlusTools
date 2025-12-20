@@ -34,3 +34,6 @@ side = "BOTH"
 
 [[mixins]]
 config = "jobsplustools-common.mixins.json"
+
+[[mixins]]
+config = "jobsplustools.mixins.json"

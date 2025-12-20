@@ -4,12 +4,12 @@ import com.daqem.jobsplustools.JobsPlusTools;
 import com.daqem.jobsplustools.item.mode.IMode;
 import com.daqem.jobsplustools.item.mode.fishing.MultiBobberModes;
 import com.daqem.jobsplustools.item.mode.type.IModeType;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class MultiBobberType implements IModeType {
 
     @Override
-    public ResourceLocation getId() {
+    public Identifier getId() {
         return JobsPlusTools.getId("multi_bobber");
     }
 

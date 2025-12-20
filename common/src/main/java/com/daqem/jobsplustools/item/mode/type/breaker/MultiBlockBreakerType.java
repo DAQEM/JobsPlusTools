@@ -7,7 +7,7 @@ import com.daqem.jobsplustools.item.mode.breaker.multi.MultiBlockBreakerModes;
 import com.daqem.jobsplustools.item.mode.type.BlockBreakerType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -95,7 +95,7 @@ public class MultiBlockBreakerType extends BlockBreakerType {
     }
 
     @Override
-    public ResourceLocation getId() {
+    public Identifier getId() {
         return JobsPlusTools.getId("multi_block_breaker");
     }
 
