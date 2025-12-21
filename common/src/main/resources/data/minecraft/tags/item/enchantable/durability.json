@@ -1,5 +1,8 @@
 {
   "values": [
-    "#jobsplustools:bows"
+    "#jobsplustools:bows",
+    "#jobsplustools:trowels",
+    "#jobsplustools:wrenches",
+    "#jobsplustools:wands"
   ]
 }

@@ -72,7 +72,8 @@ public record ModeItemComponent(
                 for (IMode mode : availableModes) {
                     MutableComponent component = mode.getName().copy();
 
-                    if (mode.equals(allModes[modeItemComponent.selectedMode()])) {
+                    int selectedIndex = modeItemComponent.selectedMode();
+                    if (selectedIndex >= 0 && selectedIndex < allModes.length && mode.equals(allModes[selectedIndex])) {
                         component.setStyle(Style.EMPTY.withColor(ChatFormatting.GREEN));
                     } else {
                         component.setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY));
