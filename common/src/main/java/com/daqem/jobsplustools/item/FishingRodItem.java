@@ -26,11 +26,11 @@ import java.util.List;
 public class FishingRodItem extends net.minecraft.world.item.FishingRodItem {
 
     public FishingRodItem(ToolMaterial toolMaterial, Properties properties) {
-        super(properties.durability(toolMaterial.durability()).enchantable(1));
+        super(properties.durability(toolMaterial.durability()).enchantable(toolMaterial.enchantmentValue()));
     }
 
     @Override
-    public @NotNull InteractionResult use(Level level, Player player, InteractionHand hand) {
+    public @NotNull InteractionResult use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
         if (player.isCrouching()) return InteractionResult.PASS;
         ItemStack itemStack = player.getItemInHand(hand);
 

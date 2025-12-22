@@ -121,6 +121,7 @@ public class WandItem extends Item {
             if (!player.getAbilities().instabuild) {
                 if (component.consumeCharge(stack) == InteractionResult.CONSUME) {
                     player.setItemInHand(usedHand, stack);
+                    stack.hurtAndBreak(1, player, usedHand.asEquipmentSlot());
                 }
             }
 
