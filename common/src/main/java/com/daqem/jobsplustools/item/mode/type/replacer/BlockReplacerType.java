@@ -5,6 +5,7 @@ import com.daqem.jobsplustools.item.mode.type.BlockBreakerType;
 import com.daqem.jobsplustools.item.mode.type.replacer.result.ReplaceableResult;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,6 +20,9 @@ public abstract class BlockReplacerType extends BlockBreakerType {
 
         if (result.shouldBreak()) {
             breakBlock(player, pos, level);
+            if (blockState.getDestroySpeed(level, pos) == 0.0F) {
+                player.getMainHandItem().hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+            }
         }
 
         if (result.shouldPlace()) {
