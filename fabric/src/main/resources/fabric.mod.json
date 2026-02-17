@@ -12,7 +12,7 @@
     "sources": "${mod_repository}"
   },
   "license": "${mod_license}",
-  "icon": "assets/jobsplustools/icon.png",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [

@@ -3,30 +3,13 @@ architectury {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/jobsplustools.accesswidener")
+    accessWidenerPath = file("src/main/resources/${rootProject.mod_id}.accesswidener")
 }
+
+apply from: rootProject.file("gradle/scripts/maven-publishing.gradle")
 
 dependencies {
-    modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+    // Fabric loader for annotations/mixins (Architectury standard)
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     modApi "dev.architectury:architectury:${project.architectury_version}"
-}
-
-publishing {
-    publications {
-        mavenFabric(MavenPublication) {
-            groupId = rootProject.maven_group
-            artifactId = rootProject.archives_base_name + "-common"
-            from components.java
-        }
-    }
-
-    repositories {
-        maven {
-            url = project.version.contains('-PR') ? 'https://maven.daqem.com/snapshots' : 'https://maven.daqem.com/releases'
-            credentials {
-                username = System.getenv("MAVEN_USER")
-                password = System.getenv("MAVEN_PASS")
-            }
-        }
-    }
 }
