@@ -1,5 +1,6 @@
 package com.daqem.jobsplustools.fabric.mixin;
 
+import com.daqem.jobsplustools.JobsPlusTools;
 import com.daqem.jobsplustools.item.component.JobsPlusToolsDataComponentTypes;
 import com.daqem.jobsplustools.item.component.ModeItemComponent;
 import com.daqem.jobsplustools.item.mode.IMode;
@@ -68,7 +69,9 @@ public class MixinBlockBehaviour {
                 .reduce(0.0f, Float::sum);
 
         if (totalHardness > 0) {
-            return (original * targetHardness * 2.0f) / totalHardness;
+            float newSpeed = (original * targetHardness * 2.0f) / totalHardness;
+            JobsPlusTools.LOGGER.info("New Speed: {}", newSpeed);
+            return newSpeed;
         }
         return original;
     }
