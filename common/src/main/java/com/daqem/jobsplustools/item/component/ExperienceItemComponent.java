@@ -44,20 +44,27 @@ public record ExperienceItemComponent(int experience, int capacity) implements T
     }
 
     public void extractExperience(ItemStack itemStack, int experienceToExtract) {
+        int correctCapacity = getCorrectCapacity(itemStack);
+
         int newExperience = Math.max(0, this.experience - experienceToExtract);
-        itemStack.update(
+        itemStack.set(
                 JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(),
-                this,
-                component -> new ExperienceItemComponent(newExperience, this.capacity)
+                new ExperienceItemComponent(newExperience, correctCapacity)
         );
     }
 
     public void insertExperience(ItemStack itemStack, int experienceToInsert) {
-        int newExperience = Math.min(this.capacity, this.experience + experienceToInsert);
-        itemStack.update(
+        int correctCapacity = getCorrectCapacity(itemStack);
+
+        int newExperience = Math.min(correctCapacity, this.experience + experienceToInsert);
+        itemStack.set(
                 JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(),
-                this,
-                component -> new ExperienceItemComponent(newExperience, this.capacity)
+                new ExperienceItemComponent(newExperience, correctCapacity)
         );
+    }
+
+    private int getCorrectCapacity(ItemStack stack) {
+        var defaultComp = stack.getItem().getDefaultInstance().get(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get());
+        return defaultComp != null ? defaultComp.capacity() : this.capacity;
     }
 }
