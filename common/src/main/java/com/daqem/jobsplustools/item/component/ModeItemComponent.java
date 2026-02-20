@@ -91,21 +91,28 @@ public record ModeItemComponent(
     }
 
     public boolean switchMode(ItemStack itemStack) {
-        if (this.availableModes().size() <= 1) {
+        ItemStack defaultInstance = itemStack.getItem().getDefaultInstance();
+        ModeItemComponent defaultComponent = defaultInstance.get(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get());
+
+        List<Integer> correctModes = (defaultComponent != null) ? defaultComponent.availableModes() : this.availableModes();
+
+        if (correctModes.size() <= 1) {
             return false;
         }
+
         itemStack.update(
                 JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(),
                 this,
                 x -> {
-                    int nextIndex = x.availableModes().indexOf(x.selectedMode()) + 1;
-                    if (nextIndex >= x.availableModes().size()) {
+                    int nextIndex = correctModes.indexOf(x.selectedMode()) + 1;
+                    if (nextIndex >= correctModes.size()) {
                         nextIndex = 0;
                     }
+
                     return new ModeItemComponent(
                             x.modeType(),
-                            x.availableModes().get(nextIndex),
-                            x.availableModes()
+                            correctModes.get(nextIndex),
+                            correctModes
                     );
                 }
         );

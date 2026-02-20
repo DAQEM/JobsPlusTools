@@ -84,8 +84,8 @@ public abstract class MixinArmorStand extends LivingEntity {
                 int wrenchMaxDamage = itemStack.getMaxDamage();
                 int wrenchAvailableDurability = wrenchMaxDamage - wrenchDamage;
 
-                // 1 Wrench Durability = 10 Repair Points
-                int maxRepairPoints = wrenchAvailableDurability * 10;
+                // 1 Wrench Durability = 4 Repair Points
+                int maxRepairPoints = wrenchAvailableDurability * 4;
 
                 if (maxRepairPoints <= 0) {
                     // Wrench is broken or has no durability left
@@ -141,8 +141,8 @@ public abstract class MixinArmorStand extends LivingEntity {
 
                 // 5. Apply the cost to the Wrench and provide feedback
                 if (totalRepaired > 0) {
-                    // Cost is 1 durability per 10 points repaired (rounded up)
-                    int costToWrench = (int) Math.ceil((double) totalRepaired / 10.0);
+                    // Cost is 1 durability per 4 points repaired (rounded up)
+                    int costToWrench = (int) Math.ceil((double) totalRepaired / 4.0);
 
                     itemStack.hurtAndBreak(costToWrench, player, interactionHand.asEquipmentSlot());
 

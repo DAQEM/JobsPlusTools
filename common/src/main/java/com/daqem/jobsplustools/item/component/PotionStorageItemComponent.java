@@ -61,19 +61,21 @@ public record PotionStorageItemComponent(PotionContents contents, int charges, i
     }
 
     public InteractionResult addPotion(ItemStack stack, PotionContents potionContents, boolean isLingering) {
-        if (charges >= capacity) return InteractionResult.PASS;
-        
+        int correctCapacity = getCorrectCapacity(stack);
+
+        if (charges >= correctCapacity) return InteractionResult.PASS;
+
         // If empty, initialize
         if (charges == 0) {
-            stack.set(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), 
-                new PotionStorageItemComponent(potionContents, 1, capacity, isLingering));
+            stack.set(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(),
+                    new PotionStorageItemComponent(potionContents, 1, correctCapacity, isLingering));
             return InteractionResult.SUCCESS;
         }
 
         // Check compatibility
         if (this.isLingering == isLingering && this.contents.equals(potionContents)) {
-             stack.update(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), this,
-                c -> new PotionStorageItemComponent(c.contents(), c.charges() + 1, c.capacity(), c.isLingering())
+            stack.set(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(),
+                    new PotionStorageItemComponent(this.contents, this.charges + 1, correctCapacity, this.isLingering)
             );
             return InteractionResult.SUCCESS;
         }
@@ -81,13 +83,20 @@ public record PotionStorageItemComponent(PotionContents contents, int charges, i
     }
 
     public InteractionResult consumeCharge(ItemStack stack) {
+        int correctCapacity = getCorrectCapacity(stack);
+
         if (charges > 0) {
-            stack.update(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), this,
-                c -> new PotionStorageItemComponent(c.contents(), c.charges() - 1, c.capacity(), c.isLingering())
+            stack.set(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(),
+                    new PotionStorageItemComponent(this.contents, this.charges - 1, correctCapacity, this.isLingering)
             );
             return InteractionResult.CONSUME;
         }
         return InteractionResult.PASS;
+    }
+
+    private int getCorrectCapacity(ItemStack stack) {
+        var defaultComp = stack.getItem().getDefaultInstance().get(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get());
+        return defaultComp != null ? defaultComp.capacity() : this.capacity;
     }
 
     public int getColorOr(int defaultColor) {

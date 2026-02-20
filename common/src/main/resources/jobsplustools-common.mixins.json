@@ -13,7 +13,8 @@
     "MixinArmorStand",
     "MixinFishingHook",
     "MixinItemStack",
-    "MixinPlayer"
+    "MixinPlayer",
+    "MixinSmithingTransformRecipe"
   ],
   "injectors": {
     "defaultRequire": 1
