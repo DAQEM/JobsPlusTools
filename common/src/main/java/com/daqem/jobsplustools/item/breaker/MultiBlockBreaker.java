@@ -39,7 +39,7 @@ public interface MultiBlockBreaker extends ModeItem, BlockBreaker {
         int rangeZ = mode.getRangeZ() / 2;
 
         BlockHitResult blockHitResult = getBlockHitResult(player, level);
-        if (blockHitResult.getType() != BlockHitResult.Type.BLOCK) return null;
+        if (blockHitResult.getType() != BlockHitResult.Type.BLOCK) return new ArrayList<>();
 
         Direction.Axis axis = blockHitResult.getDirection().getAxis();
         int[] adjustedRanges = adjustRanges(axis, rangeX, rangeY, rangeZ);
