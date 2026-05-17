@@ -8,7 +8,6 @@ import com.daqem.jobsplustools.item.mode.type.IModeType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -17,11 +16,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.CollisionContext;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -88,33 +85,22 @@ public class MultiBlockPlacerType implements IModeType {
                 );
 
                 BlockPlaceContext placeContext = new BlockPlaceContext(player, context.getHand(), stackToPlace, fakeHitResult);
-                BlockState stateToPlace = blockItem.getBlock().getStateForPlacement(placeContext);
 
-                if (stateToPlace != null && canPlaceAt(level, targetPos, stateToPlace, placeContext)) {
-                    if (level.setBlock(targetPos, stateToPlace, 3)) {
-                        SoundType soundType = stateToPlace.getSoundType();
-                        level.playSound(null, targetPos, soundType.getPlaceSound(), SoundSource.BLOCKS, (soundType.getVolume() + 1.0F) / 2.0F, soundType.getPitch() * 0.8F);
+                // Use the built-in BlockItem.place method to ensure everything (including data copying and sounds) is triggered correctly
+                InteractionResult placeResult = blockItem.place(placeContext);
 
-                        if (!player.getAbilities().instabuild) {
-                            stackToPlace.shrink(1);
-                        }
+                if (placeResult.consumesAction()) {
+                    // Damage the trowel slightly
+                    context.getItemInHand().hurtAndBreak(1, player, context.getHand().asEquipmentSlot());
+                    success = true;
 
-                        // Damage the trowel slightly
-                        context.getItemInHand().hurtAndBreak(1, player, context.getHand().asEquipmentSlot());
-                        success = true;
-
-                        // Successfully placed a block at this position, move to next position
-                        break;
-                    }
+                    // Successfully placed a block at this position, move to next position
+                    break;
                 }
             }
         }
 
         return success ? InteractionResult.SUCCESS : InteractionResult.PASS;
-    }
-
-    private boolean canPlaceAt(Level level, BlockPos pos, BlockState state, BlockPlaceContext context) {
-        return state.canSurvive(level, pos) && level.isUnobstructed(state, pos, CollisionContext.of(context.getPlayer()));
     }
 
     public List<BlockPos> getBlocksToPlace(IMode selectedMode, Player player, Level level, BlockPos clickedPos, Direction clickedFace) {
