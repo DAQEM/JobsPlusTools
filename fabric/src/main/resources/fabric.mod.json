@@ -27,8 +27,8 @@
     "jobsplustools.mixins.json"
   ],
   "depends": {
-    "fabric": "*",
+    "fabric-api": ">=${fabric_version}",
     "minecraft": ">=${minecraft_version}",
-    "architectury": ">=${architectury_version}"
+    "knot": ">=${knot_version}"
   }
 }

@@ -22,7 +22,7 @@ public class CompoundBowItem extends BowItem {
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, TooltipDisplay tooltipDisplay, Consumer<Component> consumer, TooltipFlag tooltipFlag) {
         super.appendHoverText(itemStack, tooltipContext, tooltipDisplay, consumer, tooltipFlag);
-        consumer.accept(JobsPlusTools.translatable("tooltip.bonus_damage", getBonusDamage()).copy().withStyle(JobsPlusTools.ITEM_TOOLTIP_STYLE));
+        consumer.accept(JobsPlusTools.API.translatable("tooltip.bonus_damage", getBonusDamage()).copy().withStyle(JobsPlusTools.ITEM_TOOLTIP_STYLE));
     }
 
     public double getBonusDamage() {

@@ -5,15 +5,15 @@ import com.daqem.jobsplustools.item.component.ModeItemComponent;
 import com.daqem.jobsplustools.item.mode.IMode;
 import com.daqem.jobsplustools.item.mode.type.BlockBreakerType;
 import com.daqem.jobsplustools.player.JobsPlusToolsPlayer;
-import dev.architectury.event.EventResult;
-import dev.architectury.event.events.common.BlockEvent;
+import com.daqem.knot.events.EventResult;
+import com.daqem.knot.events.common.block.BlockEvent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class BreakBlockEvent {
 
     public static void registerEvent() {
-        BlockEvent.BREAK.register((level, pos, state, player, xp) -> {
+        BlockEvent.BREAK_BLOCK.register((level, pos, state, player) -> {
 
             ItemStack itemStack = player.getMainHandItem();
             Item item = itemStack.getItem();
@@ -30,7 +30,7 @@ public class BreakBlockEvent {
                     blockBreakerType.onBlockBreak(selectedMode, player, level, pos, state);
                 }
             }
-            return EventResult.pass();
+            return EventResult.PASS;
         });
     }
 }

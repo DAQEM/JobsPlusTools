@@ -25,7 +25,7 @@ public enum MultiBlockBreakerModes implements MultiBlockBreakerMode {
 
     @Override
     public MutableComponent getName() {
-        return JobsPlusTools.translatable("item.mode.breaker.multi." + name);
+        return JobsPlusTools.API.translatable("item.mode.breaker.multi." + name);
     }
 
     @Override

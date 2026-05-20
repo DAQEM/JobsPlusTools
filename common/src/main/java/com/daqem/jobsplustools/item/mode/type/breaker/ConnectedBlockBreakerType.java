@@ -103,7 +103,7 @@ public class ConnectedBlockBreakerType extends BlockBreakerType {
 
     @Override
     public Identifier getId() {
-        return JobsPlusTools.getId("connected_block_breaker");
+        return JobsPlusTools.API.getId("connected_block_breaker");
     }
 
     @Override

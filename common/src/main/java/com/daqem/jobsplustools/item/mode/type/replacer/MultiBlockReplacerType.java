@@ -56,7 +56,7 @@ public class MultiBlockReplacerType extends BlockReplacerType {
 
     @Override
     public Identifier getId() {
-        return JobsPlusTools.getId("multi_block_replacer");
+        return JobsPlusTools.API.getId("multi_block_replacer");
     }
 
     @Override

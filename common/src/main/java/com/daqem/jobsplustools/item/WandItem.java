@@ -33,7 +33,7 @@ public class WandItem extends Item {
     private final int maxCapacity;
 
     public WandItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Properties properties) {
-        super(properties.tool(toolMaterial, TagKey.create(Registries.BLOCK, JobsPlusTools.getId("mineable/wand")), attackDamage, attackSpeed, 0.0F));
+        super(properties.tool(toolMaterial, TagKey.create(Registries.BLOCK, JobsPlusTools.API.getId("mineable/wand")), attackDamage, attackSpeed, 0.0F));
         this.maxCapacity = getCapacityForToolMaterial(toolMaterial);
     }
 

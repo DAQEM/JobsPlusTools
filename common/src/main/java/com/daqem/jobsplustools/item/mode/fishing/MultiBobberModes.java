@@ -19,7 +19,7 @@ public enum MultiBobberModes implements MultiBobberMode {
 
     @Override
     public MutableComponent getName() {
-        return JobsPlusTools.translatable("item.mode.fishing.multi." + name);
+        return JobsPlusTools.API.translatable("item.mode.fishing.multi." + name);
     }
 
     @Override

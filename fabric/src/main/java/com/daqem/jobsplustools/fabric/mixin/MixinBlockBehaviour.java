@@ -69,9 +69,7 @@ public class MixinBlockBehaviour {
                 .reduce(0.0f, Float::sum);
 
         if (totalHardness > 0) {
-            float newSpeed = (original * targetHardness * 2.0f) / totalHardness;
-            JobsPlusTools.LOGGER.info("New Speed: {}", newSpeed);
-            return newSpeed;
+            return (original * targetHardness * 2.0f) / totalHardness;
         }
         return original;
     }

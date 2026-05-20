@@ -24,7 +24,7 @@ public enum MultiBlockReplacerModes implements MultiBlockReplacerMode {
 
     @Override
     public MutableComponent getName() {
-        return JobsPlusTools.translatable("item.mode.replacer.multi." + name);
+        return JobsPlusTools.API.translatable("item.mode.replacer.multi." + name);
     }
 
     @Override

@@ -65,10 +65,10 @@ public record ModeItemComponent(
                 }
 
                 if (availableModes.isEmpty()) {
-                    consumer.accept(JobsPlusTools.translatable("tooltip.no_modes").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
+                    consumer.accept(JobsPlusTools.API.translatable("tooltip.no_modes").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
                     return;
                 }
-                MutableComponent modes = JobsPlusTools.literal("").copy();
+                MutableComponent modes = JobsPlusTools.API.literal("").copy();
                 for (IMode mode : availableModes) {
                     MutableComponent component = mode.getName().copy();
 
@@ -80,12 +80,12 @@ public record ModeItemComponent(
                     }
 
                     if (availableModes.indexOf(mode) != availableModes.size() - 1) {
-                        component.append(JobsPlusTools.literal(", ").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
+                        component.append(JobsPlusTools.API.literal(", ").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
                     }
                     modes.append(component);
                 }
-                consumer.accept(JobsPlusTools.translatable("tooltip.modes", modes).copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
-                consumer.accept(JobsPlusTools.translatable("tooltip.switch_mode").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
+                consumer.accept(JobsPlusTools.API.translatable("tooltip.modes", modes).copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
+                consumer.accept(JobsPlusTools.API.translatable("tooltip.switch_mode").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
             }
         }
     }

@@ -37,9 +37,9 @@ public record ExperienceItemComponent(int experience, int capacity) implements T
     public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
         ExperienceItemComponent component = dataComponentGetter.get(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get());
         if (component != null) {
-            consumer.accept(JobsPlusTools.translatable("tooltip.experience", component.experience(), component.capacity()).withStyle(ChatFormatting.GRAY));
-            consumer.accept(JobsPlusTools.translatable("tooltip.experience.usage.insert").withStyle(ChatFormatting.GRAY));
-            consumer.accept(JobsPlusTools.translatable("tooltip.experience.usage.extract").withStyle(ChatFormatting.GRAY));
+            consumer.accept(JobsPlusTools.API.translatable("tooltip.experience", component.experience(), component.capacity()).withStyle(ChatFormatting.GRAY));
+            consumer.accept(JobsPlusTools.API.translatable("tooltip.experience.usage.insert").withStyle(ChatFormatting.GRAY));
+            consumer.accept(JobsPlusTools.API.translatable("tooltip.experience.usage.extract").withStyle(ChatFormatting.GRAY));
         }
     }
 

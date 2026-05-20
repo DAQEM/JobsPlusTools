@@ -24,6 +24,6 @@ public class MixinRangeSelectItemModelProperties {
     @Inject(method = "bootstrap", at=@At("TAIL"))
     private static void onBootstrap(CallbackInfo ci)
     {
-        ID_MAPPER.put(JobsPlusTools.getId("experience"), ExperienceJarExperienceProperty.TYPE);
+        ID_MAPPER.put(JobsPlusTools.API.getId("experience"), ExperienceJarExperienceProperty.TYPE);
     }
 }

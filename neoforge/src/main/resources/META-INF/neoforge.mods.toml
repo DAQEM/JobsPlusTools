@@ -27,9 +27,9 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies."${mod_id}"]]
-modId = "architectury"
+modId = "knot"
 mandatory = true
-versionRange = "[${architectury_version},)"
+versionRange = "[${knot_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
@@ -38,3 +38,6 @@ config = "jobsplustools-common.mixins.json"
 
 [[mixins]]
 config = "jobsplustools.mixins.json"
+
+[[accessTransformers]]
+file = "META-INF/accesstransformer.cfg"

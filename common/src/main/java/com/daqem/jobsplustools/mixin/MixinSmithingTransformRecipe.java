@@ -16,8 +16,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(SmithingTransformRecipe.class)
 public class MixinSmithingTransformRecipe {
 
-    @Inject(method = "assemble(Lnet/minecraft/world/item/crafting/SmithingRecipeInput;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/world/item/ItemStack;", at = @At("RETURN"), cancellable = true)
-    private void jobsplustools$assemble(SmithingRecipeInput input, HolderLookup.Provider provider, CallbackInfoReturnable<ItemStack> cir) {
+    @Inject(method = "assemble(Lnet/minecraft/world/item/crafting/SmithingRecipeInput;)Lnet/minecraft/world/item/ItemStack;", at = @At("RETURN"))
+    private void jobsplustools$assemble(SmithingRecipeInput input, CallbackInfoReturnable<ItemStack> cir) {
         ItemStack result = cir.getReturnValue();
 
         if (!result.isEmpty()) {

@@ -15,6 +15,6 @@ public class TreeBreakerType extends ConnectedBlockBreakerType {
 
     @Override
     public Identifier getId() {
-        return JobsPlusTools.getId("tree_breaker");
+        return JobsPlusTools.API.getId("tree_breaker");
     }
 }

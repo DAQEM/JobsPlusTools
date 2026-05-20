@@ -96,7 +96,7 @@ public class MultiBlockBreakerType extends BlockBreakerType {
 
     @Override
     public Identifier getId() {
-        return JobsPlusTools.getId("multi_block_breaker");
+        return JobsPlusTools.API.getId("multi_block_breaker");
     }
 
     @Override

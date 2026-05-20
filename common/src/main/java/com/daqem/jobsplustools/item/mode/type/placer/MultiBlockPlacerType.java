@@ -27,7 +27,7 @@ import java.util.List;
 public class MultiBlockPlacerType implements IModeType {
     @Override
     public Identifier getId() {
-        return JobsPlusTools.getId("multi_block_placer");
+        return JobsPlusTools.API.getId("multi_block_placer");
     }
 
     @Override

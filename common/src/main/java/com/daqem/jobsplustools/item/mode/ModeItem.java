@@ -49,8 +49,8 @@ public interface ModeItem extends ItemLike {
     default List<Component> getModesTooltip(ItemStack stack) {
         List<IMode> availableModes = getAvailableModes();
         if (availableModes.isEmpty())
-            return List.of(JobsPlusTools.translatable("tooltip.no_modes").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
-        MutableComponent modes = JobsPlusTools.literal("").copy();
+            return List.of(JobsPlusTools.API.translatable("tooltip.no_modes").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
+        MutableComponent modes = JobsPlusTools.API.literal("").copy();
         for (IMode mode : availableModes) {
             MutableComponent component = mode.getName().copy();
 
@@ -61,12 +61,12 @@ public interface ModeItem extends ItemLike {
             }
 
             if (availableModes.indexOf(mode) != availableModes.size() - 1) {
-                component.append(JobsPlusTools.literal(", ").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
+                component.append(JobsPlusTools.API.literal(", ").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
             }
             modes.append(component);
         }
-        return List.of(JobsPlusTools.translatable("tooltip.modes", modes).copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)),
-                JobsPlusTools.translatable("tooltip.switch_mode").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
+        return List.of(JobsPlusTools.API.translatable("tooltip.modes", modes).copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)),
+                JobsPlusTools.API.translatable("tooltip.switch_mode").copy().setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
     }
 
     class ModeItemSerializer {

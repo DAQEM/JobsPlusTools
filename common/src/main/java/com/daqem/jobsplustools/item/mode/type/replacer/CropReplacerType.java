@@ -22,6 +22,6 @@ public class CropReplacerType extends MultiBlockReplacerType {
 
     @Override
     public Identifier getId() {
-        return JobsPlusTools.getId("crop_replacer");
+        return JobsPlusTools.API.getId("crop_replacer");
     }
 }

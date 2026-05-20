@@ -19,13 +19,13 @@ import java.util.function.Consumer;
 public class WrenchItem extends Item {
 
     public WrenchItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Properties properties) {
-        super(properties.tool(toolMaterial, TagKey.create(Registries.BLOCK, JobsPlusTools.getId("mineable/wrench")), attackDamage, attackSpeed, 0.0F));
+        super(properties.tool(toolMaterial, TagKey.create(Registries.BLOCK, JobsPlusTools.API.getId("mineable/wrench")), attackDamage, attackSpeed, 0.0F));
     }
 
     @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext tooltipContext, TooltipDisplay tooltipDisplay, Consumer<Component> consumer, TooltipFlag tooltipFlag) {
-        consumer.accept(JobsPlusTools.translatable("tooltip.wrench.use").withStyle(ChatFormatting.GRAY));
-        consumer.accept(JobsPlusTools.translatable("tooltip.wrench.arms").withStyle(ChatFormatting.GRAY));
+        consumer.accept(JobsPlusTools.API.translatable("tooltip.wrench.use").withStyle(ChatFormatting.GRAY));
+        consumer.accept(JobsPlusTools.API.translatable("tooltip.wrench.arms").withStyle(ChatFormatting.GRAY));
         super.appendHoverText(itemStack, tooltipContext, tooltipDisplay, consumer, tooltipFlag);
     }
 }

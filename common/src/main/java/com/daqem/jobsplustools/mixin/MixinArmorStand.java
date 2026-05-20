@@ -18,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -30,6 +31,13 @@ import java.util.List;
 @Mixin(ArmorStand.class)
 public abstract class MixinArmorStand extends LivingEntity {
 
+    @Shadow
+    public abstract void setShowArms(boolean value);
+
+    @Shadow
+    public abstract boolean showArms();
+
+    @Unique
     private static final EquipmentSlot[] jobsplustools$EQUIPMENT_SLOTS = new EquipmentSlot[]{
             EquipmentSlot.HEAD,
             EquipmentSlot.CHEST,
@@ -38,18 +46,12 @@ public abstract class MixinArmorStand extends LivingEntity {
             EquipmentSlot.MAINHAND
     };
 
-    @Shadow
-    public abstract void setShowArms(boolean bl);
-
-    @Shadow
-    public abstract boolean showArms();
-
     protected MixinArmorStand(EntityType<? extends LivingEntity> entityType, Level level) {
         super(entityType, level);
     }
 
     @Inject(
-            method = "interactAt",
+            method = "interact",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/entity/decoration/ArmorStand;getEquipmentSlotForItem(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/entity/EquipmentSlot;",
@@ -58,7 +60,7 @@ public abstract class MixinArmorStand extends LivingEntity {
             locals = LocalCapture.CAPTURE_FAILHARD,
             cancellable = true
     )
-    private void jobsplustools$interactAt(Player player, Vec3 vec3, InteractionHand interactionHand, CallbackInfoReturnable<InteractionResult> cir, ItemStack itemStack) {
+    private void jobsplustools$interactAt(Player player, InteractionHand hand, Vec3 location, CallbackInfoReturnable<InteractionResult> cir, ItemStack itemStack) {
         if (player instanceof ServerPlayer && itemStack.getItem() instanceof WrenchItem) {
             if (this.equipment.isEmpty()) {
                 this.setShowArms(!this.showArms());
@@ -144,7 +146,7 @@ public abstract class MixinArmorStand extends LivingEntity {
                     // Cost is 1 durability per 4 points repaired (rounded up)
                     int costToWrench = (int) Math.ceil((double) totalRepaired / 4.0);
 
-                    itemStack.hurtAndBreak(costToWrench, player, interactionHand.asEquipmentSlot());
+                    itemStack.hurtAndBreak(costToWrench, player, hand.asEquipmentSlot());
 
                     // Play an anvil sound to indicate repair success
                     this.level().playSound(null, this.getX(), this.getY(), this.getZ(),

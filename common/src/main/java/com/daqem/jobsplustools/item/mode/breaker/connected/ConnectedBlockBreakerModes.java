@@ -16,6 +16,6 @@ public enum ConnectedBlockBreakerModes implements ConnectedBlockBreakerMode {
 
     @Override
     public MutableComponent getName() {
-        return JobsPlusTools.translatable("item.mode.breaker.connected." + name);
+        return JobsPlusTools.API.translatable("item.mode.breaker.connected." + name);
     }
 }

@@ -10,14 +10,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
 
 public class JobsPlusToolsFishingHook extends FishingHook {
 
     private final boolean canFishInLava;
 
     public JobsPlusToolsFishingHook(Player player, Level level, int luck, int lure, boolean canFishInLava, int hookIndex, int totalHooks) {
-        super(EntityType.FISHING_BOBBER, level, luck, lure);
-        this.setOwner(player);
+        super(player, level, luck, lure);
 
         float playerPitch = player.getXRot();
         float playerYaw = player.getYRot();
@@ -86,7 +86,7 @@ public class JobsPlusToolsFishingHook extends FishingHook {
     }
 
     @Override
-    public void onRemoval(RemovalReason removalReason) {
+    public void onRemoval(@NonNull RemovalReason removalReason) {
         JobsPlusToolsPlayer player = this.getJobsPlusToolsPlayerOwner();
         if (player != null) {
             player.jobsplustools$removeFishingHook(this);

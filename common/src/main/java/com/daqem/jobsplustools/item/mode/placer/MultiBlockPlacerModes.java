@@ -18,7 +18,7 @@ public enum MultiBlockPlacerModes implements MultiBlockPlacerMode {
 
     @Override
     public MutableComponent getName() {
-        return JobsPlusTools.translatable("item.mode.placer.multi." + name);
+        return JobsPlusTools.API.translatable("item.mode.placer.multi." + name);
     }
 
     @Override

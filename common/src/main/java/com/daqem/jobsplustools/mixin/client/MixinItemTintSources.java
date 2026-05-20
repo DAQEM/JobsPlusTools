@@ -22,6 +22,6 @@ public class MixinItemTintSources {
     @Inject(method = "bootstrap", at=@At("TAIL"))
     private static void onBootstrap(CallbackInfo ci)
     {
-        ID_MAPPER.put(JobsPlusTools.getId("potion"), WandPotionTintProperty.TYPE);
+        ID_MAPPER.put(JobsPlusTools.API.getId("potion"), WandPotionTintProperty.TYPE);
     }
 }

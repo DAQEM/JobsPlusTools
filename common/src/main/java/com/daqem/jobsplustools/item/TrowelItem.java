@@ -20,7 +20,7 @@ import java.util.List;
 
 public class TrowelItem extends Item {
     public TrowelItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Properties properties) {
-        super(properties.tool(toolMaterial, TagKey.create(Registries.BLOCK, JobsPlusTools.getId("mineable/trowel")), attackDamage, attackSpeed, 0.0F));
+        super(properties.tool(toolMaterial, TagKey.create(Registries.BLOCK, JobsPlusTools.API.getId("mineable/trowel")), attackDamage, attackSpeed, 0.0F));
     }
 
     @Override

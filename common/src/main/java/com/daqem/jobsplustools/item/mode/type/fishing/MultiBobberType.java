@@ -10,7 +10,7 @@ public class MultiBobberType implements IModeType {
 
     @Override
     public Identifier getId() {
-        return JobsPlusTools.getId("multi_bobber");
+        return JobsPlusTools.API.getId("multi_bobber");
     }
 
     @Override
