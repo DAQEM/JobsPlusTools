@@ -29,9 +29,10 @@ public class JobsPlusTools {
     );
 
     public static void init() {
-        JobsPlusToolsDataComponentTypes.init();
-        JobsPlusToolsItems.init();
-        JobsPlusToolsEntityTypes.init();
+        JobsPlusToolsDataComponentTypes.COMPONENTS.register();
+        JobsPlusToolsItems.ITEMS.register();
+        JobsPlusToolsEntityTypes.ENTITY_TYPES.register();
+        TABS.register();
 
         BreakBlockEvent.registerEvent();
     }

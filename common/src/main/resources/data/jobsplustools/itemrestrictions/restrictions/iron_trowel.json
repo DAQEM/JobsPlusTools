@@ -3,6 +3,7 @@
     "id": "jobsplustools:iron_trowel"
   },
   "types": [
+    "use",
     "craft",
     "smelt",
     "enchant",

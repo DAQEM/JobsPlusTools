@@ -126,9 +126,6 @@ public interface JobsPlusToolsItems {
     RegistryEntry<Item> NETHERITE_EXPERIENCE_JAR = item("netherite_experience_jar", p -> new Item(p.fireResistant().stacksTo(1).component(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), new ExperienceItemComponent(0, 25000))));
     RegistryEntry<Item> NETHERITE_CORE = item("netherite_core", p -> new Item(p.fireResistant()));
 
-    static void init() {
-    }
-
     static <T extends Item> RegistryEntry<T> item(String id, Function<Item.Properties, T> constructor) {
         return ITEMS.register(id, (key) -> constructor.apply(((ItemPropertiesExtension) new Item.Properties().setId(key)).knot$tab(JobsPlusTools.JOBSPLUS_TOOLS_TAB.getKey())));
     }

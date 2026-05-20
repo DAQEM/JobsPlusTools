@@ -3,6 +3,7 @@
     "id": "jobsplustools:stone_trowel"
   },
   "types": [
+    "use",
     "craft",
     "use_item",
     "smelt",

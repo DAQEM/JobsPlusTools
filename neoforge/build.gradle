@@ -8,10 +8,6 @@ apply from: rootProject.file("gradle/scripts/maven-publishing.gradle")
 
 dependencies {
     implementation "com.daqem.knot:knot-neoforge:${project.knot_version}"
-    implementation "com.daqem.uilib:uilib-neoforge:${project.uilib_version}"
-    implementation "com.daqem.yamlconfig:yamlconfig-neoforge:${project.yamlconfig_version}"
-    implementation "com.daqem.arc:arc-neoforge:${project.arc_version}"
-    implementation "com.daqem.itemrestrictions:itemrestrictions-neoforge:${project.itemrestrictions_version}"
 }
 
 neoForge {

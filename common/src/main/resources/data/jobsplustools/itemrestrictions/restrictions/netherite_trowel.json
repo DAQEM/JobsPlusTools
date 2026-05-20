@@ -3,6 +3,7 @@
     "id": "jobsplustools:netherite_trowel"
   },
   "types": [
+    "use",
     "craft",
     "smelt",
     "enchant",

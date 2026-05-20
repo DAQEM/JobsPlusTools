@@ -3,6 +3,7 @@
     "id": "jobsplustools:wooden_trowel"
   },
   "types": [
+    "use",
     "craft",
     "smelt",
     "enchant",

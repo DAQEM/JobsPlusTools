@@ -3,6 +3,7 @@
     "id": "jobsplustools:golden_trowel"
   },
   "types": [
+    "use",
     "craft",
     "smelt",
     "enchant",

@@ -34,21 +34,4 @@ public abstract class MixinFishingHook {
             cir.setReturnValue(jobsPlusToolsFishingHook.jobsplustools$shouldStopFishing(player));
         }
     }
-
-    @Redirect(
-            method = "tick",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/world/level/material/FluidState;is(Lnet/minecraft/tags/TagKey;)Z"
-            )
-    )
-    private boolean jobsplustools$redirectLavaCheck(FluidState instance, TagKey<Fluid> tagKey) {
-        FishingHook self = (FishingHook) (Object) this;
-        if (tagKey == FluidTags.LAVA && self instanceof JobsPlusToolsFishingHook jobsPlusToolsFishingHook) {
-            if (jobsPlusToolsFishingHook.canFishInLava()) {
-                return instance.is(tagKey) || instance.is(FluidTags.LAVA);
-            }
-        }
-        return instance.is(tagKey);
-    }
 }

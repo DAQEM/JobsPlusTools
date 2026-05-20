@@ -30,9 +30,6 @@ public interface JobsPlusToolsEntityTypes {
                     .updateInterval(5)
     );
 
-    static void init() {
-    }
-
     static <T extends Entity> RegistryEntry<EntityType<T>> entityType(String id, EntityType.Builder<T> builder) {
         return ENTITY_TYPES.register(id, builder::build);
     }

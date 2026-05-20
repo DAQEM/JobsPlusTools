@@ -19,9 +19,6 @@ public interface JobsPlusToolsDataComponentTypes {
     RegistryEntry<DataComponentType<ExperienceItemComponent>> EXPERIENCE_ITEM_COMPONENT = register("experience", ExperienceItemComponent.CODEC, ExperienceItemComponent.STREAM_CODEC);
     RegistryEntry<DataComponentType<PotionStorageItemComponent>> POTION_STORAGE_ITEM_COMPONENT = register("potion_storage", PotionStorageItemComponent.CODEC, PotionStorageItemComponent.STREAM_CODEC);
 
-    static void init() {
-    }
-
     static <T> RegistryEntry<DataComponentType<T>> register(String id, Codec<T> codec, StreamCodec<RegistryFriendlyByteBuf, T> streamCodec) {
         return COMPONENTS.register(
                 id,
