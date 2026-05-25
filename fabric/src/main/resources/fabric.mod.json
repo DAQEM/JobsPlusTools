@@ -26,6 +26,7 @@
     "jobsplustools-common.mixins.json",
     "jobsplustools.mixins.json"
   ],
+  "accessWidener": "jobsplustools.accesswidener",
   "depends": {
     "fabric-api": ">=${fabric_version}",
     "minecraft": ">=${minecraft_version}",
