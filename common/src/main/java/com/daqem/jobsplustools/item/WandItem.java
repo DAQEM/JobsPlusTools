@@ -15,6 +15,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
@@ -106,7 +107,7 @@ public class WandItem extends Item {
                 ItemStack projectileStack = new ItemStack(component.isLingering() ? Items.LINGERING_POTION : Items.SPLASH_POTION);
                 projectileStack.set(DataComponents.POTION_CONTENTS, component.contents());
 
-                Entity entity = (component.isLingering() ? EntityType.LINGERING_POTION : EntityType.SPLASH_POTION).create(level, EntitySpawnReason.EVENT);
+                Entity entity = (component.isLingering() ? EntityTypes.LINGERING_POTION : EntityTypes.SPLASH_POTION).create(level, EntitySpawnReason.EVENT);
                 if (entity instanceof ThrowableItemProjectile thrownPotion) {
                     thrownPotion.setItem(projectileStack);
                     thrownPotion.setOwner(player);

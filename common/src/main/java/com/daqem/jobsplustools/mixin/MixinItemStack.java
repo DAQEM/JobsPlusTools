@@ -38,16 +38,16 @@ import net.minecraft.world.phys.BlockHitResult;
 public abstract class MixinItemStack {
 
     @Shadow
-    public abstract <T extends TooltipProvider> void addToTooltip(DataComponentType<T> arg, Item.TooltipContext arg2, TooltipDisplay arg3, Consumer<Component> consumer, TooltipFlag arg4);
+    public abstract <T extends TooltipProvider> void addToTooltip(DataComponentType<T> type, Item.TooltipContext context, TooltipDisplay display, Consumer<Component> consumer, TooltipFlag flag);
 
     @Inject(
             method = "addDetailsToTooltip",
             at = @At(value = "HEAD")
     )
-    private void jobsplustools$addDetailsToTooltip(Item.TooltipContext tooltipContext, TooltipDisplay tooltipDisplay, Player player, TooltipFlag tooltipFlag, Consumer<Component> consumer, CallbackInfo ci) {
-        this.addToTooltip(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), tooltipContext, tooltipDisplay, consumer, tooltipFlag);
-        this.addToTooltip(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), tooltipContext, tooltipDisplay, consumer, tooltipFlag);
-        this.addToTooltip(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), tooltipContext, tooltipDisplay, consumer, tooltipFlag);
+    private void jobsplustools$addDetailsToTooltip(Item.TooltipContext context, TooltipDisplay display, Player player, TooltipFlag tooltipFlag, Consumer<Component> builder, CallbackInfo ci) {
+        this.addToTooltip(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get(), context, display, builder, tooltipFlag);
+        this.addToTooltip(JobsPlusToolsDataComponentTypes.EXPERIENCE_ITEM_COMPONENT.get(), context, display, builder, tooltipFlag);
+        this.addToTooltip(JobsPlusToolsDataComponentTypes.POTION_STORAGE_ITEM_COMPONENT.get(), context, display, builder, tooltipFlag);
     }
 
     @ModifyExpressionValue(
@@ -57,10 +57,10 @@ public abstract class MixinItemStack {
                     target = "Lnet/minecraft/world/item/Item;use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;"
             )
     )
-    private InteractionResult jobsplustools$modifyUseInteractionResult(InteractionResult original, Level level, Player player, InteractionHand interactionHand) {
+    private InteractionResult jobsplustools$modifyUseInteractionResult(InteractionResult original, Level level, Player player, InteractionHand hand) {
         if (!original.consumesAction() && player instanceof ServerPlayer serverPlayer) {
             ItemStack itemStack = (ItemStack) (Object) this;
-            if (interactionHand == InteractionHand.MAIN_HAND && itemStack.has(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get())) {
+            if (hand == InteractionHand.MAIN_HAND && itemStack.has(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get())) {
                 ModeItemComponent modeItemComponent = itemStack.get(JobsPlusToolsDataComponentTypes.MODE_ITEM_COMPONENT.get());
                 if (modeItemComponent != null) {
                     if (serverPlayer.isCrouching()) {
